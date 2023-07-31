@@ -1,4 +1,4 @@
-package xyz.xxdl.doc2show.config;
+package xyz.xxdl.doc2show.pojo;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @ConfigurationProperties(prefix = "oss")
-public class OccConfig {
+public class OssConfig {
    private String  endpoint;
    private String  accessKeyId;
    private String  accessKeySecret;

@@ -1,9 +1,11 @@
-package xyz.xxdl.doc2show.config;
+package xyz.xxdl.doc2show.pojo;
 
 import lombok.Data;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Package:xxdl.xyz.config
@@ -24,8 +26,24 @@ public class DocConfig {
      * 文档保存位置
      */
     private String docPath;
+    /**
+     *
+     */
     private String docSaveType;
     private  Boolean filePrefix;
+    /**
+     * 输出打印
+     */
     private  Boolean needOut;
+    /**
+     * 工作目录,jar包的目录
+     */
+    private String workDir;
+
+    private OssConfig ossConfig;
+    /**
+     * 待爬取的集合
+     */
+    private List<DocItem> docItemList;
 
 }

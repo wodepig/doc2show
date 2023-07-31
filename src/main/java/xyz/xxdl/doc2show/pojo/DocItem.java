@@ -1,4 +1,4 @@
-package xyz.xxdl.doc2show.config;
+package xyz.xxdl.doc2show.pojo;
 
 import lombok.Data;
 

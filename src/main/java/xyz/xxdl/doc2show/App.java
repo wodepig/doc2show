@@ -24,11 +24,11 @@ public class App extends ConfigUtil
 
 
 
-    public static void main(String[] args) throws Exception{
-        for (String s : docUrl) {
-            start(s);
-        }
-    }
+//    public static void main(String[] args) throws Exception{
+//        for (String s : docUrl) {
+//            start(s);
+//        }
+//    }
     public static  void start( String docUrl ) throws Exception {
         if (StrUtil.isBlank(docUrl)){
             return;
