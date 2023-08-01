@@ -21,20 +21,20 @@ public class DocConfig {
     /**
      * 图片保存类型
      */
-    private String imgSaveType;
+    private String imgSaveType = "local";
     /**
      * 文档保存位置
      */
-    private String docPath;
+    private String docPath = "mds";
     /**
      *
      */
     private String docSaveType;
-    private  Boolean filePrefix;
+    private  Boolean filePrefix = true;
     /**
      * 输出打印
      */
-    private  Boolean needOut;
+    private  Boolean needOut = false;
     /**
      * 工作目录,jar包的目录
      */

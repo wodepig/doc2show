@@ -1,7 +1,9 @@
 package xyz.xxdl.doc2show.config;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.setting.yaml.YamlUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +54,9 @@ public class InitConfig {
         }
         log.info("项目路径为: {}",jarDir);
         docConfig.setWorkDir(jarDir);
+        String configPath = FileUtil.normalize(jarDir + "/config");
         // 构建 YAML 文件路径
-        String yamlPath = FileUtil.getAbsolutePath(FileUtil.file(jarDir, SysConstant.DOC_CONFIG_FILE));
+        String yamlPath = FileUtil.getAbsolutePath(FileUtil.file(configPath, SysConstant.DOC_CONFIG_FILE));
         log.info("读取{}配置文件",SysConstant.DOC_CONFIG_FILE);
         List<DocItem> docItemList = new ArrayList<>();
         // 加载 YAML 文件并获取 LinkedHashMap 对象
@@ -73,6 +76,38 @@ public class InitConfig {
 
     private void validation(){
         log.info("开始验证信息的正确性");
+        log.debug("原始信息:{}",docConfig);
+        if (StrUtil.isBlank(docConfig.getImgSaveType())){
+            log.warn("图片保存类型没有设置,退出系统");
+            System.exit(0);
+        }
+        if (StrUtil.isBlank(docConfig.getDocPath())){
+            docConfig.setDocPath("mds");
+        }
+
+        List<DocItem> docItemList = new ArrayList<>();
+        // 初始化一些值
+        for (DocItem docItem : docConfig.getDocItemList()) {
+            if (StrUtil.isBlank(docItem.getName()) || StrUtil.isBlank(docItem.getUrl())){
+                log.warn("名称或url为空,排除掉");
+                continue;
+            }
+            if (docItem.getCache() == null){
+                docItem.setCache(true);
+            }
+            if (StrUtil.isBlank(docItem.getCacheFileName())){
+                docItem.setCacheFileName(docItem.getName());
+            }
+            if (StrUtil.isBlank(docItem.getSavePath())){
+                docItem.setSavePath(docItem.getName());
+            }
+            if (docItem.getEnable() == null){
+                docItem.setEnable(true);
+            }
+            docItemList.add(docItem);
+        }
+        docConfig.setDocItemList(docItemList);
+        log.debug("结果信息:{}",docConfig);
     }
 
     /**

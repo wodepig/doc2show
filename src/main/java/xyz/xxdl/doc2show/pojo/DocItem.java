@@ -16,6 +16,22 @@ public class DocItem {
      */
     private String url;
     /**
+     * 标识
+     */
+    private String name;
+    /**
+     * 是否开启
+     */
+    private Boolean enable;
+    /**
+     * 图片缓存
+     */
+    private Boolean cache;
+    /**
+     * 缓存文件名
+     */
+    private String cacheFileName;
+    /**
      * 保存路径
      */
     private String savePath;

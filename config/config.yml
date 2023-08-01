@@ -1,0 +1,11 @@
+docList:
+  - url: https://doc.iocoder.cn/intro
+    savePath: RuoYiVuePro
+    enable: true
+    cache: false
+    name: RuoYiVuePro
+    cacheFileName: cache
+  - url: 888
+    savePath: 888
+    enable: true
+    cache: false
