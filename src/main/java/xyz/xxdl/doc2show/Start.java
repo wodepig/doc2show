@@ -18,7 +18,12 @@ public class Start {
     }
 
     public void startItem(DocItem docItem){
+        // 1. 获取待爬取的链接
+        // 2. 抓取页面
+        // 3. 输出
+        MutableDataSet options = new MutableDataSet()
+                .set(Parser.EXTENSIONS, Arrays.asList(HtmlConverterTextExtension.create(docItem)));
 
-
+        String markdown = FlexmarkHtmlConverter.builder(options).build().convert("");
     }
 }

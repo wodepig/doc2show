@@ -5,7 +5,14 @@ docList:
     cache: false
     name: RuoYiVuePro
     cacheFileName: cache
+    pageBody: theme-vdoing-wrapper
+    sidebar: .sidebar
   - url: 888
+    savePath: 888
+    enable: true
+    cache: false
+  - url: 999
+    name: 999
     savePath: 888
     enable: true
     cache: false

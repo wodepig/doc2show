@@ -35,4 +35,19 @@ public class DocItem {
      * 保存路径
      */
     private String savePath;
+    /**
+     * 页面主体
+     */
+    private String pageBody;
+    /**
+     * 导航栏/菜单栏
+     */
+    private String sidebar;
+    /**
+     * ***************
+     */
+    /**
+     * 协议://域名
+     */
+    private String host;
 }

@@ -1,9 +1,9 @@
 package xyz.xxdl.doc2show.config;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.URLUtil;
 import cn.hutool.setting.yaml.YamlUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,8 @@ import xyz.xxdl.doc2show.pojo.DocItem;
 import xyz.xxdl.doc2show.pojo.OssConfig;
 
 import javax.annotation.PostConstruct;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -92,6 +94,10 @@ public class InitConfig {
                 log.warn("名称或url为空,排除掉");
                 continue;
             }
+            if (StrUtil.isNotBlank(docItem.getPageBody()) && StrUtil.isNotBlank(docItem.getSidebar())){
+                log.warn("主体或菜单为空,排除掉");
+                continue;
+            }
             if (docItem.getCache() == null){
                 docItem.setCache(true);
             }
@@ -103,6 +109,13 @@ public class InitConfig {
             }
             if (docItem.getEnable() == null){
                 docItem.setEnable(true);
+            }
+            try {
+                String host = URLUtil.getHost(new URL(docItem.getUrl())).toString();
+                docItem.setHost(host);
+            } catch (MalformedURLException e) {
+                log.warn("{}的url不合法,跳过",docItem.getUrl());
+                 continue;
             }
             docItemList.add(docItem);
         }
