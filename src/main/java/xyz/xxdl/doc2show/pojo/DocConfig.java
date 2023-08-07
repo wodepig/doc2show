@@ -25,7 +25,7 @@ public class DocConfig {
     /**
      * 文档保存位置
      */
-    private String docPath = "mds";
+    private String docPath = "/mds/";
     /**
      *
      */

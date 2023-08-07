@@ -6,11 +6,19 @@ import com.vladsch.flexmark.html2md.converter.HtmlLinkResolverFactory;
 import com.vladsch.flexmark.html2md.converter.HtmlNodeConverterContext;
 import org.jetbrains.annotations.Nullable;
 import org.jsoup.nodes.Node;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import xyz.xxdl.doc2show.enums.DocEnum;
+import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
+import xyz.xxdl.doc2show.utils._DocUtil;
 
 import java.util.Set;
 
+@Component
 public class CustomLinkResolver implements HtmlLinkResolver {
+    @Autowired
+    private DocConfig docConfig;
     private DocItem docItem;
         public CustomLinkResolver(HtmlNodeConverterContext context,DocItem docItem) {
             this.docItem = docItem;
@@ -18,11 +26,11 @@ public class CustomLinkResolver implements HtmlLinkResolver {
 
         @Override
         public ResolvedLink resolveLink(Node node, HtmlNodeConverterContext context, ResolvedLink link) {
-            // convert all links from http:// to https://
-            if (link.getUrl().startsWith("http:")) {
-                return link.withUrl("https:" + link.getUrl().substring("http:".length()));
+            if (!link.getLinkType().getName().equals("IMAGE")){
+                return link;
             }
-            return link;
+            String url = _DocUtil.convertImage(link,docItem);
+            return link.withUrl(url);
         }
 
        public static class Factory implements HtmlLinkResolverFactory {

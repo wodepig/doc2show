@@ -104,7 +104,7 @@ public class JsoupUtil extends BaseUtil {
        return main.html();
     }
 
-    public static void main(String[] args)throws IOException {
+    public static void main(String[] args) {
         String s = FileUtil.readString(filePath + "/test.html", StandardCharsets.UTF_8);
         Document doc = Jsoup.parse(s);
         // 文章主体

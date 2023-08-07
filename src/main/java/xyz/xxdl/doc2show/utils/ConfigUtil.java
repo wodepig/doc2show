@@ -1,8 +1,12 @@
 package xyz.xxdl.doc2show.utils;
 
+import cn.hutool.core.io.FileUtil;
 import com.aliyun.oss.OSSClient;
+import com.openhtmltopdf.util.ImageUtil;
 import io.github.furstenheim.CopyDown;
+import org.springframework.util.MimeTypeUtils;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -32,6 +36,9 @@ public class ConfigUtil {
     public   static Pattern MD_URL = Pattern
             .compile("(?<=\\!\\[.{1,888}\\]\\()(.+)(?=\\))");
 
+    public static void main(String[] args) {
+
+    }
     static {
         ResourceBundle rb = ResourceBundle.getBundle("application");
         // Endpoint以杭州为例，其它Region请按实际情况填写。

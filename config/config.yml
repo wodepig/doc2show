@@ -5,8 +5,10 @@ docList:
     cache: false
     name: RuoYiVuePro
     cacheFileName: cache
-    pageBody: theme-vdoing-wrapper
-    sidebar: .sidebar
+#    文章主体的class样式
+    pageBody: .theme-vdoing-wrapper
+#    获取链接的class样式
+    sidebar: .sidebar-links
   - url: 888
     savePath: 888
     enable: true

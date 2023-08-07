@@ -32,22 +32,31 @@ public class DocItem {
      */
     private String cacheFileName;
     /**
-     * 保存路径
+     * 文档保存根目录
      */
     private String savePath;
     /**
-     * 页面主体
+     * 页面主体的class样式
      */
     private String pageBody;
     /**
-     * 导航栏/菜单栏
+     * 导航栏/菜单栏的class样式
      */
     private String sidebar;
     /**
-     * ***************
+     * *************** 非配置项
      */
     /**
      * 协议://域名
      */
     private String host;
+    /**
+     * 工作目录
+     */
+    private String workDir;
+
+    /**
+     * 是否是获得链接的处理
+     */
+    private Boolean getLink = true;
 }

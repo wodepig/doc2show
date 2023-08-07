@@ -36,6 +36,7 @@ public class HtmlToMarkdownCustomizedSample {
             return link;
         }
 
+
         static class Factory implements HtmlLinkResolverFactory {
             private String s;
 
@@ -145,6 +146,7 @@ public class HtmlToMarkdownCustomizedSample {
                 "        <tr><td> Abbreviation  </td><td> <code>.abbreviation</code> </td><td> <code>*[]:</code>                                                 </td></tr>\n" +
                 "        <tr><td> Code fence    </td><td> <code>.codefence</code>    </td><td> ``` ... ```                                       </td></tr>\n" +
                 "        <tr><td> Explicit link </td><td> <code>.link</code>         </td><td> <code>[]()</code>                                                  </td></tr>\n" +
+                "        <tr><td> 相对链接 </td><td> <code>.link</code>         </td><td> <code><a href='/intro'>link</a></code>                                                  </td></tr>\n" +
                 "      </tbody>\n" +
                 "    </table>\n" +
                 "  </li>\n" +
