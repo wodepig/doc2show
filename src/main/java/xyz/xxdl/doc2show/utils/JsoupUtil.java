@@ -1,5 +1,6 @@
 package xyz.xxdl.doc2show.utils;
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.HttpUtil;
@@ -22,11 +23,14 @@ public class JsoupUtil {
         if (StrUtil.isBlank(url)){
             return  new Elements();
         }
-
-        // todo 代理
-        String html = HttpUtil.get(url);
+        String html = "";
+        if (url.startsWith("http")){
+            // todo 代理
+             html = HttpUtil.get(url);
+        }else {
+             html = FileUtil.readUtf8String(url);
+        }
         Document doc = Jsoup.parse(html);
-        Elements select = doc.select(className);
-         return select;
+        return doc.select(className);
     }
 }

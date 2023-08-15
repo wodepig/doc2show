@@ -1,5 +1,6 @@
 package xyz.xxdl.doc2show.flexmark;
 
+import com.vladsch.flexmark.html.renderer.LinkType;
 import com.vladsch.flexmark.html.renderer.ResolvedLink;
 import com.vladsch.flexmark.html2md.converter.HtmlLinkResolver;
 import com.vladsch.flexmark.html2md.converter.HtmlLinkResolverFactory;
@@ -26,7 +27,7 @@ public class CustomLinkResolver implements HtmlLinkResolver {
 
         @Override
         public ResolvedLink resolveLink(Node node, HtmlNodeConverterContext context, ResolvedLink link) {
-            if (!link.getLinkType().getName().equals("IMAGE")){
+            if (link.getLinkType() != LinkType.IMAGE){
                 return link;
             }
             String url = _DocUtil.convertImage(link,docItem);

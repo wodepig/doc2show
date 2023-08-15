@@ -1,8 +1,10 @@
 package xyz.xxdl.doc2show.utils;
 
+import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.URLUtil;
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
@@ -28,6 +30,18 @@ import java.util.regex.Pattern;
 public class FileUtils extends BaseUtil{
 
 
+    public static String saveImgLocal(String assetsPath,String imgUrl){
+        File file = FileUtil.file(assetsPath, imgUrl);
+        File touch = FileUtil.touch(file);
+        InputStream inputStream = null;
+        try {
+            inputStream = new URL(imgUrl).openStream();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        FileUtil.writeFromStream(inputStream,touch);
+        return file.getAbsolutePath();
+    }
 
 
     public static void md2local(String folder,String fileName,String str){

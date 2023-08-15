@@ -36,6 +36,10 @@ public class DocItem {
      */
     private String savePath;
     /**
+     * 图片保存类型
+     */
+    private String imgSaveType = "local";
+    /**
      * 页面主体的class样式
      */
     private String pageBody;
@@ -51,7 +55,7 @@ public class DocItem {
      */
     private String host;
     /**
-     * 工作目录
+     * 工作目录:/mds/项目名
      */
     private String workDir;
 

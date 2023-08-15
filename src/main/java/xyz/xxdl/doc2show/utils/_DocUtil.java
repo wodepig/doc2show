@@ -65,13 +65,15 @@ public class _DocUtil {
 
     public static String convertImage(ResolvedLink link,DocItem docItem){
         String imgUrl = _DocUtil.getAbsoluteUrl(docItem.getHost(), link.getUrl());
-        switch (docConfig.getImgSaveType()){
+        String type = docItem.getImgSaveType() == null ? docConfig.getImgSaveType() : docItem.getImgSaveType();
+
+        switch (type){
             case "local":
-                return localImageService.convertImage(imgUrl,docItem);
+                return localImageService.convertImage(imgUrl,link.getUrl(),docItem);
             case "oss":
-                return ossImageService.convertImage(imgUrl,docItem);
+                return ossImageService.convertImage(imgUrl,link.getUrl(),docItem);
             case "all":
-                return  allImageService.convertImage(imgUrl,docItem);
+                return  allImageService.convertImage(imgUrl,link.getUrl(),docItem);
         }
         return "";
 
@@ -81,6 +83,7 @@ public class _DocUtil {
                 FileUtil.file(savePath, docLink.getGroup(),docLink.getTitle())
                 + ".md"
         );
+        log.info("写入文件到{}",file.getPath());
         FileUtil.writeUtf8String(mdStr,file);
     }
 

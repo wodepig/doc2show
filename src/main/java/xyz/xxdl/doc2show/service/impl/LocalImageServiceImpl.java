@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
 import xyz.xxdl.doc2show.service.ImageService;
+import xyz.xxdl.doc2show.utils.CacheUtil;
+import xyz.xxdl.doc2show.utils.FileUtils;
+
 @Service
 @Slf4j
 @Qualifier("localImageService")
@@ -15,17 +18,20 @@ public class LocalImageServiceImpl implements ImageService {
     @Autowired
     private DocConfig docConfig;
     @Override
-    public String convertImage(String imgUrl, DocItem docItem) {
+    public String convertImage(String imgUrl,String imgName, DocItem docItem) {
         log.info("保存图片到本地");
-        //.assets
-        String assets = FileUtil.file(docItem.getWorkDir(),".assets").getAbsolutePath();
+        // todo 图片保存路径: .assets
+        String assetsPath = FileUtil.file(docItem.getWorkDir(),".assets").getAbsolutePath();
         Boolean useCache = docItem.getCache();
         if (!useCache){
             log.info("不使用缓存,重新下载所有图片");
-
+            return FileUtils.saveImgLocal(assetsPath,imgUrl);
         }else {
-
+            if (CacheUtil.hasKeyLocal(imgUrl,assetsPath,docItem)){
+                return FileUtil.file(assetsPath,imgName).getAbsolutePath();
+            }else {
+                return FileUtils.saveImgLocal(assetsPath,imgUrl);
+            }
         }
-        return null;
     }
 }

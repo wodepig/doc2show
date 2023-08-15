@@ -2,8 +2,14 @@ package xyz.xxdl.doc2show.utils;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.json.JSONUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import xyz.xxdl.doc2show.pojo.DocConfig;
+import xyz.xxdl.doc2show.pojo.DocItem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,13 +19,50 @@ import java.util.Map;
  * @date:2023.03.02 21:56
  * @author:wodepig dddgoal@163.com
  */
+@Component
 public class CacheUtil extends BaseUtil{
 
+    @Autowired
+    public static   DocConfig docConfig;
    private static Map<String,String> cacheMap ;
+   private static List<String> cacheMapLocal ;
     public static Boolean hasKey(String key){
         cacheMap = initMap();
         return  cacheMap.containsKey(key);
     }
+
+    /**
+     * 缓存中是否保存url
+     * @param imgUrl
+     * @param docItem
+     * @return
+     */
+    public static Boolean hasKeyLocal(String imgUrl, String assetsPath,DocItem docItem){
+        cacheMapLocal = initMapLocal(assetsPath);
+        String[] split = imgUrl.split("/");
+        imgUrl = split[split.length-1];
+        if (cacheMapLocal.contains(imgUrl)){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+
+    private static List<String> initMapLocal(String assetsPath) {
+        if (cacheMapLocal !=null){
+            return cacheMapLocal;
+        }
+        FileUtil.mkdir(assetsPath);
+        try {
+            return FileUtil.listFileNames(assetsPath);
+
+        } catch (Exception e) {
+            return  new ArrayList<>();
+        }
+
+    }
+
     public static void setKey(String key,String value){
         cacheMap.put(key,value);
         saveMap();

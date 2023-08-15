@@ -9,7 +9,7 @@ import xyz.xxdl.doc2show.service.ImageService;
 @Qualifier("ossImageService")
 public class OssImageServiceImpl implements ImageService {
     @Override
-    public String convertImage(String imgUrl, DocItem docItem) {
+    public String convertImage(String imgUrl,String imgName, DocItem docItem) {
         return null;
     }
 }
