@@ -1,5 +1,6 @@
 package xyz.xxdl.doc2show.utils;
 
+import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
@@ -64,16 +65,17 @@ public class _DocUtil {
     }
 
     public static String convertImage(ResolvedLink link,DocItem docItem){
-        String imgUrl = _DocUtil.getAbsoluteUrl(docItem.getHost(), link.getUrl());
+        String imgUrl = _DocUtil.getAbsoluteUrl(docItem.getHost(), link.getTitle());
         String type = docItem.getImgSaveType() == null ? docConfig.getImgSaveType() : docItem.getImgSaveType();
+
 
         switch (type){
             case "local":
-                return localImageService.convertImage(imgUrl,link.getUrl(),docItem);
+                return localImageService.convertImage(link,imgUrl,link.getUrl(),docItem);
             case "oss":
-                return ossImageService.convertImage(imgUrl,link.getUrl(),docItem);
+                return ossImageService.convertImage(link,imgUrl,link.getUrl(),docItem);
             case "all":
-                return  allImageService.convertImage(imgUrl,link.getUrl(),docItem);
+                return  allImageService.convertImage(link,imgUrl,link.getUrl(),docItem);
         }
         return "";
 
@@ -128,10 +130,13 @@ public class _DocUtil {
     /**
      * 获取绝对链接
      * @param baseUrl 基础链接
-     * @param relativeUrl 待转换的链接
+     * @param relativeUrl 相对链接或绝对链接
      * @return 完整链接
      */
-    private static String getAbsoluteUrl(String baseUrl, String relativeUrl) {
+    public static String getAbsoluteUrl(String baseUrl, String relativeUrl) {
+        if (relativeUrl.startsWith("http")){
+            return relativeUrl;
+        }
         try {
             URL url = new URL(new URL(baseUrl), relativeUrl);
             return url.toString();

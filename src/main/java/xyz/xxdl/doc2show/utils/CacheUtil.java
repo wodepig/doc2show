@@ -2,10 +2,14 @@ package xyz.xxdl.doc2show.utils;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.json.JSONUtil;
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
+import xyz.xxdl.doc2show.pojo.OssConfig;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +53,26 @@ public class CacheUtil extends BaseUtil{
 
     }
 
+    public static Boolean hasFileOss(String objectName,  OssConfig ossConfig){
+        // 创建OSSClient实例。
+        OSSClient ossClient = ossConfig.getOssClient();
+        return ossClient.doesObjectExist(ossConfig.getBucketName(), objectName);
+    }
+    /**
+     * 本地是否有文件存在
+     * @param fileName
+     * @param filePath
+     * @param docItem
+     * @return
+     */
+    public static Boolean hasFileLocal(String fileName, String filePath, DocItem docItem){
+        cacheMapLocal = initMapLocal(filePath);
+        if (cacheMapLocal.contains(fileName)){
+            return true;
+        }else {
+            return false;
+        }
+    }
     private static List<String> initMapLocal(String assetsPath) {
         if (cacheMapLocal !=null){
             return cacheMapLocal;

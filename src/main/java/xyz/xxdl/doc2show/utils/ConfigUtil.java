@@ -39,7 +39,7 @@ public class ConfigUtil {
     public static void main(String[] args) {
 
     }
-    static {
+   /* static {
         ResourceBundle rb = ResourceBundle.getBundle("application");
         // Endpoint以杭州为例，其它Region请按实际情况填写。
         String endpoint = rb.getString("oss.endpoint");
@@ -61,7 +61,7 @@ public class ConfigUtil {
         }
 
 
-    }
+    }*/
 
 
 }

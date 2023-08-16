@@ -39,6 +39,7 @@ public class DocItem {
      * 图片保存类型
      */
     private String imgSaveType = "local";
+    private String imgSavePath = "";
     /**
      * 页面主体的class样式
      */

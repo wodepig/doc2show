@@ -5,6 +5,7 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.setting.yaml.YamlUtil;
+import com.aliyun.oss.OSSClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
@@ -36,11 +37,16 @@ public class InitConfig {
     @Autowired
     private OssConfig ossConfig;
 
+    private OSSClient creatOssClient(OssConfig ossConfig){
+        OSSClient ossClient = new OSSClient(ossConfig.getEndpoint(),ossConfig.getAccessKeyId(),ossConfig.getAccessKeySecret());
+        return ossClient;
+    }
     @Order(1)
     @PostConstruct
     private void DocList() {
         docConfig.setOssConfig(ossConfig);
         log.debug("设置oss值:{}",ossConfig);
+        ossConfig.setOssClient(creatOssClient(ossConfig));
         String jarDir="";
         if (isRunningFromJAR()) {
             log.info("本项目从jar包启动");

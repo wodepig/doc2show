@@ -1,28 +1,37 @@
 package xyz.xxdl.doc2show.utils;
 
+import cn.hutool.core.codec.Base64;
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.file.FileNameUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
+import cn.hutool.http.HttpUtil;
 import com.aliyun.oss.ClientException;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSException;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.aliyun.oss.model.PutObjectResult;
+import com.vladsch.flexmark.html.renderer.ResolvedLink;
 import io.github.furstenheim.CopyDown;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import xyz.xxdl.doc2show.pojo.DocItem;
+import xyz.xxdl.doc2show.pojo.OssConfig;
 
+import java.awt.*;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,18 +39,91 @@ import java.util.regex.Pattern;
 public class FileUtils extends BaseUtil{
 
 
-    public static String saveImgLocal(String assetsPath,String imgUrl){
-        File file = FileUtil.file(assetsPath, imgUrl);
-        File touch = FileUtil.touch(file);
-        InputStream inputStream = null;
-        try {
-            inputStream = new URL(imgUrl).openStream();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    /**
+     * 从link中拿到文件名,保存路径和(下载路径|base64)
+     * @param link
+     * @param docItem
+     * @return
+     */
+    public static Map<String,String> link2Map(ResolvedLink link,DocItem docItem){
+        Map<String,String> map = new HashMap<>();
+        String urlOrBase64 = link.getUrl();
+        String filePath = docItem.getImgSavePath();
+        String fileName = "";
+        List<String> split = StrUtil.split(urlOrBase64, ",");
+        if (split.size() == 1) {
+            urlOrBase64 = split.get(0);
+        } else {
+            urlOrBase64 = split.get(1);
         }
-        FileUtil.writeFromStream(inputStream,touch);
-        return file.getAbsolutePath();
+        boolean isBase64 = Base64.isBase64(urlOrBase64);
+        if (isBase64){
+
+            fileName = StrUtil.sub(urlOrBase64,-1,-10) + ".png";
+        }else {
+            // 相对链接或绝对链接
+            urlOrBase64 = _DocUtil.getAbsoluteUrl(docItem.getHost(),urlOrBase64);
+            fileName = FileUtils.getFileName(docItem.getWorkDir(),urlOrBase64);
+        }
+        map.put("fileName",fileName);
+        map.put("filePath",filePath);
+        map.put("urlOrBase64",urlOrBase64);
+        return map;
     }
+
+    public static byte[] urlOrBase64(String urlOrBase64){
+        byte[] bytes = Base64.decode(urlOrBase64);
+        if (urlOrBase64.startsWith("http")){
+            bytes = HttpUtil.downloadBytes(urlOrBase64);
+        }
+        return bytes;
+    }
+    public static String saveOss(byte[] bytes, String objectName, OssConfig ossConfig){
+        OSSClient ossClient = ossConfig.getOssClient();
+
+        // 创建PutObjectRequest对象。
+        PutObjectRequest putObjectRequest = new PutObjectRequest(ossConfig.getBucketName(), objectName, new ByteArrayInputStream(bytes));
+
+        // 创建PutObject请求。
+        PutObjectResult result = ossClient.putObject(putObjectRequest);
+        return objectName;
+    }
+    /**
+     * 保存文件到本地
+     * @param bytes
+     * @param file
+     * @return
+     */
+    public static String saveLocal(byte[] bytes,File file){
+        File touch = FileUtil.touch(file);
+        return FileUtil.writeBytes(bytes,touch).getAbsolutePath();
+    }
+    /**
+     * 保存图片到本地,验证是否时候缓存
+     * @param str base64或图片链接
+     * @return
+     */
+   /* public static String saveLocal(String str,String filePath, String fileName, Boolean cache){
+
+        File file = FileUtil.file(filePath, fileName);
+        if (cache){
+            Boolean hasFileLocal = CacheUtil.hasFileLocal(fileName, filePath, null);
+            if (hasFileLocal){
+                return file.getAbsolutePath();
+            }else {
+
+                return saveLocal(Base64.encode(bytes),filePath,fileName,false);
+            }
+        }else {
+            File touch = FileUtil.touch(file);
+//            return FileUtil.writeBytes(bytes,touch).getAbsolutePath();
+            return FileUtil.writeBytes(bytes,touch).getAbsolutePath();
+        }
+
+    }*/
+
+
+
 
 
     public static void md2local(String folder,String fileName,String str){
@@ -139,5 +221,26 @@ public class FileUtils extends BaseUtil{
     }
 
 
-
+    /**
+     * 获取文件名
+     * @param str 保存路径,
+     * @param url 绝对链接或相对链接
+     * @return
+     */
+    public static String getFileName(String str, String url) {
+        String fileName = "";
+        if (url.startsWith("http")){
+            URL imgUrl = URLUtil.url(url);
+            // 为了方便的获取图片的上级路径,把所有链接都转换为file进行处理
+            return getFileName(str,imgUrl.getPath());
+        }else {
+            File file = FileUtil.file(str, url);
+            fileName =  FileNameUtil.getName(file);
+            if (fileName.length() < 8){
+                // 文件名过短时添加上级路径组成新文件名
+                fileName = file.getParentFile().getName() + "_" + fileName;
+            }
+        }
+     return fileName;
+    }
 }

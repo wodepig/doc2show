@@ -1,5 +1,6 @@
 package xyz.xxdl.doc2show.flexmark;
 
+import cn.hutool.core.codec.Base64;
 import com.vladsch.flexmark.html.renderer.LinkType;
 import com.vladsch.flexmark.html.renderer.ResolvedLink;
 import com.vladsch.flexmark.html2md.converter.HtmlLinkResolver;
@@ -30,8 +31,9 @@ public class CustomLinkResolver implements HtmlLinkResolver {
             if (link.getLinkType() != LinkType.IMAGE){
                 return link;
             }
+            System.out.println(Base64.isBase64(link.getUrl()));
             String url = _DocUtil.convertImage(link,docItem);
-            return link.withUrl(url);
+            return link.withUrl("");
         }
 
        public static class Factory implements HtmlLinkResolverFactory {
