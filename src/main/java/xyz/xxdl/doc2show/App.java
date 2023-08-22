@@ -4,10 +4,10 @@ import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import xxdl.xyz.config.DocConfig;
-import xxdl.xyz.utils.BaseUtil;
-import xxdl.xyz.utils.ConfigUtil;
-import xxdl.xyz.utils.FileUtils;
+import xyz.xxdl.doc2show.utils.BaseUtil;
+import xyz.xxdl.doc2show.utils.ConfigUtil;
+import xyz.xxdl.doc2show.utils.FileUtils;
+
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;

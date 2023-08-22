@@ -5,7 +5,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import xxdl.xyz.utils.BaseUtil;
+import xyz.xxdl.doc2show.utils.BaseUtil;
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static xxdl.xyz.utils.FileUtils.saveImg;
+import static xyz.xxdl.doc2show.utils.FileUtils.saveImg;
 
 
 /**
