@@ -1,8 +1,10 @@
 docList:
-  - url: https://doc.iocoder.cn/intro
+  - url: D:\IdeaProjects\doc2show\test_file\linkTest.html
+#  - url: https://doc.iocoder.cn/intro
     savePath: RuoYiVuePro
+    host: https://doc.iocoder.cn
     enable: true
-    cache: false
+    cache: true
     name: RuoYiVuePro
     cacheFileName: cache
     imgSaveType: local

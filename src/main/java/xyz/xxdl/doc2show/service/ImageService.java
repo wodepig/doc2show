@@ -1,8 +1,8 @@
 package xyz.xxdl.doc2show.service;
 
 import com.vladsch.flexmark.html.renderer.ResolvedLink;
+import org.springframework.stereotype.Component;
 import xyz.xxdl.doc2show.pojo.DocItem;
-
 public interface ImageService {
     /**
      * 转换图片

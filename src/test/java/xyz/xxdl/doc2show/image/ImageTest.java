@@ -25,11 +25,11 @@ public class ImageTest extends BaseTest {
         /**
          * 不对图片做处理
          */
-        imageTest(new NoneImageServiceImpl());
+        //imageTest(new NoneImageServiceImpl());
         /**
          * 保存图片到本地
          */
-//        imageTest(new LocalImageServiceImpl());
+        imageTest(new LocalImageServiceImpl());
         /**
          * 保存图片到阿里云对象存储
          */

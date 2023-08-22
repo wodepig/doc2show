@@ -15,7 +15,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import xyz.xxdl.doc2show.enums.DocEnum;
+import xyz.xxdl.doc2show.factory.ImageProviderFactory;
 import xyz.xxdl.doc2show.flexmark.HtmlConverterTextExtension;
 import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
@@ -32,17 +34,10 @@ import java.util.*;
 
 @Slf4j
 public class _DocUtil {
-    @Autowired
-    public static  ImageService localImageService;
-    @Autowired
-    public static ImageService ossImageService;
-    @Autowired
-    public static ImageService allImageService;
 
 
 
-    @Autowired
-    static DocConfig docConfig;
+
 
 
 
@@ -65,18 +60,10 @@ public class _DocUtil {
     }
 
     public static String convertImage(ResolvedLink link,DocItem docItem){
-        String type = docItem.getImgSaveType() == null ? docConfig.getImgSaveType() : docItem.getImgSaveType();
+        String type = docItem.getImgSaveType();
 
+        return ImageProviderFactory.get(type).convertImage(link,null,null,docItem);
 
-        switch (type){
-            case "local":
-                return localImageService.convertImage(link,null,null,docItem);
-            case "oss":
-                return ossImageService.convertImage(link,null,null,docItem);
-            case "all":
-                return  allImageService.convertImage(link,null,null,docItem);
-        }
-        return "";
 
     }
     public static void saveMdStr(String mdStr,DocLink docLink,File savePath){
@@ -123,6 +110,7 @@ public class _DocUtil {
             }
 
         }
+        log.info("{}下共有{}个链接",docItem.getName(),list.size());
         return list;
     }
 

@@ -8,9 +8,12 @@ import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.HttpUtil;
 import com.vladsch.flexmark.html.renderer.ResolvedLink;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import xyz.xxdl.doc2show.config.SysConstant;
+import xyz.xxdl.doc2show.factory.ImageProviderFactory;
 import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
 import xyz.xxdl.doc2show.service.ImageService;
@@ -25,7 +28,7 @@ import java.util.Map;
 @Service
 @Slf4j
 @Qualifier("localImageService")
-public class LocalImageServiceImpl implements ImageService {
+public class LocalImageServiceImpl implements ImageService, InitializingBean {
     @Autowired
     private DocConfig docConfig;
     @Override
@@ -38,9 +41,16 @@ public class LocalImageServiceImpl implements ImageService {
         if (docItem.getCache()){
             Boolean hasFileLocal = CacheUtil.hasFileLocal(fileName, assetsPath, null);
             if (hasFileLocal){
+                log.info("图片: {}命中缓存...",fileName);
                 return file.getAbsolutePath();
             }
         }
+        log.info("图片: {} 重新保存文件...",fileName);
             return FileUtils.saveLocal(FileUtils.urlOrBase64(map.get("urlOrBase64")),file);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        ImageProviderFactory.register(SysConstant.IMAGE_SAVE_TYPE_LOCAL,this);
     }
 }

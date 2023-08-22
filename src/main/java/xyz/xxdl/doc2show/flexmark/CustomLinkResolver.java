@@ -17,10 +17,8 @@ import xyz.xxdl.doc2show.utils._DocUtil;
 
 import java.util.Set;
 
-@Component
 public class CustomLinkResolver implements HtmlLinkResolver {
-    @Autowired
-    private DocConfig docConfig;
+
     private DocItem docItem;
         public CustomLinkResolver(HtmlNodeConverterContext context,DocItem docItem) {
             this.docItem = docItem;

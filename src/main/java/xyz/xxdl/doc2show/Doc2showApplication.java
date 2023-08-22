@@ -1,5 +1,6 @@
 package xyz.xxdl.doc2show;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,7 @@ public class Doc2showApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(Doc2showApplication.class, args);
+
     }
 
 }

@@ -6,9 +6,13 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.http.HttpUtil;
 import com.vladsch.flexmark.html.renderer.ResolvedLink;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import xyz.xxdl.doc2show.config.SysConstant;
+import xyz.xxdl.doc2show.factory.ImageProviderFactory;
 import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
 import xyz.xxdl.doc2show.pojo.OssConfig;
@@ -20,7 +24,8 @@ import java.util.Map;
 
 @Service
 @Qualifier("ossImageService")
-public class OssImageServiceImpl implements ImageService {
+@Slf4j
+public class OssImageServiceImpl implements ImageService, InitializingBean {
     @Autowired
     private DocConfig docConfig;
     @Override
@@ -38,11 +43,18 @@ public class OssImageServiceImpl implements ImageService {
         if (docItem.getCache()){
             Boolean cacheHit = CacheUtil.hasFileOss(objectName,ossConfig);
             if (cacheHit){
+                log.info("图片:{}命中缓存..",map.get("fileName"));
                 return  shareUrl + "/" + objectName;
             }
         }
+        log.info("图片:{}重新上传文件..",map.get("fileName"));
         // 上传文件
         FileUtils.saveOss(FileUtils.urlOrBase64(map.get("urlOrBase64")),objectName,ossConfig);
         return  shareUrl + "/" + objectName;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        ImageProviderFactory.register(SysConstant.IMAGE_SAVE_TYPE_OSS,this);
     }
 }

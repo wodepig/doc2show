@@ -60,7 +60,8 @@ public class FileUtils extends BaseUtil{
         String urlOrBase64 = link.getUrl();
         String filePath = docItem.getImgSavePath();
         String fileName = "";
-        boolean isBase64 = Base64.isBase64(isBase64(urlOrBase64));
+        urlOrBase64 = isBase64(urlOrBase64);
+        boolean isBase64 = Base64.isBase64(urlOrBase64);
         if (isBase64){
 
             fileName = StrUtil.sub(urlOrBase64,-1,-10) + ".png";
@@ -69,12 +70,16 @@ public class FileUtils extends BaseUtil{
             urlOrBase64 = _DocUtil.getAbsoluteUrl(docItem.getHost(),urlOrBase64);
             fileName = FileUtils.getFileName(docItem.getWorkDir(),urlOrBase64);
         }
-        map.put("fileName",fileName);
+        map.put("fileName",URLUtil.decode(fileName));
         map.put("filePath",filePath);
         map.put("urlOrBase64",urlOrBase64);
         return map;
     }
 
+    public static void main(String[] args) {
+        String s = "D:\\IdeaProjects\\doc2show\\mds\\RuoYiVuePro\\.assets\\%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90_01.png";
+        System.out.println(URLUtil.decode(s));
+    }
     public static byte[] urlOrBase64(String urlOrBase64){
         byte[] bytes = Base64.decode(urlOrBase64);
         if (urlOrBase64.startsWith("http")){

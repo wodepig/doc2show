@@ -19,17 +19,40 @@ public class CustomHtmlNodeConverter implements HtmlNodeRenderer {
 
         @Override
         public Set<HtmlNodeRendererHandler<?>> getHtmlNodeRendererHandlers() {
-            return new HashSet<>(Collections.singletonList(
-                    new HtmlNodeRendererHandler<>(null, Element.class, this::processKbd)
-            ));
+            Set<HtmlNodeRendererHandler<?>> set = new HashSet<>();
+            set.add(new HtmlNodeRendererHandler<>("h1", Element.class, this::processH));
+            set.add(new HtmlNodeRendererHandler<>("h2", Element.class, this::processH));
+            set.add(new HtmlNodeRendererHandler<>("h3", Element.class, this::processH));
+            set.add(new HtmlNodeRendererHandler<>("h4", Element.class, this::processH));
+            set.add(new HtmlNodeRendererHandler<>("code", Element.class, this::processCode));
+//            set.add(new HtmlNodeRendererHandler<>("h3", Element.class, this::processKbd));
+            return set;
         }
 
-        private void processKbd(Element node, HtmlNodeConverterContext context, HtmlMarkdownWriter out) {
-            //out.append("<<");
-            //context.renderChildren(node, false, null);
-            //.append(">>");
+    /**
+     * 解析多等级标题标题
+     * @param node
+     * @param context
+     * @param out
+     */
+        private void processH(Element node, HtmlNodeConverterContext context, HtmlMarkdownWriter out) {
+            String s = node.nodeName().toLowerCase();
+            int h = Integer.parseInt(s.replace("h", ""));
+            for (int i = 1; i < h; i++) {
+                out.append("#");
+            }
+            out.append(node.text());
         }
 
+    /**
+     * 解析代码
+     * @param node
+     * @param context
+     * @param out
+     */
+    private void processCode(Element node, HtmlNodeConverterContext context, HtmlMarkdownWriter out) {
+        System.out.println();
+    }
         public static class Factory implements HtmlNodeRendererFactory {
             private DocItem docItem;
 
