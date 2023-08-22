@@ -4,7 +4,7 @@
 cache.txt
 .gradle
 /build/
-/test_file/
+#/test_file/
 /mds/
 !gradle/wrapper/gradle-wrapper.jar
 

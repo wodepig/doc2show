@@ -1,0 +1,334 @@
+<div class="theme-default-content content__default"><h1 id="功能组件"><a href="#功能组件" class="header-anchor">#</a> 功能组件</h1>
+    <h2 id="弹窗功能"><a href="#弹窗功能" class="header-anchor">#</a> 弹窗功能</h2>
+    <p>弹框的功能不管是在传统开发中还是如今比较流行的前后端分离开发中都是比较常见的功能，如：添加、编辑、确认框提示等等(当前页可以直接打开新页面)，
+        为了解决这个问题，我们封装了弹框组件，根据使用场景的不同，框架做了继承开发，调用时只需要传入相应的参数即可。</p>
+    <p>函数主体：</p>
+    <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span
+            class="token function-variable function">open</span><span class="token operator">:</span> <span
+            class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">title<span
+            class="token punctuation">,</span> url<span class="token punctuation">,</span> width<span
+            class="token punctuation">,</span> height<span class="token punctuation">,</span> callback</span><span
+            class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token comment">//如果是移动端，就使用自适应大小弹窗</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isMobile</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+		width <span class="token operator">=</span> <span class="token string">'auto'</span><span
+                class="token punctuation">;</span>
+		height <span class="token operator">=</span> <span class="token string">'auto'</span><span
+                class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isEmpty</span><span class="token punctuation">(</span>title<span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+		title <span class="token operator">=</span> <span class="token boolean">false</span><span
+                class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isEmpty</span><span class="token punctuation">(</span>url<span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+		url <span class="token operator">=</span> <span class="token string">"/404.html"</span><span
+                class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isEmpty</span><span class="token punctuation">(</span>width<span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+		width <span class="token operator">=</span> <span class="token number">800</span><span
+                class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isEmpty</span><span class="token punctuation">(</span>height<span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+		height <span class="token operator">=</span> <span class="token punctuation">(</span><span
+                class="token function">$</span><span class="token punctuation">(</span>window<span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">height</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span
+                class="token number">50</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>$<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isEmpty</span><span class="token punctuation">(</span>callback<span
+                class="token punctuation">)</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+		<span class="token function-variable function">callback</span> <span class="token operator">=</span> <span
+                class="token keyword">function</span><span class="token punctuation">(</span><span
+                class="token parameter">index<span class="token punctuation">,</span> layero</span><span
+                class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">var</span> iframeWin <span class="token operator">=</span> layero<span
+                class="token punctuation">.</span><span class="token function">find</span><span
+                class="token punctuation">(</span><span class="token string">'iframe'</span><span
+                class="token punctuation">)</span><span class="token punctuation">[</span><span
+                class="token number">0</span><span class="token punctuation">]</span><span
+                class="token punctuation">;</span>
+			iframeWin<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span><span
+                class="token function">submitHandler</span><span class="token punctuation">(</span>index<span
+                class="token punctuation">,</span> layero<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	layer<span class="token punctuation">.</span><span class="token function">open</span><span
+                class="token punctuation">(</span><span class="token punctuation">{</span>
+		<span class="token literal-property property">type</span><span class="token operator">:</span> <span
+                class="token number">2</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">area</span><span class="token operator">:</span> <span
+                class="token punctuation">[</span>width <span class="token operator">+</span> <span
+                class="token string">'px'</span><span class="token punctuation">,</span> height <span
+                class="token operator">+</span> <span class="token string">'px'</span><span
+                class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">fix</span><span class="token operator">:</span> <span
+                class="token boolean">false</span><span class="token punctuation">,</span>
+		<span class="token comment">//不固定</span>
+		<span class="token literal-property property">maxmin</span><span class="token operator">:</span> <span
+                class="token boolean">true</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">shade</span><span class="token operator">:</span> <span
+                class="token number">0.3</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">title</span><span class="token operator">:</span> title<span
+                class="token punctuation">,</span>
+		<span class="token literal-property property">content</span><span class="token operator">:</span> url<span
+                class="token punctuation">,</span>
+		<span class="token literal-property property">btn</span><span class="token operator">:</span> <span
+                class="token punctuation">[</span><span class="token string">'确定'</span><span class="token punctuation">,</span> <span
+                class="token string">'关闭'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token comment">// 弹层外区域关闭</span>
+		<span class="token literal-property property">shadeClose</span><span class="token operator">:</span> <span
+                class="token boolean">true</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">yes</span><span class="token operator">:</span> callback<span
+                class="token punctuation">,</span>
+		<span class="token function-variable function">cancel</span><span class="token operator">:</span> <span
+                class="token keyword">function</span><span class="token punctuation">(</span><span
+                class="token parameter">index</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token boolean">true</span><span
+                class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+        <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span
+                class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span
+                class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span
+                class="line-number">8</span><br><span class="line-number">9</span><br><span
+                class="line-number">10</span><br><span class="line-number">11</span><br><span
+                class="line-number">12</span><br><span class="line-number">13</span><br><span
+                class="line-number">14</span><br><span class="line-number">15</span><br><span
+                class="line-number">16</span><br><span class="line-number">17</span><br><span
+                class="line-number">18</span><br><span class="line-number">19</span><br><span
+                class="line-number">20</span><br><span class="line-number">21</span><br><span
+                class="line-number">22</span><br><span class="line-number">23</span><br><span
+                class="line-number">24</span><br><span class="line-number">25</span><br><span
+                class="line-number">26</span><br><span class="line-number">27</span><br><span
+                class="line-number">28</span><br><span class="line-number">29</span><br><span
+                class="line-number">30</span><br><span class="line-number">31</span><br><span
+                class="line-number">32</span><br><span class="line-number">33</span><br><span
+                class="line-number">34</span><br><span class="line-number">35</span><br><span
+                class="line-number">36</span><br><span class="line-number">37</span><br><span
+                class="line-number">38</span><br><span class="line-number">39</span><br><span
+                class="line-number">40</span><br><span class="line-number">41</span><br><span
+                class="line-number">42</span><br></div>
+    </div>
+    <p>参数说明：</p>
+    <ul>
+        <li><code>title</code> 弹窗标题，这个标题是在弹框的左上角显示的标题文字</li>
+        <li><code>url</code> URL地址，这个是弹框调用的方法地址，比如添加、编辑时需要调用页面表单地址的方法</li>
+        <li><code>width</code> 弹窗宽度，一个数值(不传时默认弹窗自适应显示)</li>
+        <li><code>height</code> 弹窗高度，一个数值(不传时默认弹窗自适应显示)</li>
+        <li><code>callback</code> 回调函数，弹窗成功弹出之后会默认进行回调</li>
+    </ul>
+    <p>调用方式：</p>
+    <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span
+            class="token comment">// 普通调用</span>
+$<span class="token punctuation">.</span>modal<span class="token punctuation">.</span><span
+                class="token function">open</span><span class="token punctuation">(</span><span class="token string">"标题内容"</span><span
+                class="token punctuation">,</span> url<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+
+<span class="token comment">// 设置宽高</span>
+$<span class="token punctuation">.</span>modal<span class="token punctuation">.</span><span
+                class="token function">open</span><span class="token punctuation">(</span><span class="token string">"标题内容"</span><span
+                class="token punctuation">,</span> url<span class="token punctuation">,</span> <span
+                class="token string">'770'</span><span class="token punctuation">,</span> <span class="token string">'380'</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 设置回调函数</span>
+$<span class="token punctuation">.</span>modal<span class="token punctuation">.</span><span
+                class="token function">open</span><span class="token punctuation">(</span><span class="token string">"标题内容"</span><span
+                class="token punctuation">,</span> url<span class="token punctuation">,</span> <span
+                class="token string">'770'</span><span class="token punctuation">,</span> <span class="token string">'380'</span><span
+                class="token punctuation">,</span> <span class="token keyword">function</span><span
+                class="token punctuation">(</span><span class="token parameter">index<span
+                class="token punctuation">,</span> layero</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+	<span class="token comment">// 获取弹窗参数（方式一）</span>
+	<span class="token keyword">var</span> body <span class="token operator">=</span> layer<span
+                class="token punctuation">.</span><span class="token function">getChildFrame</span><span
+                class="token punctuation">(</span><span class="token string">'body'</span><span
+                class="token punctuation">,</span> index<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+	console<span class="token punctuation">.</span><span class="token function">log</span><span
+                class="token punctuation">(</span>body<span class="token punctuation">.</span><span
+                class="token function">find</span><span class="token punctuation">(</span><span class="token string">'#id'</span><span
+                class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span
+                class="token punctuation">(</span><span class="token punctuation">)</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 获取弹窗参数（方式二）</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span
+                class="token punctuation">(</span><span class="token function">$</span><span
+                class="token punctuation">(</span>layero<span class="token punctuation">)</span><span
+                class="token punctuation">.</span><span class="token function">find</span><span
+                class="token punctuation">(</span><span class="token string">"iframe"</span><span
+                class="token punctuation">)</span><span class="token punctuation">[</span><span
+                class="token number">0</span><span class="token punctuation">]</span><span
+                class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>document<span
+                class="token punctuation">.</span><span class="token function">getElementById</span><span
+                class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span
+                class="token punctuation">.</span>value<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+        <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span
+                class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span
+                class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span
+                class="line-number">8</span><br><span class="line-number">9</span><br><span
+                class="line-number">10</span><br><span class="line-number">11</span><br><span
+                class="line-number">12</span><br><span class="line-number">13</span><br><span
+                class="line-number">14</span><br></div>
+    </div>
+    <h2 id="新增功能"><a href="#新增功能" class="header-anchor">#</a> 新增功能</h2>
+    <p>新增方法我们写一个共用的方法<code>add</code>，下面我们详细的描述下，新增时是如何弹出窗体的。</p>
+    <p>函数主体：</p>
+    <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span
+            class="token comment">// 添加信息</span>
+<span class="token function-variable function">add</span><span class="token operator">:</span> <span
+                class="token keyword">function</span><span class="token punctuation">(</span><span
+                class="token parameter">id</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+	table<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span><span class="token punctuation">;</span>
+	$<span class="token punctuation">.</span>modal<span class="token punctuation">.</span><span class="token function">open</span><span
+                class="token punctuation">(</span><span class="token string">"添加"</span> <span
+                class="token operator">+</span> table<span class="token punctuation">.</span>options<span
+                class="token punctuation">.</span>modalName<span class="token punctuation">,</span> $<span
+                class="token punctuation">.</span>operate<span class="token punctuation">.</span><span
+                class="token function">addUrl</span><span class="token punctuation">(</span>id<span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+<span class="token comment">// 添加访问地址</span>
+<span class="token function-variable function">addUrl</span><span class="token operator">:</span> <span
+                class="token keyword">function</span><span class="token punctuation">(</span><span
+                class="token parameter">id</span><span class="token punctuation">)</span> <span
+                class="token punctuation">{</span>
+	<span class="token keyword">var</span> url <span class="token operator">=</span> $<span
+                class="token punctuation">.</span>common<span class="token punctuation">.</span><span
+                class="token function">isEmpty</span><span class="token punctuation">(</span>id<span
+                class="token punctuation">)</span> <span class="token operator">?</span> table<span
+                class="token punctuation">.</span>options<span class="token punctuation">.</span>createUrl<span
+                class="token punctuation">.</span><span class="token function">replace</span><span
+                class="token punctuation">(</span><span class="token string">"{id}"</span><span
+                class="token punctuation">,</span> <span class="token string">""</span><span
+                class="token punctuation">)</span> <span class="token operator">:</span> table<span
+                class="token punctuation">.</span>options<span class="token punctuation">.</span>createUrl<span
+                class="token punctuation">.</span><span class="token function">replace</span><span
+                class="token punctuation">(</span><span class="token string">"{id}"</span><span
+                class="token punctuation">,</span> id<span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+	<span class="token keyword">return</span> url<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
+        <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span
+                class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span
+                class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span
+                class="line-number">8</span><br><span class="line-number">9</span><br><span
+                class="line-number">10</span><br><span class="line-number">11</span><br></div>
+    </div>
+    <p>后端代码：</p>
+    <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">// 添加方法（默认）</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span
+                class="token string">"/add"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">String</span> <span
+                class="token function">add</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">return</span> prefix <span class="token operator">+</span> <span class="token string">"/add"</span><span
+                class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 添加方法（带id参数）</span>
+<span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span
+                class="token string">"/add/{xxId}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">String</span> <span
+                class="token function">add</span><span class="token punctuation">(</span><span
+                class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span
+                class="token string">"xxId"</span><span class="token punctuation">)</span> <span
+                class="token class-name">Long</span> xxId<span class="token punctuation">,</span> <span
+                class="token class-name">ModelMap</span> mmap<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	mmap<span class="token punctuation">.</span><span class="token function">put</span><span
+                class="token punctuation">(</span><span class="token string">"xxxx"</span><span
+                class="token punctuation">,</span> xxxxService<span class="token punctuation">.</span><span
+                class="token function">selectXxxxById</span><span class="token punctuation">(</span>xxId<span
+                class="token punctuation">)</span><span class="token punctuation">)</span><span
+                class="token punctuation">;</span>
+	<span class="token keyword">return</span> prefix <span class="token operator">+</span> <span class="token string">"/add"</span><span
+                class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+        <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span
+                class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span
+                class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span
+                class="line-number">8</span><br><span class="line-number">9</span><br><span
+                class="line-number">10</span><br><span class="line-number">11</span><br><span
+                class="line-number">12</span><br><span class="line-number">13</span><br><span
+                class="line-number">14</span><br></div>
+    </div>
+    <p>参数说明：</p>
+    <ul>
+        <li><code>id</code> 需要传入到后台的唯一标识</li>
+    </ul>
+    <p>总结：<code>add</code>方法里面进行了判断存在ID则进行内容替换，然后进行调用弹窗操作。<br>
+        操作<code>table.options.createUrl</code>地址，弹窗<code>table.options.modalName</code>标题</p>
+    <p>调用方式：</p>
+    <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span
+            class="token comment">// 普通调用</span>
+$<span class="token punctuation">.</span>operate<span class="token punctuation">.</span><span
+                class="token function">add</span><span class="token punctuation">(</span><span
+                class="token punctuation">)</span>
+
+<span class="token comment">// 传参调用，例如：/system/user/add/{1} 会被替换为 /system/user/add/1</span>
+$<span class="token punctuation">.</span>operate<span class="token punctuation">.</span><span
+                class="token function">add</span><span class="token punctuation">(</span><span
+                class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+        <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span
+                class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span
+                class="line-number">5</span><br></div>
+    </div>
+
+    <h2 id="删除功能"><a href="#删除功能" class="header-anchor">#</a> 删除功能</h2>
+    <p>删除功能我们并不陌生，在大多数的数据列表中，都会有删除按钮的出现，顾名思义就是在有权限的前提下我们可以删除这条数据，点击删除会弹出删除确认框，
+        确定删除后才会发起网络请求，具体JS实现方法如下：</p>
+    <p>函数主体：</p>
+
+    <h2 id="批量删除"><a href="#批量删除" class="header-anchor">#</a> 批量删除</h2>
+    <p>批量操作就是可以选择多条记录数据进行批量处理的方法，在我们使用中批量删除算是最常用的了，删除多条数据时一条条删除非常耗时，那么批量删除可以很好的帮我解决此问题。</p>
+    <p>函数主体：</p>
+
+    <h2 id="搜索功能"><a href="#搜索功能" class="header-anchor">#</a> 搜索功能</h2>
+    <p>对于大量的数据列表而言，我们常常需要根据条件获得我们所需要的数据源，这是条件搜索就可以帮助我们实现，正如很多模块我们所看到的那样在数据列表上方有很多的条件筛选框，
+        这是我们可以选择我们所需要查询的条件，然后去定向搜索，鉴于此框架也做了常规的集成。</p>
+    <p>函数主体：</p>
+
+</div>

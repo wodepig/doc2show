@@ -55,7 +55,7 @@ public class _DocUtil {
     public static String link2Md(DocLink docLink,DocItem docItem){
         log.info("从{}中获取完整的html",docLink.getHref());
         // 完整的html
-        Elements select = JsoupUtil.fromUrlAndClass(docLink.getHref(), docItem.getPageBody());
+        Elements select = JsoupUtil.fromUrlAndClass(docLink.getHref(), docItem.getPageBody(),docItem);
         String html = select.html();
         MutableDataSet options = new MutableDataSet()
                 .set(Parser.EXTENSIONS, Arrays.asList(HtmlConverterTextExtension.create(docItem)));
@@ -65,17 +65,16 @@ public class _DocUtil {
     }
 
     public static String convertImage(ResolvedLink link,DocItem docItem){
-        String imgUrl = _DocUtil.getAbsoluteUrl(docItem.getHost(), link.getTitle());
         String type = docItem.getImgSaveType() == null ? docConfig.getImgSaveType() : docItem.getImgSaveType();
 
 
         switch (type){
             case "local":
-                return localImageService.convertImage(link,imgUrl,link.getUrl(),docItem);
+                return localImageService.convertImage(link,null,null,docItem);
             case "oss":
-                return ossImageService.convertImage(link,imgUrl,link.getUrl(),docItem);
+                return ossImageService.convertImage(link,null,null,docItem);
             case "all":
-                return  allImageService.convertImage(link,imgUrl,link.getUrl(),docItem);
+                return  allImageService.convertImage(link,null,null,docItem);
         }
         return "";
 
@@ -100,7 +99,7 @@ public class _DocUtil {
      */
     public static List<DocLink> allLinks(DocItem docItem){
         log.info("获取{}下的所有待爬取的链接",docItem.getName());
-        Elements select = JsoupUtil.fromUrlAndClass(docItem.getUrl(), docItem.getSidebar());
+        Elements select = JsoupUtil.fromUrlAndClass(docItem.getUrl(), docItem.getSidebar(),docItem);
         log.info("解析{}中的所有链接",docItem.getSidebar());
         List<DocLink> list = new ArrayList<>();
         for (int i = 0; i < select.size(); i++) {

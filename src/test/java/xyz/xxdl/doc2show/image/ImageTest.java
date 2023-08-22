@@ -10,6 +10,7 @@ import xyz.xxdl.doc2show.Doc2showApplication;
 import xyz.xxdl.doc2show.service.ImageService;
 import xyz.xxdl.doc2show.service.impl.AllImageServiceImpl;
 import xyz.xxdl.doc2show.service.impl.LocalImageServiceImpl;
+import xyz.xxdl.doc2show.service.impl.NoneImageServiceImpl;
 import xyz.xxdl.doc2show.service.impl.OssImageServiceImpl;
 
 import java.io.File;
@@ -21,8 +22,21 @@ import java.net.URL;
  */
 public class ImageTest extends BaseTest {
     public static void main(String[] args)throws Exception {
-        imageTest(new LocalImageServiceImpl());
-       imageTest(new OssImageServiceImpl());
+        /**
+         * 不对图片做处理
+         */
+        imageTest(new NoneImageServiceImpl());
+        /**
+         * 保存图片到本地
+         */
+//        imageTest(new LocalImageServiceImpl());
+        /**
+         * 保存图片到阿里云对象存储
+         */
+//       imageTest(new OssImageServiceImpl());
+        /**
+         * 保存图片到所有的方式中
+         */
 //       imageTest(new AllImageServiceImpl());
 
     }

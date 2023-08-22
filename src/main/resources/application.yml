@@ -7,7 +7,8 @@ main:
   filePrefix: true
 #    打印输出
   needOut: false
-
+#  代理地址
+  proxy: http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&pack=170903&ts=0&ys=0&cs=0&lb=1&sb=0&pb=45&mr=1&regions=
 #阿里云OSS配置
 oss:
   endpoint:

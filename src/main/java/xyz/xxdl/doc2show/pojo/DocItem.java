@@ -49,6 +49,14 @@ public class DocItem {
      */
     private String sidebar;
     /**
+     * 开启代理
+     */
+    private Boolean enableProxy;
+    /**
+     * proxy
+     */
+    private String proxy;
+    /**
      * *************** 非配置项
      */
     /**

@@ -1,5 +1,6 @@
 package xyz.xxdl.doc2show;
 
+import cn.hutool.core.io.FileUtil;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSClientBuilder;
@@ -8,9 +9,20 @@ import com.vladsch.flexmark.html.renderer.ResolvedLink;
 import xyz.xxdl.doc2show.pojo.DocConfig;
 import xyz.xxdl.doc2show.pojo.DocItem;
 import xyz.xxdl.doc2show.pojo.OssConfig;
+import xyz.xxdl.doc2show.service.impl.OssImageServiceImpl;
+
+import java.lang.reflect.Field;
 
 public class BaseTest {
 
+    public static OssImageServiceImpl getOssImage(DocConfig docConfig)throws Exception{
+        OssImageServiceImpl service = new OssImageServiceImpl();
+        Class<? extends OssImageServiceImpl> aClass = service.getClass();
+        Field field = aClass.getDeclaredField("docConfig");
+        field.setAccessible(true);
+        field.set(service,docConfig);
+        return service;
+    }
     public static DocConfig getDocConfig(){
         DocConfig docConfig = new DocConfig();
         docConfig.setOssConfig(getOssConfig());
@@ -19,8 +31,8 @@ public class BaseTest {
     public static OssConfig getOssConfig(){
         OssConfig ossConfig = new OssConfig();
         ossConfig.setEndpoint("oss-cn-beijing.aliyuncs.com");
-        ossConfig.setAccessKeyId("");
-        ossConfig.setAccessKeySecret("");
+        ossConfig.setAccessKeyId("LTAI5tAZVxBDPGRnDsDD9L7K");
+        ossConfig.setAccessKeySecret("YzsOSRvscpABSsVUV3F4SCtCSFXyWQ");
         ossConfig.setBucketName("opensource-test");
         OSSClient ossClient = new OSSClient(ossConfig.getEndpoint(), ossConfig.getAccessKeyId(), ossConfig.getAccessKeySecret());
         ossConfig.setOssClient(ossClient);
@@ -41,6 +53,9 @@ public static ResolvedLink getResolvedLinkBase64(){
         return new ResolvedLink(LinkType.IMAGE,"https://static.iocoder.cn/images/Yudao/2022-02-04/31.png?imageView2/2/format/webp/w/1280");
     }
     public static DocItem getDocItem(){
+        // 项目路径
+        String path  =   FileUtil.getParent(FileUtil.getAbsolutePath(""),2);
+        String workDir = FileUtil.file(path,"test_file").getAbsolutePath();
         DocItem docItem = new DocItem();
         docItem.setUrl("https://doc.iocoder.cn/intro");
         docItem.setName("RuoYiVuePro");
@@ -51,8 +66,10 @@ public static ResolvedLink getResolvedLinkBase64(){
         docItem.setPageBody(".theme-vdoing-wrapper");
         docItem.setSidebar(".sidebar-links");
         docItem.setHost("https://doc.iocoder.cn");
-        docItem.setWorkDir("C:\\Users\\admindc\\Documents\\ideaProject\\doc2show\\test_file");
+        docItem.setWorkDir(workDir);
         docItem.setGetLink(false);
+        docItem.setEnableProxy(true);
+        docItem.setProxy("http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&pack=170903&ts=0&ys=0&cs=0&lb=1&sb=0&pb=45&mr=1&regions=");
         return docItem;
     }
 }

@@ -46,4 +46,9 @@ public class DocConfig {
      */
     private List<DocItem> docItemList;
 
+    /**
+     * 代理
+     */
+    private String proxy;
+
 }

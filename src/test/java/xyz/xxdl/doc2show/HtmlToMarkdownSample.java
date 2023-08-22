@@ -22,10 +22,6 @@ public class HtmlToMarkdownSample {
                 "</ul>";
         String markdown = FlexmarkHtmlConverter.builder().build().convert(html);
 
-        System.out.println("HTML:");
-        System.out.println(html);
 
-        System.out.println("\nMarkdown:");
-        System.out.println(markdown);
     }
 }

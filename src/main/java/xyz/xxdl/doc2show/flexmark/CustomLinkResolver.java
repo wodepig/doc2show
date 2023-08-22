@@ -31,9 +31,8 @@ public class CustomLinkResolver implements HtmlLinkResolver {
             if (link.getLinkType() != LinkType.IMAGE){
                 return link;
             }
-            System.out.println(Base64.isBase64(link.getUrl()));
             String url = _DocUtil.convertImage(link,docItem);
-            return link.withUrl("");
+            return link.withUrl(url);
         }
 
        public static class Factory implements HtmlLinkResolverFactory {

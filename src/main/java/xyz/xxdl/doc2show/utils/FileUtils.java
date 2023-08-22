@@ -39,6 +39,16 @@ import java.util.regex.Pattern;
 public class FileUtils extends BaseUtil{
 
 
+
+    public static String isBase64(String urlOrBase64){
+        List<String> split = StrUtil.split(urlOrBase64, ",");
+        if (split.size() == 1) {
+            urlOrBase64 = split.get(0);
+        } else {
+            urlOrBase64 = split.get(1);
+        }
+        return urlOrBase64;
+    }
     /**
      * 从link中拿到文件名,保存路径和(下载路径|base64)
      * @param link
@@ -50,13 +60,7 @@ public class FileUtils extends BaseUtil{
         String urlOrBase64 = link.getUrl();
         String filePath = docItem.getImgSavePath();
         String fileName = "";
-        List<String> split = StrUtil.split(urlOrBase64, ",");
-        if (split.size() == 1) {
-            urlOrBase64 = split.get(0);
-        } else {
-            urlOrBase64 = split.get(1);
-        }
-        boolean isBase64 = Base64.isBase64(urlOrBase64);
+        boolean isBase64 = Base64.isBase64(isBase64(urlOrBase64));
         if (isBase64){
 
             fileName = StrUtil.sub(urlOrBase64,-1,-10) + ".png";
