@@ -91,10 +91,15 @@ public class HtmlToMarkdownCustomizedSample extends BaseTest {
             set.add(new HtmlNodeRendererHandler<>("h3", Element.class, this::processKbd));
             set.add(new HtmlNodeRendererHandler<>("h4", Element.class, this::processKbd));
             set.add(new HtmlNodeRendererHandler<>("code", Element.class, this::processCode));
+            set.add(new HtmlNodeRendererHandler<>("link", Element.class, this::processCode));
 //            set.add(new HtmlNodeRendererHandler<>("h3", Element.class, this::processKbd));
             return set;
 
         }
+        private void processLink(Element node, HtmlNodeConverterContext context, HtmlMarkdownWriter out) {
+            System.out.println();
+        }
+
         private void processCode(Element node, HtmlNodeConverterContext context, HtmlMarkdownWriter out) {
             System.out.println();
         }
@@ -126,7 +131,7 @@ public class HtmlToMarkdownCustomizedSample extends BaseTest {
                 .set(Parser.EXTENSIONS, Collections.singletonList(HtmlConverterTextExtension.create()));
 
         DocItem docItem = getDocItem();
-        String html = FileUtil.readUtf8String(docItem.getWorkDir() + "/pageBodySample2.html");
+        String html = FileUtil.readUtf8String(docItem.getWorkDir() + "/ruoyi_功能组件.html");
         String markdown = FlexmarkHtmlConverter.builder(options).build().convert(html);
         DocLink docLink = new DocLink("","简单md","组名");
         _DocUtil.saveMdStr(markdown,docLink,new File(docItem.getWorkDir()));

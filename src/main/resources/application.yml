@@ -3,7 +3,7 @@ main:
   imgSaveType: local
 #  文档保存路径,默认本项目的mds文件夹.不能改
   docPath: /mds/
-#  自动为文件夹和文件添加数字编码
+#  自动为文件夹和文件添加数字编码,用于排序
   filePrefix: true
 #    打印输出
   needOut: false

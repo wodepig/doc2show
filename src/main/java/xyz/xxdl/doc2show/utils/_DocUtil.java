@@ -98,14 +98,19 @@ public class _DocUtil {
             if (!links.isEmpty()) {
                 String groupName = element.previousElementSibling().text().trim();
 
-                for (Element link : links) {
+                for (int i1 = 0; i1 < links.size(); i1++) {
+                    Element link = links.get(i1);
                     String title = link.text();
                     String url = link.attr("href");
                     url = getAbsoluteUrl(docItem.getHost(),url);
                     if (url.contains("#")){
                         continue;
                     }
-                    list.add(new DocLink(url,title,groupName));
+                    if (docItem.getFilePrefix()){
+                        list.add(new DocLink(url,i1 + title,i + groupName));
+                    }else {
+                        list.add(new DocLink(url,title,groupName));
+                    }
                 }
             }
 

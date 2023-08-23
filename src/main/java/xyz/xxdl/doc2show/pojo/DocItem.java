@@ -45,6 +45,10 @@ public class DocItem {
      */
     private String pageBody;
     /**
+     * 自动为文件夹和文件添加数字编码,用于排序
+      */
+    private  Boolean filePrefix = true;
+    /**
      * 导航栏/菜单栏的class样式
      */
     private String sidebar;
