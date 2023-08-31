@@ -18,7 +18,7 @@ docList:
     proxy: http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&pack=170903&ts=0&ys=0&cs=0&lb=1&sb=0&pb=45&mr=1&regions=
   - url: http://doc.ruoyi.vip/ruoyi-vue/
     savePath: 若依分离版本
-    enable: true
+    enable: false
     name: RuoYiVuePro
     #    文章主体的class样式
     pageBody: .page

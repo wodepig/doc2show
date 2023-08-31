@@ -15,6 +15,7 @@ import xyz.xxdl.doc2show.pojo.DocItem;
 import xyz.xxdl.doc2show.pojo.OssConfig;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -54,16 +55,14 @@ public class InitConfig {
         log.info("设置oss值:{}",ossConfig);
         ossConfig.setOssClient(creatOssClient(ossConfig));
         String jarDir="";
+        // 获取 JAR 包所在的路径
+        String path = FileUtil.getAbsolutePath("");
+        //log.info("jar包/项目所在路径:{}",path);
         if (isRunningFromJAR()) {
             log.info("本项目从jar包启动");
-            // 获取 JAR 包所在的路径
-            String path = System.getProperty(SysConstant.SYS_JAR_PROPERTY);
-            log.info("jar包所在路径:{}",path);
-            jarDir = FileUtil.getParent(path,4);
+            jarDir =  FileUtil.getParent(path,3);
         }else {
-            log.info("本项目从IDEA包启动");
-            String path  =  FileUtil.getAbsolutePath("");
-            log.info("所在路径:{}",path);
+            log.info("本项目从IDEA启动");
             jarDir = FileUtil.getParent(path,2);
         }
         log.info("项目路径为: {}",jarDir);

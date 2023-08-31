@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Doc2showApplication {
 
     public static void main(String[] args) {
+        System.out.println(".......项目要求JDK11.......");
+        System.out.println(".......项目要求JDK11.......");
+        System.out.println(".......项目要求JDK11.......");
         SpringApplication.run(Doc2showApplication.class, args);
 
     }
