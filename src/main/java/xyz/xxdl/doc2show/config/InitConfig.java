@@ -106,9 +106,12 @@ public class InitConfig {
                 log.warn("名称或url为空,排除掉");
                 continue;
             }
-            if (StrUtil.isBlank(docItem.getPageBody()) || StrUtil.isBlank(docItem.getSidebar())){
+            if (StrUtil.isBlank(docItem.getPageBody()) || StrUtil.isBlank(docItem.getSidebarGroup())){
                 log.warn("主体或菜单为空,排除掉");
                 continue;
+            }
+            if (StrUtil.isBlank(docItem.getSidebarItem())){
+                docItem.setSidebarItem("a[href]");
             }
             if (docItem.getCache() == null){
                 docItem.setCache(true);

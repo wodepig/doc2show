@@ -64,7 +64,8 @@ public static ResolvedLink getResolvedLinkBase64(){
         docItem.setCacheFileName("RuoYiVuePro");
         docItem.setSavePath("RuoYiVuePro");
         docItem.setPageBody(".theme-vdoing-wrapper");
-        docItem.setSidebar(".sidebar-links");
+        docItem.setSidebarGroup(".sidebar-group");
+        docItem.setSidebarItem("a[href]");
         docItem.setHost("https://doc.iocoder.cn");
         docItem.setWorkDir(workDir);
         docItem.setGetLink(false);

@@ -86,23 +86,14 @@ public class _DocUtil {
      */
     public static List<DocLink> allLinks(DocItem docItem){
         log.info("获取{}下的所有待爬取的链接",docItem.getName());
-        Elements select = JsoupUtil.fromUrlAndClass(docItem.getUrl(), docItem.getSidebar(),docItem);
-        log.info("解析{}中的所有链接",docItem.getSidebar());
+        Elements select = JsoupUtil.fromUrlAndClass(docItem.getUrl(), docItem.getSidebarGroup(),docItem);
+        log.info("解析{}中的所有链接",docItem.getSidebarGroup());
         List<DocLink> list = new ArrayList<>();
         for (int i = 0; i < select.size(); i++) {
-          /*  if (i == 0){
-                continue;
-            }*/
-
-            Element element = select.get(i);
-            if (element.childNodeSize() != 1 ){
-                continue;
-            }
-            Elements links = element.select("a[href]");
+            Element group = select.get(i);
+            String groupName = group.child(0).text();
+            Elements links = group.select(docItem.getSidebarItem());
             if (!links.isEmpty()) {
-                String groupName = element.text();
-//                String groupName = element.previousElementSibling().text().trim();
-
                 for (int i1 = 0; i1 < links.size(); i1++) {
                     Element link = links.get(i1);
                     String title = link.text();

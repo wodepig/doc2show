@@ -49,9 +49,13 @@ public class DocItem {
       */
     private  Boolean filePrefix = true;
     /**
-     * 导航栏/菜单栏的class样式
+     * 导航栏/菜单栏的class样式(组名)
      */
-    private String sidebar;
+    private String sidebarGroup;
+    /**
+     * 链接子项
+     */
+    private String sidebarItem;
     /**
      * 开启代理
      */
