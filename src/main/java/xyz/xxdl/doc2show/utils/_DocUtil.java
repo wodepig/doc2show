@@ -90,13 +90,18 @@ public class _DocUtil {
         log.info("解析{}中的所有链接",docItem.getSidebar());
         List<DocLink> list = new ArrayList<>();
         for (int i = 0; i < select.size(); i++) {
-            if (i == 0){
+          /*  if (i == 0){
+                continue;
+            }*/
+
+            Element element = select.get(i);
+            if (element.childNodeSize() != 1 ){
                 continue;
             }
-            Element element = select.get(i);
             Elements links = element.select("a[href]");
             if (!links.isEmpty()) {
-                String groupName = element.previousElementSibling().text().trim();
+                String groupName = element.text();
+//                String groupName = element.previousElementSibling().text().trim();
 
                 for (int i1 = 0; i1 < links.size(); i1++) {
                     Element link = links.get(i1);

@@ -32,7 +32,11 @@ public class PageParseTest extends BaseTest {
     }
     static class PageTest extends BaseTest {
         public static void main(String[] args) {
-
+            DocItem docItem = getDocItem();
+            // 也可以从本地文件中读取链接信息
+            docItem.setUrl(docItem.getWorkDir() + "/linkTest.html");
+            String html = FileUtil.readUtf8String(docItem.getUrl());
+            String markdown = FlexmarkHtmlConverter.builder().build().convert(html);
         }
     }
 

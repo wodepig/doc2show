@@ -3,7 +3,7 @@ docList:
   - url: https://doc.iocoder.cn/intro
     savePath: RuoYiVuePro
     host: https://doc.iocoder.cn
-    enable: true
+    enable: false
     cache: true
     filePrefix: true
     name: RuoYiVuePro
@@ -15,6 +15,14 @@ docList:
     sidebar: .sidebar-links
     enableProxy: false
     proxy: http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&pack=170903&ts=0&ys=0&cs=0&lb=1&sb=0&pb=45&mr=1&regions=
+  - url: http://doc.ruoyi.vip/ruoyi-vue/
+    savePath: 若依分离版本
+    enable: true
+    name: RuoYiVuePro
+    #    文章主体的class样式
+    pageBody: .page
+    #    获取链接的class样式
+    sidebar: .sidebar-link
   - url: 888
     savePath: 888
     enable: true

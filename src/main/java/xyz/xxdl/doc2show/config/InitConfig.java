@@ -122,6 +122,15 @@ public class InitConfig {
             if (docItem.getEnable() == null){
                 docItem.setEnable(true);
             }
+            if (docItem.getEnableProxy() == null){
+                docItem.setEnableProxy(false);
+            }
+            if (docItem.getFilePrefix() == null){
+                docItem.setFilePrefix(true);
+            }
+            if (docItem.getImgSaveType() == null){
+                docItem.setImgSaveType(SysConstant.IMAGE_SAVE_TYPE_LOCAL);
+            }
             if (StrUtil.isBlank(docItem.getHost())){
                 try {
                     String host = URLUtil.getHost(new URL(docItem.getUrl())).toString();
