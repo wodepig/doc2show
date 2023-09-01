@@ -4,6 +4,7 @@
 cache.txt
 .gradle
 /build/
+/test_file/.assets
 /node_modules/
 #/test_file/
 /mds/
