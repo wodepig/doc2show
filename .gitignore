@@ -4,6 +4,7 @@
 cache.txt
 .gradle
 /build/
+/node_modules/
 #/test_file/
 /mds/
 !gradle/wrapper/gradle-wrapper.jar
