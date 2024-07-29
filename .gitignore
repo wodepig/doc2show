@@ -1,8 +1,8 @@
 node_modules
 pnpm-lock.yaml
 
-.tmp/
-.cache/
+.temp
+.cache
 docs/.vuepress/.temp/*
 docs/.vuepress/.cache/*
 # VuePress 默认临时文件目录

@@ -1,9 +1,10 @@
 ---
-title: 8-基于API 路由开发接口，全栈之路从此启航
+title: 08-基于API 路由开发接口，全栈之路从此启航
 author:
 createTime: 2024/07/29 16:11:51
-permalink: /nuxt3/i51jmgae/
+permalink: /nuxt3/774405ui/
 ---
+
 大家好，我是村长！
 
 上一讲我们体验了自动导入功能，整合了

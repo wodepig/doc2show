@@ -1,9 +1,10 @@
 ---
-title: 6-如何使用静态资源及整合 TailwindCSS？
+title: 06-如何使用静态资源及整合 TailwindCSS？
 author:
 createTime: 2024/07/29 16:11:51
-permalink: /nuxt3/rcc1mxtn/
+permalink: /nuxt3/cmlxapi9/
 ---
+
 大家好，我是村长！
 
 上一讲我们掌握了文件路由的各种使用方法，并用 layouts 特性实现快速页面布局。本节我们继续完善个人博客的功能和用户体验，添加一些图片和 CSS

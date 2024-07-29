@@ -1,9 +1,10 @@
 ---
-title: 7-丝滑的自动导入特性及 NaiveUI 整合
+title: 07-丝滑的自动导入特性及 NaiveUI 整合
 author:
 createTime: 2024/07/29 16:11:51
-permalink: /nuxt3/kgdkpaao/
+permalink: /nuxt3/1lqb9h2n/
 ---
+
 大家好，我是村长！
 
 上一讲我们掌握了项目中静态资源的使用方法，并整合的样式库
