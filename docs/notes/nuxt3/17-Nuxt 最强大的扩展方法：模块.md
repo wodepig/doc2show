@@ -50,9 +50,9 @@ Nuxt 模块可以以 npm
 首先安装模块，我们以 Color-Mode 模块为例演示：
 
     
-    
+ ```javascript   
     yarn add @nuxtjs/color-mode
-    
+  ```  
 
 ### 引入和配置模块
 
@@ -87,7 +87,7 @@ Nuxt 模块可以以 npm
 下面我们在项目中就可以使用模块提供的各种功能了。 例如 Color-Mode 提供的 theme 切换功能，index.vue:
 
     
-    
+ ```javascript   
     <template>
       <div>
         <h1>Color mode: {{ $colorMode.value }}</h1>
@@ -118,7 +118,7 @@ Nuxt 模块可以以 npm
       color: #433422;
     }
     </style>
-    
+```    
 
 ## 编写模块
 

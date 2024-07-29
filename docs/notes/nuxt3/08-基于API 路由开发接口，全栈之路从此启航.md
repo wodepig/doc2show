@@ -28,19 +28,18 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
 
 下面我们创建一个 server/api/hello.ts 测试一下：这里我们返回给用户一个 json 数据。
 
-    
-    
+```javascript
     export default defineEventHandler((event) => {
       return {
         message: 'hello，nuxt3！'
       }
     })
-    
+```  
 
 这个接口可以使用`$fetch('/api/hello')`请求，创建一个 hello.vue：
 
-    
-    
+```javascript
+
     <template>
       <div>
         {{ message }}
@@ -50,7 +49,7 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
     <script setup lang="ts">
     const { message } = await $fetch('/api/hello')
     </script>
-    
+  ```
 
 测试效果如下：
 
@@ -75,6 +74,7 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
 创建 server/api/posts.ts，获取 content 中文件列表并返回。
 
     
+```javascript
     
     import fs from "fs";
     import path from "path";
@@ -104,13 +104,13 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
       // 降序排列
       return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
     });
-    
+  ```  
 
 > 需要安装 `gray-matter`。
 
 请求文章列表数据，index.vue：
 
-    
+ ```javascript   
     
     <template>
       <div class="flex items-center flex-col gap-2 py-4">
@@ -132,7 +132,7 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
     const posts = await $fetch("/api/posts");
     </script>
     
-
+```
 效果如下：
 
 ![](/img/8/2.png)
@@ -152,8 +152,8 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
 假如创建 API 接口文件 server/api/detail/[id].ts，可以通过 `getRouterParam(event, 'id')`
 获取参数 id：
 
-    
-    
+
+```javascript    
     import fs from "fs";
     import path from "path";
     import matter from "gray-matter";
@@ -182,14 +182,14 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
         content,
       };
     });
-    
+ ```   
 
 > 需要安装`remark`和`remark-html`。
 
 接下来，当我们跳转到 detail 页面时，就可以获取这篇文章内容并显示，detail.vue：
 
-    
-    
+
+```javascript    
     <template>
       <div class="p-5">
         <h1 class="text-2xl">{{ title }}</h1>
@@ -201,7 +201,7 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
     const router = useRoute();
     const { title, content } = await $fetch(`/api/detail/${router.params.id}`);
     </script>
-    
+ ```   
 
 效果如下：
 
@@ -211,32 +211,32 @@ Promise，当然也可以使用 `event.node.res.end()` 发送响应，虽然这�
 
 用户发送 post 类型的请求提交数据的时候，请求数据通常通过 request body，类似这样：
 
-    
-    
+
+```javascript    
     $fetch('/api/create-post', { method: 'post', body: { id: 'new id' } })
-    
+```    
 
 在 Nuxt 中，服务端可以通过`readBody(event)`获取 request body 数据：
 
     
-    
+ ```javascript   
     export default defineEventHandler(async (event) => {
         const body = await readBody(event)
         return { body }
     })
-    
+ ```   
 
 ### 获取查询参数
 
 用户发送类似 `/api/query?param1=a&param2=b `这样的包含查询参数的请求时，可以通过`getQuery(event)`获取参数：
 
     
-    
+ ```javascript   
     export default defineEventHandler((event) => {
       const query = getQuery(event)
       return { a: query.param1, b: query.param2 }
     })
-    
+ ```   
 
 ## 更多工具方法
 

@@ -31,7 +31,7 @@ nuxt.config.ts，它默认导出 defineNuxtConfig() 的执行结果，再和默�
 配置合并并最终生效，例如我们前面增加的模块配置：
 
     
-    
+ ```javascript   
     export default defineNuxtConfig({
       modules: [
         "@nuxtjs/tailwindcss",
@@ -39,7 +39,7 @@ nuxt.config.ts，它默认导出 defineNuxtConfig() 的执行结果，再和默�
         "@huntersofbook/naive-ui-nuxt",
       ],
     });
-    
+ ```   
 
 我们会在后面演示一些开发中比较常见的配置方法。
 
@@ -48,8 +48,8 @@ nuxt.config.ts，它默认导出 defineNuxtConfig() 的执行结果，再和默�
 如果需要配置一些项目需要的公共变量，可以在项目根目录创建
 app.config.ts，这些变量是响应式的，不仅在运行时可以访问，还可以改变。例如下面的配置范例：
 
-    
-    
+
+```javascript    
     export default defineAppConfig({
       title: 'Hello Nuxt',
       theme: {
@@ -59,7 +59,7 @@ app.config.ts，这些变量是响应式的，不仅在运行时可以访问，�
         }
       }
     })
-    
+ ```   
 
 > 实际上，nuxt.config.ts 中有个 appConfig 选项可以起到相同的作用。
 
@@ -75,7 +75,7 @@ app.config.ts，这些变量是响应式的，不仅在运行时可以访问，�
 创建 ~/pages/config.vue，根据 app.config.ts 中的配置控制黑暗模式和标题。
 
     
-    
+ ```javascript   
     <template>
       <div :class="{ dark: appConfig.theme.dark }">
         <p
@@ -95,7 +95,7 @@ app.config.ts，这些变量是响应式的，不仅在运行时可以访问，�
     <script setup lang="ts">
     const appConfig = useAppConfig();
     </script>
-    
+  ```  
 
 > 需要额外开启 tailwind 黑暗模式，tailwind.config.js：
 >  
@@ -224,7 +224,7 @@ key 存储在 `runtimeConfig.public` 字段中。跟 `appConfig` 比起来，它
 访问`runtimeConfig`，修改 config.vue：
 
     
-    
+ ```javascript   
     <template>
       <div :class="{ dark: appConfig.theme.dark }">
         <!-- ... -->
@@ -247,7 +247,7 @@ key 存储在 `runtimeConfig.public` 字段中。跟 `appConfig` 比起来，它
       console.log('API secret:', runtimeConfig.apiSecret)
     }
     </script>
-    
+ ```   
 
 服务端效果如下：apiBase 和 apiSecret 都可以访问：
 
@@ -303,7 +303,7 @@ key 存储在 `runtimeConfig.public` 字段中。跟 `appConfig` 比起来，它
 通过 `app.head` 可以全局配置网站页头信息：
 
     
-    
+   ```javascript 
     export default defineNuxtConfig({
       app: {
         head: {
@@ -320,14 +320,14 @@ key 存储在 `runtimeConfig.public` 字段中。跟 `appConfig` 比起来，它
         }
       }
     })
-    
+  ```  
 
 #### 范例：设置博客范例页头信息
 
 我们在 nuxt.config.ts 中配置整站的描述和关键字：
 
     
-    
+  ```javascript  
     export default defineNuxtConfig({
       app: {
         head: {
@@ -339,7 +339,7 @@ key 存储在 `runtimeConfig.public` 字段中。跟 `appConfig` 比起来，它
         },
       }
     })
-    
+ ```   
 
 效果如下：
 
@@ -352,7 +352,7 @@ key 存储在 `runtimeConfig.public` 字段中。跟 `appConfig` 比起来，它
 Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
 
     
-    
+   ```javascript 
     <script setup lang="ts">
     useHead({
       title: 'My App',
@@ -365,7 +365,7 @@ Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
       script: [ { children: 'console.log('Hello world')' } ]
     })
     </script>
-    
+ ```   
 
 #### 范例：设置各子页面标题
 
@@ -385,7 +385,7 @@ Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
 可以设置标题模板解决此问题，app.vue：
 
     
-    
+ ```javascript   
     <script setup lang="ts">
     useHead({
       titleTemplate: (s) => {
@@ -393,7 +393,7 @@ Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
       },
     });
     </script>
-    
+  ```  
 
 问题解决了：
 
@@ -401,14 +401,14 @@ Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
 
 再去详情页设置页面标题，[id].vue：
 
-    
-    
+
+```javascript    
     const route = useRoute();
     // 设置为当前文章id
     useHead({
       title: route.params.id as string
     });
-    
+ ```   
 
 效果如下：
 
@@ -417,13 +417,13 @@ Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
 当然也可以设置为文章标题：
 
     
-    
+ ```javascript   
     const { data, pending, error } = await useAsyncData("post", fetchPost);
     // 设置为文章结果
     useHead({
       title: data.value?.title
     });
-    
+ ```   
 
 效果如下：
 
@@ -434,8 +434,8 @@ Nuxt 提供了一个 useHead() 可以在组件内修改 meta 信息：
 Nuxt 还提供了多种组件可以在模板中设置具体页面页头信息：`<Title>`, `<Base>`, `<NoScript>`, `<Style>`,
 `<Meta>`, `<Link>`, `<Body>`, `<Html>` , `<Head>`，像下面这样使用：
 
-    
-    
+
+```javascript    
     <script setup>
     const title = ref('Hello World')
     </script>
@@ -448,12 +448,12 @@ Nuxt 还提供了多种组件可以在模板中设置具体页面页头信息：
         </Head>
       </div>
     </template>
-    
+```    
 
 这更符合大家直觉了！在 [id].vue 中试一下：效果如初~
 
     
-    
+  ```javascript  
     <template>
       <div class="p-5">
         <Head>
@@ -462,7 +462,7 @@ Nuxt 还提供了多种组件可以在模板中设置具体页面页头信息：
         <!-- ... -->
       </div>
     </template>
-    
+ ```   
 
 ## 总结
 

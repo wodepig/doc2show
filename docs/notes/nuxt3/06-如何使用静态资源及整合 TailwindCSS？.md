@@ -17,20 +17,20 @@ Nuxt 项目存放样式、图片等静态资源的目录默认有两个：
   * public：会被作为应用程序根目录提供给用户，打包工具不会处理，访问时添加`/`即可，例如：`/logo.png`。
 
     
-    
+    ```
     <template>
       <img src="/logo.png" />
     </template>
-    
+    ```
 
   * assets：打包工具会处理，访问时以`~`开头，例如：`~/assets/logo.png`。
 
     
-    
+    ```
     <template>
       <img src="~/assets/logo.png" />
     </template>
-    
+    ```
 
 > 除了`~`，Nuxt3 中还有一些默认别名：
 >  
