@@ -1,8 +1,8 @@
 ---
-title: 2-上层框架最佳选择：全面了解 Nuxt3 特性和架构
+title: 02-上层框架最佳选择：全面了解 Nuxt3 特性和架构
 author:
 createTime: 2024/07/29 12:35:13
-permalink: /nuxt3/phn89uyi/
+permalink: /nuxt3/j5vmm5bw/
 ---
 大家好，我是村长。欢迎大家开启 Nuxt 全栈开发学习之旅！
 

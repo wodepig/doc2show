@@ -14,7 +14,7 @@ function startDir(dir:string) {
         const itemDir = path.join(dir,item)
         if ( fs.statSync(itemDir).isDirectory()){
             // console.log(item ,'是目录')
-            // startDir(itemDir)
+            startDir(itemDir)
         }
         if (fs.statSync(itemDir).isFile()){
             if (path.extname(itemDir) === '.md'){
@@ -22,9 +22,9 @@ function startDir(dir:string) {
                 let fileContent = fs.readFileSync(itemDir,{encoding: 'utf-8'})
                 while ((matcher = pattern.exec(fileContent)) !== null) {
                     let needRep = matcher[0]
-                    console.log(needRep)
+                    // console.log(needRep)
                     let over =  needRep.replaceAll('\\','/').replace('.image','.png').replace('(img','(/img')
-                    console.log(over)
+                    // console.log(over)
                     fileContent = fileContent.replace(needRep,over)
                     // console.log(matcher[0]);
                 }
