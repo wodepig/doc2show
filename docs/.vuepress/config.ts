@@ -9,6 +9,7 @@ import { recoTheme } from 'vuepress-theme-reco'
 export default defineUserConfig({
     lang: 'zh-CN',
     title:'筱筱的文档站',
+    base: '/doc2show/',
     bundler: viteBundler(),
     theme: plumeTheme({
         plugins:{
