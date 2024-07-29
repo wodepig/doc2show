@@ -1,56 +1,9 @@
-######################################################################
-# Build Tools
-*.properties
-cache.txt
-.gradle
-/build/
-/test_file/.assets
-/node_modules/
-#/test_file/
-/mds/
-!gradle/wrapper/gradle-wrapper.jar
+node_modules
+pnpm-lock.yaml
 
-target/
-!.mvn/wrapper/maven-wrapper.jar
-
-######################################################################
-# IDE
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-nbproject/private/
-build/*
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-######################################################################
-# Others
-*.log
-*.xml.versionsBackup
-*.swp
-
-!*/build/*.java
-!*/build/*.html
-!*/build/*.xml
-
-### JRebel ###
-rebel.xml
-
-application-my.yaml
-
-/yudao-ui-app/unpackage/
+# VuePress 默认临时文件目录
+.vuepress/.temp
+# VuePress 默认缓存目录
+.vuepress/.cache
+# VuePress 默认构建生成的静态文件目录
+.vuepress/dist
