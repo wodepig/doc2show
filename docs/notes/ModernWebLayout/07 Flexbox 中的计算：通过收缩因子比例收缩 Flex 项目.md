@@ -54,15 +54,15 @@ permalink: /ModernWebLayout/rdu4sl86/
 
 这个时候所有 Flex 项目的 `flex-basis` 值的总和 `1500px` （即 `300px × 5 = 1500px`）大于 Flex 容器的可用空间（它的`inline-size` ）`1000px` 。按理说，Flex 项目是会溢出 Flex 容器的，但因为 Flex 项目的 `flex-shrink` 初始值是 `1` ，所以浏览器会根据 `flex-shrink` 值对 Flex 项目按照相应的收缩因子进行收缩，让 Flex 项目填充整个 Flex 容器（Flex 项目不会溢出 Flex 容器）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d288965a59464f7ab4f9a8805b47b311~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d288965a59464f7ab4f9a8805b47b311~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果我们显式把 `flex-shrink` 属性的默认值 `1` 重置为 `0` 时，你将看到的浏览器不会对 Flex 项目进行收缩，此时 Flex 项目溢出了 Flex 容器，在这个示例中这个溢出部分大约会是 `500px` （即 `1500 - 1000px = 500px`），这个溢出部分也常称为 **Flex 容器不足空间** ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a8b94a1fa1ee4e189c698957c186ea23~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a8b94a1fa1ee4e189c698957c186ea23~tplv-k3u1fbpfcp-zoom-1.png)
 
 `flex-shrink` 的计算和 `flex-grow` 是相似的，不同的是 **`flex-grow`** **按扩展因子分配 Flex 容器的剩余空间，`flex-shrink`按收缩因子分配 Flex 容器的不足空间** 。因此，`flex-shrink` 的计算，也可以像 `flex-grow` 一样：
 
-![fig-05-35.jpg](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2927b9a42a10485593e5973b4e2b009b~tplv-k3u1fbpfcp-watermark.image?)
+![fig-05-35.jpg](./img/2927b9a42a10485593e5973b4e2b009b~tplv-k3u1fbpfcp-watermark.png)
 
 就这个示例而言，**Flex 容器的不足空间** 等于 `500px` :
 
@@ -119,7 +119,7 @@ Flex 项目 E 的弹性值 = (1000px - 237.52px - 190.62px - 190.62px - 190.62px
 Flex 项目 E 计算后的 flex-basis 值 = -109.38px + 300px = 190.62px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/333257f715ad4653bb6e2e62827646e5~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/333257f715ad4653bb6e2e62827646e5~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/oNdwZoZ 
 
@@ -145,7 +145,7 @@ Flex 项目 E 计算后的 flex-basis 值 = -109.38px + 300px = 190.62px
 
 >  `flex-basis` 取值为 `auto` 时，且该 Flex 项目未显式设置 `width` 或 `inline-size` 属性值（非`auto` ），那么浏览器将会把 Flex 项目的内容长度作为 `flex-basis` 的值；反之，有显式设置 `width` 或 `inline-size` 属性值（非`auto`），那么浏览器会把 `width` 或 `inline-size` 属性值作为 `flex-basis` 的值。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1a0e240490d0463b85405aaea3c8422c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/1a0e240490d0463b85405aaea3c8422c~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/rNvwgKm
 
@@ -170,7 +170,7 @@ Flex 项目 E 计算后的 flex-basis 值 = -109.38px + 300px = 190.62px
 
 因为 `flex-basis` 属性值 `0%` 替代了`inline-size` 属性的值作为 Flex 项目的基础尺寸，因为 `flex-basis` 值显式设置了为 `0%` ，这个时候浏览器会将 Flex 项目的内容最小尺寸，即 `min-content`， 作为 Flex 项目的基础尺寸。如此一来，Flex 项目就有可能不会溢出 Flex 容器了：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ceac4b8df3b748fe96a01181408aeae3~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ceac4b8df3b748fe96a01181408aeae3~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/WNJOBBw
 
@@ -227,13 +227,13 @@ Flex 项目 E 的弹性量 = (1000px - 300px - 250px - 200px - 150px - 300px) ÷
 Flex 项目 E 计算后的 flex-basis 值 = -200px + 300px = 100px 
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/11c4f496f6504753bdda25f5c2093d9c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/11c4f496f6504753bdda25f5c2093d9c~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/RwygzZN
 
 我们多次提到过，浏览器对 Flex 项目尺寸的计算是一种 **循环遍历计算** 模式，因为浏览器无法一次性就知道，在计算 Flex 项目尺寸时就能把所有情况都预判到。比如下面这个示例（在上一个示例的基础上，将Flex 项目 E 的文本内容“**Eastern**”调整得更长一些，比如“Elonglonglongword” ）。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/90156594251d4e3ca7c1d61da6296b71~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/90156594251d4e3ca7c1d61da6296b71~tplv-k3u1fbpfcp-zoom-1.png)
 
 ```CSS
 Flex 容器不足空间 = Flex 容器可用空间 - 所有Flex项目的尺寸总和（flex-basis 总和）
@@ -295,7 +295,7 @@ Flex 项目 C 计算后的 flex-basis 值 = -156.05px + 300px = 143.95px
 
 如果计算出来的 Flex 项目 C 的 `flex-basis` 值还是小于其 `min-content` 的话，浏览器将会进行第四轮的计算，直到符合条件为止。所幸，我们这个示例第三轮计算就符合条件了。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7c50156e58b1406ea53a8be34dc24ba5~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7c50156e58b1406ea53a8be34dc24ba5~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/qBYjeJq
 
@@ -314,7 +314,7 @@ Flex 项目 C 计算后的 flex-basis 值 = -156.05px + 300px = 143.95px
 
 计算公式也是类似的：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1652f17c80bd4b0498c91dd81bdbc85c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/1652f17c80bd4b0498c91dd81bdbc85c~tplv-k3u1fbpfcp-zoom-1.png)
 
 ```CSS
 Flex 项目的 flex-shrink 总和 =  (0.1 + 0.1 + 0.1 + 0.1 + 0.1) = 0.5 < 1
@@ -337,7 +337,7 @@ Flex 项目 E 的弹性值 =  -500px × 0.1 = -50px
 Flex 项目 E 计算后的 flex-basis 值 = -50px + 300px = 250px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0db27a3c273f4a4099c5f2f534fc4e7d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0db27a3c273f4a4099c5f2f534fc4e7d~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/qBYXWQY
 
@@ -345,11 +345,11 @@ Flex 项目 E 计算后的 flex-basis 值 = -50px + 300px = 250px
 
 如此一来，`flex-shrink` 的计算公式也分两种情景：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e2c5933377f9485b95254066e7422643~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e2c5933377f9485b95254066e7422643~tplv-k3u1fbpfcp-zoom-1.png)
 
 另外，就 `flex-shrink` 计算，当所有 Flex 项目的 `flex-shrink` 值的总和大于 `1` 时，还可以使用下面这个公式来计算:
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ac195b17c58e4693b8c800e1f65df5b9~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ac195b17c58e4693b8c800e1f65df5b9~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 小结 
 
@@ -370,4 +370,4 @@ Flex 项目 E 计算后的 flex-basis 值 = -50px + 300px = 250px
 
 具体的我们可以绘制一张这方面的流程图： 
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cebbaa0a1e1046a9bcb6b285159a7b2c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/cebbaa0a1e1046a9bcb6b285159a7b2c~tplv-k3u1fbpfcp-zoom-1.png)

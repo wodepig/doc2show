@@ -8,15 +8,15 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 
 在这节课程中，我将介绍如何使用 Flexbox 来构建 Web 中的一些经典布局（实践中常使用的 Web 布局）。这些布局在还没有 Flexbox 技术之前就在 Web 中很常见，比如**等高布局** 、**分屏** （或**等分列** ）、**水平垂直居中** 、**Sticky Footer** 、**圣杯布局** 和 **Grid Frameworks（简单的网格系统）** 等，只不过我们在使用以往的 Web 布局技术，比如浮动（`float`）、定位（`position`）和内联块（`display:inline-block`）等实现会比较困难，甚至还需要一定的 CSS 黑魔法（Hack 手段），但使用 Flexbox 就会显得容易得多。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7719eacf03f94609a99f2afdc714846c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7719eacf03f94609a99f2afdc714846c~tplv-k3u1fbpfcp-zoom-1.png)
 
 在开始之前，我用一张图来帮助大家回忆一下前面几个有关于 Flexbox 课程的知识，（👇 **点击查看大图**）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ff98355476f7467b84c9e078f90de1c2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ff98355476f7467b84c9e078f90de1c2~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 水平垂直居中
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8c01198ca4dc464bb97deb46bed24b2c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/8c01198ca4dc464bb97deb46bed24b2c~tplv-k3u1fbpfcp-zoom-1.png)
 
 可以说，水平垂直居中在 Web 上的运用是随处可见，比如一个 Icon 图标在其容器中水平垂直居中，一个标题在导航栏中水平垂直居中。 CSS 中，可以实现水平垂直居中的技术方案也有很多种，至少不会少于十种不同的技术方案。不过，这里我们主讲 Flexbox 如何实现水平垂直居中。
 
@@ -63,7 +63,7 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3ad5d7986528497db38416b4b3d92a2e~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/3ad5d7986528497db38416b4b3d92a2e~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/rNvpYJW>
 
@@ -90,7 +90,7 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/906e102c13a24fc0bd8fa79a48d41b4b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/906e102c13a24fc0bd8fa79a48d41b4b~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/abGqoqo>
 
@@ -113,7 +113,7 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e3017e1bb31f44908b346672802ee472~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e3017e1bb31f44908b346672802ee472~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/bGMLbzK>
 
@@ -131,13 +131,13 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c5c69c3d7a8841f383e11fefc07e2ea8~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c5c69c3d7a8841f383e11fefc07e2ea8~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/zYjRYGv>
 
 在特定场景或环境之下，这种方式也适用于多行水平垂直居中，比如 Flex 容器没有足够空间致使 Flex 项目断行：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ce6793707ed43f2806a19514d86f6a1~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5ce6793707ed43f2806a19514d86f6a1~tplv-k3u1fbpfcp-zoom-1.png)
 
 虽然使用一些 Hack 手段可以避免上图这样的现象出现，但这样的 Hack 手段会让 Web 布局失去一定的灵活性，在实际开发的过程中不建议这样使用。除非你能提前预判：
 
@@ -149,7 +149,7 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3f5ca83d6e594ede95f9e8b8d03afd44~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/3f5ca83d6e594ede95f9e8b8d03afd44~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo: <https://codepen.io/airen/full/poVaoEM>
 
@@ -175,7 +175,7 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 
 我们前面的课程有介绍过，在 Flexbox 布局中，你可以在 Flex 项目上设置 `margin` 的值为 `auto` 来控制 Flex 项目位置：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad6d0b9521444746980f89b38a99a519~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ad6d0b9521444746980f89b38a99a519~tplv-k3u1fbpfcp-zoom-1.png)
 
 也就是说，如果你只是想控制单个 Flex 项目在 Flex 容器中水平垂直居中的话，使用 `margin:auto` 也是一种不错的选择：
 
@@ -189,29 +189,29 @@ Flexbox 是现代 Web 布局的主流技术之一，它提供了一种有效的�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/597d875282984f93bdc90d1f456dd7a6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/597d875282984f93bdc90d1f456dd7a6~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/JjvpjLy>
 
 你可以在 Flexbox 布局中使用不同的方式来实现水平垂直居中的效果，至于选择哪一种方案，可以根据实际情况来选择。如果你实在不知道如何选择，还可以借助浏览器调试工具来辅助你快速选择：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a3fbdb55eef2475f8e4eb26eb07002cf~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a3fbdb55eef2475f8e4eb26eb07002cf~tplv-k3u1fbpfcp-zoom-1.png)
 
 留个小作业，请使用 Flexbox 来实现 Logo 图标在其容器中水平垂直居中：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/36524057468a4a87bc4c37c460e069e5~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/36524057468a4a87bc4c37c460e069e5~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 等高布局
 
 Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高布局这样的效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/562140b9b64a4d5ab8a459dd5ac43d2a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/562140b9b64a4d5ab8a459dd5ac43d2a~tplv-k3u1fbpfcp-zoom-1.png)
 
 如上图所示，右侧等高布局看起来总是要比左侧的不等高布局更舒服一些。虽然等高布局在 UI 上会令人感到更舒服，但在以往的布局技术中要实现等高布局还是有点麻烦的。
 
 主要原因是**我们并不知道元素的高度是多少** ，即使知道了，如果给元素上直接设置一个 `height` 值，很有可能就会造成内容溢出容器，甚至是打破 Web 布局。那么，使用 Flexbox （包括后面要介绍的 Grid）布局技术，实现等高布局就会轻易地多，甚至可以说是没有任何难度可言。比如，我们要实现一个等高布局的卡片组件：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2a4eb84cb8c74a60a54c3722efef95f8~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2a4eb84cb8c74a60a54c3722efef95f8~tplv-k3u1fbpfcp-zoom-1.png)
 
 上图中的三张卡片排列在一起，它们：
 
@@ -221,7 +221,7 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 
 如果不采用 Flexbox 布局技术方案，当未给卡片设置一个最小高度时，往往实现的效果会像下图这样：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8cb1a029a484b96a750f61638438f51~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b8cb1a029a484b96a750f61638438f51~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果使用 Flexbox 布局技术，实现起来就很简单：
 
@@ -257,11 +257,11 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 
 在这个示例中，卡片`.card` 和其容器 `.cards` 都是 Flex 容器，并且每张卡片的初始化尺寸是 `300px` （即 `flex-basis` 的值为 `300px`），而且容器 `.cards` 无法容纳所有卡片 `.card` 时，它会自动换行，并且最后一个卡片宽度变宽了，这是因为卡片 `.card` 设置了`flex-grow:1` 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d2fb01b8e6df41a98827da197e2b950c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d2fb01b8e6df41a98827da197e2b950c~tplv-k3u1fbpfcp-zoom-1.png)
 
 你可能会感到好奇，为什么会这样，又将如何解决？接下来的内容中你会找到答案。我们回到等高布局中来，你可能已经发现了，只要告诉浏览器卡片容器 `.cards`  是一个 Flex 容器，那么所有卡片 `.card` 的高度就相等了，而且会以最高的那张卡片为主：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/24870361a4b044b2a31cbb560f9ec5be~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/24870361a4b044b2a31cbb560f9ec5be~tplv-k3u1fbpfcp-zoom-1.png)
 
 这是因为，Flex 容器 `.cards` 的 `align-items` 属性的默认值是 `stretch` ，如果没有调整 `align-items` 属性的值，那么该容器中的所有子元素（即 Flex 项目 `.card`）在侧轴方向就会被拉伸，并且等于侧轴尺寸。反之，就会得到一个不等高的卡片，比如，你在 `.cards` 上显式设置了 `align-items` 的值为 `flex-start` ，你将看到的效果如下：
 
@@ -271,13 +271,13 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/43522adf07c24fa4acf69692d7218970~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/43522adf07c24fa4acf69692d7218970~tplv-k3u1fbpfcp-zoom-1.png)
 
 也就是说，**默认情况之下，Flex 容器中的所有 Flex 项目都是相等的** ，这也是 Flexbox 实现等高布局很容易的主要原因。
 
 虽然说，将 `.cards` 创建为一个 Flex 容器就实现了卡片等高的效果，但这个效果还不是设计师所期待的，比如第二和第三张卡，因卡片标题和描述内容比第一张卡片更少，造成按钮偏上，卡片底部留下一定的空白空间（设计师期望的是，所有卡片的按钮都能在底部对齐）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/783ac5bc36714bd48fd5c8e89eca0e80~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/783ac5bc36714bd48fd5c8e89eca0e80~tplv-k3u1fbpfcp-zoom-1.png)
 
 要实现上图左侧的效果，在 Flexbox 布局中也有多种方式，比如我们这个示例，每张卡片 `.card` 本身就是一个 Flex 容器，你只需要将剩余空间分配给卡片中的 `p` 元素（描述文本）即可，就是将其 `flex-grow` 值设置为 `1` ：
 
@@ -287,7 +287,7 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6feb2bd16cc64635849125b1041cd6f3~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/6feb2bd16cc64635849125b1041cd6f3~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/VwxQLyj>
 
@@ -299,7 +299,7 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5c0127ba822b4d64bb8d7337cb36c6c6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5c0127ba822b4d64bb8d7337cb36c6c6~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/PoeQPVL>
 
@@ -319,19 +319,19 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 
 你将得到下面这样的效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7242fb19032e44399869fbd7c478aab7~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7242fb19032e44399869fbd7c478aab7~tplv-k3u1fbpfcp-zoom-1.png)
 
 小作业，请使用 Flexbox 布局技术，实现一个等高布局的 Web 页面：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/feaf995a0ce4422294cf1668f5da8143~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/feaf995a0ce4422294cf1668f5da8143~tplv-k3u1fbpfcp-zoom-1.png)
 
 简单化一下：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/28925d530dfc4b83a1cd2054e49fff6b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/28925d530dfc4b83a1cd2054e49fff6b~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 均分列（等分列）布局
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/62633b76141b42afa2ed9a2a87d26658~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/62633b76141b42afa2ed9a2a87d26658~tplv-k3u1fbpfcp-zoom-1.png)
 
 正如上图所示，在 Web 中均分列的布局效果很多，尤其是在移动端的开发当中，底部的菜单栏中的列大多都是均分的。
 
@@ -380,7 +380,7 @@ Web 设计师为了让页面或组件的 UI 更美观，往往会考虑像等高
 
 如果换成 Flexbox 技术来构建的话，开发者就不需要去考虑这些参数了。比如下面这个移动端的底部工具栏的效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b5e7069ceed440eba14e4bcb05f54468~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b5e7069ceed440eba14e4bcb05f54468~tplv-k3u1fbpfcp-zoom-1.png)
 
 构建它的 HTML 结构并不复杂：
 
@@ -410,7 +410,7 @@ footer {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5d145c42cec042f185896965b53644d2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5d145c42cec042f185896965b53644d2~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/GRdQZYv>
 
@@ -426,7 +426,7 @@ flex-basis: 0%
 
 而实际上，在这种情况下，`flex-shrink` 不再做任何事情，因为所有 Flex 项目现在的宽度都是 `0` ，并且正在增长以填补可用空间。只不过， Flex 容器有可能存在没有剩余空间的情况，甚至是有不足空间的情况存在。此时，`flex:1` 也就不能均分 Flex 容器的可用空间。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9579e0459c94f988c189573c98fb5b7~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c9579e0459c94f988c189573c98fb5b7~tplv-k3u1fbpfcp-zoom-1.png)
 
 正如上图所示，最后一个 Flex 项目的宽度要更大，它的 `max-content` 都比其他 Flex 项目大（它有四个汉字宽）。
 
@@ -442,13 +442,13 @@ CSS 中它们的值为 `auto` 时，会被浏览器计算为 `0` 。但在 Flexb
 
 小作业，卡片等宽且等高：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e857f24ee5b4fe0a5e68fc51903dd21~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/6e857f24ee5b4fe0a5e68fc51903dd21~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 圣杯布局
 
 圣杯布局（Holy Grail Layout）是 Web 中典型的布局模式。它看上去像下图这样：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2904ccedf47a4d54a320943b95d3b96a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2904ccedf47a4d54a320943b95d3b96a~tplv-k3u1fbpfcp-zoom-1.png)
 
 就上图而言，这就是一个非常普通的三列布局。对圣杯布局有一定了解的同学都应该知道，构建圣杯布局时，对 HTML 的结构是有一定的要求，即 **主内容为先** 。早期这样做，是让用户在 Web 页面加载缓慢时，就能先看到主内容。
 
@@ -491,7 +491,7 @@ CSS 中它们的值为 `auto` 时，会被浏览器计算为 `0` 。但在 Flexb
 
 我们来看一个真实的圣杯布局案例：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ef432a1c8a647ef955746fa8ce67a12~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9ef432a1c8a647ef955746fa8ce67a12~tplv-k3u1fbpfcp-zoom-1.png)
 
 实现该页面，你可能需要的 HTML 结构如下：
 
@@ -527,7 +527,7 @@ CSS 中它们的值为 `auto` 时，会被浏览器计算为 `0` 。但在 Flexb
 
 在没有 CSS 加载的情况之下，你看到的圣杯布局会是下图这样：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e9bce0d4ca284f58b0e14d5f01d5fb06~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e9bce0d4ca284f58b0e14d5f01d5fb06~tplv-k3u1fbpfcp-zoom-1.png)
 
 > **注意，内容先行的原则** ！
 
@@ -595,7 +595,7 @@ footer {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e4af644a35b4e9dacd26576b7286c02~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/6e4af644a35b4e9dacd26576b7286c02~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/YzLeRZx>
 
@@ -605,13 +605,13 @@ footer {
 *   侧边栏固定宽度；
 *   页头和页脚高度由内容决定。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2bbab70579ea45fbacc5eff348f72863~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2bbab70579ea45fbacc5eff348f72863~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## Sticky Footer 布局
 
 首先用下图来解释什么是 Sticky Footer 布局:
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec3967489822463985ef32323a5804fb~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ec3967489822463985ef32323a5804fb~tplv-k3u1fbpfcp-zoom-1.png)
 
 页脚（Footer）的位置会随着页头（Header）和主内容（Content）高度而变化，但当页头和主内容内容较小，其高度总和小于浏览器视窗高度时，页脚要始终位于浏览器视窗底部。
 
@@ -669,7 +669,7 @@ main {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c016d75442d949938e591edd0d4c5136~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c016d75442d949938e591edd0d4c5136~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/XWqZOao>
 
@@ -691,7 +691,7 @@ footer {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/063f5253fd884831bde57dd404f327d9~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/063f5253fd884831bde57dd404f327d9~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/RwyQvJG>
 
@@ -699,7 +699,7 @@ footer {
 
 百分百无滚动布局在 Web 中也是很常见的一种布局，比如下面这样的一个案例（这是一个真实的案例，2019年双11主互动项目中的弹窗）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3fc9cb0f980645e980395aa1cccb73f8~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/3fc9cb0f980645e980395aa1cccb73f8~tplv-k3u1fbpfcp-zoom-1.png)
 
 **图中红色虚框中的内容是带有滚动的** 。因为容器的高度是固定的（`100vh`），内容很有可能会超过容器的高度。
 
@@ -717,7 +717,7 @@ footer {
 </modal>
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c2481b4dbfe4cc09f6c1af2f9671dc8~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0c2481b4dbfe4cc09f6c1af2f9671dc8~tplv-k3u1fbpfcp-zoom-1.png)
 
 很典型的一个 Flexbox 布局：
 
@@ -740,7 +740,7 @@ modal-content {
 
 看上去似乎没有问题，但实际上我们在 iOS 系统上触发了一个 Flexbox 的 Bug，就是在**滚动容器上显示设置** **`overflow-y:scroll`** **，滚动依旧失效** 。造成这个 Bug 是因为我们上面的 CSS 代码触发了 Flex 项目的边缘情况。如果要避免这个 Bug 的出现，需要对结构做出一定的调整：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b437393646ee44cf8671be0725d11b24~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b437393646ee44cf8671be0725d11b24~tplv-k3u1fbpfcp-zoom-1.png)
 
 对应上图的 HTML 代码如下：
 
@@ -779,11 +779,11 @@ modal-content {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4378590856b44862b5a99a56ea84ac55~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/4378590856b44862b5a99a56ea84ac55~tplv-k3u1fbpfcp-zoom-1.png)
 
 来看一个具体 Demo 的效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f3b8ad871cfe4934bb6bcde391579767~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f3b8ad871cfe4934bb6bcde391579767~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/JjvpzPY>
 
@@ -791,13 +791,13 @@ modal-content {
 
 小作业，使用 Flexbox 构建一个弹窗（Modal）的布局效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dce0510ca21647f592509c3c6f481b1a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/dce0510ca21647f592509c3c6f481b1a~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 12 列网格布局
 
 12 列网格布局最早源于 [960gs 网格布局系统](https://960.gs/)，它和 CSS 原生的网格系统不是同一个东西。简单地说，960gs 就是将页面分成12列，有列宽和列间距，然后页面的布局划分到具体的列上面，如下图所示：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf0cb706f6af44b5b266d5d543da42f6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/cf0cb706f6af44b5b266d5d543da42f6~tplv-k3u1fbpfcp-zoom-1.png)
 
 早期的 960gs 都是使用 CSS 的浮动（`float`）来构建的，不过现在很多 CSS 框（CSS Frameworks）中的网格系统都采用 Flexbox 来构建，比如 [Bootstrap的网格系统](https://getbootstrap.com/docs/5.2/layout/grid/) 现在就是采用 Flexbox 布局构建的。
 
@@ -853,13 +853,13 @@ flex-item {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9085b09237534c4688a6454cebe95a35~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9085b09237534c4688a6454cebe95a35~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/qBYxwXK>
 
 当然，你也可以根据实际需要，给 Flex 项目指定明确的值，即给 Flex 项目的 `flex-basis` 初始化一个值，同时 `flex-grow` 和 `flex-shrink` 都重置为 `0` ，告诉浏览器，该 Flex 项目不能扩展和收缩：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c4fb3c7f577e4bcc9c7007cbc6efc513~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c4fb3c7f577e4bcc9c7007cbc6efc513~tplv-k3u1fbpfcp-zoom-1.png)
 
 比如上图所示：
 
@@ -933,15 +933,15 @@ flex-item {
 
 九宫格简单地说就是一个 `3 × 3` 的网格（三行三列），它也常用于 Web 布局中，而且你可以基于它演变出很多种不同的布局风格：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f747844a3ce840fc962381a2042b0a4a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f747844a3ce840fc962381a2042b0a4a~tplv-k3u1fbpfcp-zoom-1.png)
 
 在 Web 布局中，我们把这些布局效果都称为 **九宫格布局** 。它们常被运用于 Web 中展示图片（它有自己的专业术语，称之为**图片墙** **Image Galler** ）。这样的布局对于图片展示来说，可以更好地突出需要展示的图片。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/db685e4cd7394e3289f5ebf00f356096~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/db685e4cd7394e3289f5ebf00f356096~tplv-k3u1fbpfcp-zoom-1.png)
 
 虽然使用 Flexbox 可以构建一个网格布局，但 Flexbox 布局毕竟是一种**一维布局** ，用它来构建上图这样的九宫格布局效果，还是有一定的局限性，需要通过 HTML 结构强力配合才能实现。比如下面这个示例：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5044df132544bc58782aa64b5d66e0b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e5044df132544bc58782aa64b5d66e0b~tplv-k3u1fbpfcp-zoom-1.png)
 
 实现上图的布局效果，所需要的 HTML 结构可能会像下面这样：
 
@@ -1019,13 +1019,13 @@ flex-item {
 
 就我们这个示例，是 `2` 列，列间距是 `1rem` ，所以 `flex-basis` 的初始值设置为 `calc((100% - 1rem) ``/ 2``)` 。最终得到的效果如下：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/613a65775ab34c9fb2f6e7903dace483~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/613a65775ab34c9fb2f6e7903dace483~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/yLjKzgp>
 
 你甚至可以使用 12 列网格布局的方式来完成九宫格的布局。但很多时候九宫格布局中的每个元素 （Flex 项目）具有一定的宽高比：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76550027a2874769b1207bda43642d5a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/76550027a2874769b1207bda43642d5a~tplv-k3u1fbpfcp-zoom-1.png)
 
 比如上图的布局效果。它是一个由几行组成的布局，而且每行的两张图片都有固定的宽高比。每行的两张图片有相同的高度，并且会填满整行（我们知道每行就是一个 Flex 容器）。图片的宽高比从 `16:9` 到 `3:2` 不等。
 
@@ -1040,7 +1040,7 @@ flex-item {
 
 这样你就可以得到一个宽高比是 `16:9` 的盒子，浏览器会根据元素的 `width` 和宽高比 `aspect-ratio` 的值计算出 `height` 的值：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/934a411110de4c3e80efb1ca3f150af4~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/934a411110de4c3e80efb1ca3f150af4~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/oNdqobL>
 
@@ -1075,11 +1075,11 @@ width = height × aspect-ratio = 225 x (16 ÷ 9) = 400
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d6d45da301c949e5b41546ff09888806~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d6d45da301c949e5b41546ff09888806~tplv-k3u1fbpfcp-zoom-1.png)
 
 正如你所见，两个 Flex 项目的宽度相等，但高度不同。你可能会认为将 Flex 项目的高度 `height` 设置为 `100%` 即可，事实并非如你所愿，因为 CSS 的 `height` 取`%` （百分比）值时，如果父元素（Flex 容器）未显式设置 `height` 的值，那么 Flex 项目即使设置 `height:100%` ，浏览器计算出来的也会是 `0` 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ea841db252a48cd9e67d1efb02c4d55~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9ea841db252a48cd9e67d1efb02c4d55~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/eYrMeWq>
 
@@ -1089,7 +1089,7 @@ width = height × aspect-ratio = 225 x (16 ÷ 9) = 400
 Flex 容器的 aspect-ratio = (4 ÷ 3) + (2 ÷ 3) = 6 ÷ 3 = 6 : 3
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f0e8375028be4c258141f7e7a2a7272c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f0e8375028be4c258141f7e7a2a7272c~tplv-k3u1fbpfcp-zoom-1.png)
 
 ```HTML
 <div class="container grid-row">
@@ -1114,7 +1114,7 @@ Flex 容器的 aspect-ratio = (4 ÷ 3) + (2 ÷ 3) = 6 ÷ 3 = 6 : 3
 
 Flex 容器设置了 `aspect-ratio` 值之后，浏览器就可以计算出它的高度值，此时在 Flex 项目上显式设置 `height: 100%` 才有了意义，保证了同一行的 Flex 项目是相等的，宽度根据各自的 `aspect-ratio` 计算得到。这个时候，你看到的效果如下：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/289d53df61674b3483762cbb48473e98~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/289d53df61674b3483762cbb48473e98~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/WNJzdYw>
 
@@ -1219,19 +1219,19 @@ Flex 容器设置了 `aspect-ratio` 值之后，浏览器就可以计算出它�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/be2292f8c177481089755170a0535499~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/be2292f8c177481089755170a0535499~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/OJZvQop>
 
 添点料进去（加上`<img>`），那么具有宽高比的图片墙（九宫格）布局效果就有了：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3dd08f8caed04bedbc520503e7f6c88c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/3dd08f8caed04bedbc520503e7f6c88c~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo  地址： <https://codepen.io/airen/full/QWrmmGZ>
 
 小作业，请使用 Flexbox 和 `aspect-ratio` 构建下图这样的布局效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6131cb0a0b4648e0a4b4c9e11447e7af~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/6131cb0a0b4648e0a4b4c9e11447e7af~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 具有不同对齐方式的导航栏
 
@@ -1239,13 +1239,13 @@ Flex 容器设置了 `aspect-ratio` 值之后，浏览器就可以计算出它�
 
 就导航栏对齐方式来说，很多同学都认为 “使用 Flexbox 的对齐方式” 就足以搞定，事实上呢？并非如此。虽然 Flexbox 的对齐方式很强大，但有些场景我们是不能使用 Flexbox 来布局，或者说使用 Flexbox 布局并不是最合适的。比如下图中，红色框中的导航栏的对齐效果，如果使用 Flexbox 就不太适合：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca48a36541004c7e8b85e23f03c1dcf1~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ca48a36541004c7e8b85e23f03c1dcf1~tplv-k3u1fbpfcp-zoom-1.png)
 
 正如你看到的，上图中红色框是不太适合使用 Flexbox 来布局，但蓝色框中的布局效果，使用 Flexbox 就比较适合。
 
 以下图中的导航栏为例：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d92b0390c465481c9586ff30b146a87c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d92b0390c465481c9586ff30b146a87c~tplv-k3u1fbpfcp-zoom-1.png)
 
 很常见的几种对齐方式：
 
@@ -1301,7 +1301,7 @@ Flex 容器设置了 `aspect-ratio` 值之后，浏览器就可以计算出它�
 
 Flexbox 布局最大的优势之一就是使用该技术构建的布局灵活性，适配性很强。Flex 项目的大小能很好适应它的容器（Flex 容器）。比如下面这个两列布局，左侧栏固定宽度，主内容列能随着它的父容器大小自适应，即父容器变大，它变宽；父容器小，它变窄：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8b4bacf532ab4c6ab26a2f6879759bff~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/8b4bacf532ab4c6ab26a2f6879759bff~tplv-k3u1fbpfcp-zoom-1.png)
 
 ```HTML
 <div class="container">
@@ -1364,7 +1364,7 @@ main {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0816d87afffe46c698364b2aabe761ae~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0816d87afffe46c698364b2aabe761ae~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/zYjWaZJ>
 
@@ -1372,7 +1372,7 @@ main {
 
 再来看一个关于 `text-overflow: ellipsis` 在 Flexbox 布局中的实例。比如下面这样的一个场景，在我们平时的开发中也是很常见的：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/565a113fd3374632a67fa716da17823a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/565a113fd3374632a67fa716da17823a~tplv-k3u1fbpfcp-zoom-1.png)
 
 设计师期望的是“徽标过多时，最好提供省略号指示器，并不是直接截断或断行”。对于开发者来说，可能会使用像下面这样的一个 HTML 结构来构建徽标列表：
 
@@ -1398,7 +1398,7 @@ main {
 
 这样的处理方式，最终在浏览器中呈现出来的效果是“溢出容器的徽标被裁剪了”：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf35e662f5e5423f8dd9a05ead209ef6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/cf35e662f5e5423f8dd9a05ead209ef6~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果把 `text-overflow` 相关的样式设置到 `<li>` 标签上：
 
@@ -1412,7 +1412,7 @@ main {
 
 虽然不会像上面一样，把溢出的徽标裁剪掉，但这样做的话，虽然能在容器空间中将徽标罗列出来，但会在每个徽标上添加省略号的指示器，也不符合预期效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/70370e1aae6943518603934c3eac46e6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/70370e1aae6943518603934c3eac46e6~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果`li`元素是一个 Flex 容器的话，达到上图效果还需要额外添加一个标签来包裹文本：
 
@@ -1426,7 +1426,7 @@ main {
 
 不过，在 CSS 中还是有方案可以达到设计师预期想要的效果的：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39ae09d88c374793865036130dd9cb0c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/39ae09d88c374793865036130dd9cb0c~tplv-k3u1fbpfcp-zoom-1.png)
 
 达到上图的效果，在 CSS 中有两种方式可以实现，先来看第一种，即 **使用 `line-clamp`****替代****`text-overflow`** ：
 
@@ -1462,4 +1462,4 @@ main {
 
 小作业，请使用 Flexbox 和 文本截取等功能，构建下图这样的一个布局效果，列表项标题较长时（文本多）会被截断，并且提供省略号指示符（`...`），反之则不会：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f06264b0eee94db6b3b019c7e8621559~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f06264b0eee94db6b3b019c7e8621559~tplv-k3u1fbpfcp-zoom-1.png)

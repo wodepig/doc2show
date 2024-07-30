@@ -6,7 +6,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "test": "ts-node replace.ts"
+    "test": "ts-node  replace.ts"
   },
   "keywords": [],
   "author": "",
