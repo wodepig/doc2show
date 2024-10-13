@@ -28,7 +28,7 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 
 `justify-` 开头的属性主要用于 Flex 容器的主轴方向；`align-` 开头的属性主要用于 Flex 容器侧轴方向；`-items` 结尾的属性主要用于对齐 Flex 项目，`-self` 结尾的属性主要用于 Flex 项目的自对齐，`-content` 结尾的属性主要用于容器空间分配。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf7ec07188d34ae595c6c716b8a8e8ef~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/bf7ec07188d34ae595c6c716b8a8e8ef~tplv-k3u1fbpfcp-zoom-1.png)
 
 只不过在做出正确的选择之前，你需要知道：
 
@@ -100,7 +100,7 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 
 初始效果（在没有使用任何对齐方式）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdfe4851406749a39e205282a34ffb9a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/cdfe4851406749a39e205282a34ffb9a~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/MWGezqJ>
 
@@ -115,13 +115,13 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98ab3c0e295541bea66a05e6df4de720~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/98ab3c0e295541bea66a05e6df4de720~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 沿主轴分配空间
 
 在上面这个初始化示例中，Flex 项目在主轴上排成一行，而且主轴方向有一定的剩余空间。这是因为，所有 Flex 项目的宽度总和小于 Flex 容器宽度，无法完全填满 Flex 容器。“Flex 项目会向主轴起点位置靠齐（即行上第一个 Flex 项目的起始位置和 Flex 容器主轴起点位置平齐），Flex 容器的剩余空间都位于结尾处（即行上最后 Flex 项目终点处与 Flex 容器主轴终点处之间的距离）”：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a70ce1806bc2452f9e745b887a8a0cc3~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a70ce1806bc2452f9e745b887a8a0cc3~tplv-k3u1fbpfcp-zoom-1.png)
 
 也就是说，你可以改变 `justify-content` 的值，来改变 Flex 项目在 Flex 容器上的对齐方式，即 **调整 Flex 容器剩余空间的位置** 。比如，将 `justify-content` 的值设置为 `flex-end` 时，Flex 项目将在 Flex 容器主轴终点处对齐，Flex 容器的剩余空间将位于主轴的起始点。
 
@@ -131,7 +131,7 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f23bb139faa44c6a33d1498fa4ad60c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/4f23bb139faa44c6a33d1498fa4ad60c~tplv-k3u1fbpfcp-zoom-1.png)
 
 你也可以将 `justify-content` 属性设置为 `center` ，将 Flex 容器主轴（同行）上的剩余空间均分在 Flex 容器的两侧：
 
@@ -141,7 +141,7 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92bebd337e1c432dbab83e241a0f11ac~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/92bebd337e1c432dbab83e241a0f11ac~tplv-k3u1fbpfcp-zoom-1.png)
 
 其实，当 `justify-content` 取值为 `flex-start` 、`flex-end` 和 `center` 时，相当于：
 
@@ -169,7 +169,7 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 
 -   `space-evenly` 会让行上第一个 Flex 项目的起始边缘与 Flex 容器主轴起点间距，和最后一个 Flex 项目的结束边缘与 Flex 容器主轴终点间距相等，并且等于其他相邻两个 Flex 项目之间间距。当 Flex 容器中只有一个 Flex 项目时，其表现行为和 `center` 等同。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ea9308d6f3fb47a4ade43903e5e2fe11~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ea9308d6f3fb47a4ade43903e5e2fe11~tplv-k3u1fbpfcp-zoom-1.png)
 
 > 注意，在 Flexbox 布局中，可以用于 `justify-content` 属性的值，除了上述提到的（`flex-start`、`flex-end` 、`center` 、`space-around` 、`space-between` 和 `space-evenly`）之外，还可以使用 `start` （等同于 `flex-start`）和 `end` （等同于 `flex-end`）。另外，CSS 的关键词 `inherit` 、`initial` 、`revert` 和 `unset` 也可以用于 `justify-content` 属性。
 
@@ -209,7 +209,7 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 
 -   `end` 和 `flex-end` 相同。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1cdacd2bcb3a44c8a8d22b8167dd9a9c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/1cdacd2bcb3a44c8a8d22b8167dd9a9c~tplv-k3u1fbpfcp-zoom-1.png)
 
 上面我们所探讨的是 `flex-direction` 为 `row` （默认值）时，使用 `justify-content` 可以用来控制 Flex 项目在行上的对齐方式和 Flex 容器剩余空间的分配。接下来，我们来看`justify-content` 将作用于列的效果（即 `flex-direction` 属性值为 `column` 时，`justify-content` 的表现）。
 
@@ -233,13 +233,13 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 
 在 Flexbox 布局中，当 Flex 容器没有足够多的空间来容纳 Flex 项目时，且 Flex 容器上显式设置了 `flex-wrap` 属性的值为 `wrap` （或 `wrap-reverse`），Flex 项目会换行排列：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/defff9371a344771a10ceea8553bc456~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/defff9371a344771a10ceea8553bc456~tplv-k3u1fbpfcp-zoom-1.png)
 
 由于 `align-items` 属性的初始值为 `stretch` ，每个 Flex 项目在侧轴方向被拉伸，Flex 项目高度变高填充了 Flex 容器侧轴空间（即 Flex 容器的 `height` 或 `block-size`），并且每行的 Flex 项目高度是相等的。
 
 我们从前面的课程中可以得知，当 Flex 项目换行排列时，每一行都有其自己独立的主轴方向（也称为 “弹性行”）:
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/74adeea8b14d4d04b2fa82a9a0177bc2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/74adeea8b14d4d04b2fa82a9a0177bc2~tplv-k3u1fbpfcp-zoom-1.png)
 
 只不过，要是在 Flex 项目上显式设置了其高度（`height` 或 `block-size`）时，即使 `align-items` 的值为 `stretch` ，也不会拉伸 Flex 项目。这个时候弹性行（相邻两行）之间就会有额外的空间出来：
 
@@ -255,19 +255,19 @@ Flexbox 布局中提供了多个用于对齐 Flex 项目以及 Flex 项目之间
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/83dca7261a40473d8a019c44cd299b81~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/83dca7261a40473d8a019c44cd299b81~tplv-k3u1fbpfcp-zoom-1.png)
 
 这个时候，如果你想分配行与行之间的间距（Flex 容器侧轴方向的剩余空间），那就需要使用 `align-content` 属性。
 
 Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相比多出了一个 `stretch` 值。这些值的表现行为和 `justify-content` 属性值相同，不同的是 **`align-content`** **用来分配 Flex 容器侧轴方向的剩余空间。**
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f61ea9b9cf9841079c625e83259ec832~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f61ea9b9cf9841079c625e83259ec832~tplv-k3u1fbpfcp-zoom-1.png)
 
 > 注意，`align-content` 属性可接受的值有 `flex-start` 、`flex-end` 、`center` 、`space-around` 、`space-between` 、`space-evenly` 、`start` 、`end` 和 `strecth` 。
 
 如果 Flex 项目未显式设置 `height` 或 `block-size` 时，改变 `align-content` 属性值时，Flex 项目的高度将会作出相应改变，即它的高度将会是 Flex 项目内容的最大高度：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f98e50396c5e40c09763647153621d81~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f98e50396c5e40c09763647153621d81~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/RwyoVWW>
 
@@ -275,7 +275,7 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 
 `align-content` 属性同样会受 `flex-direction` 属性值的影响：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2b78d48c7b2b4497ab715a8c88ed16d8~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2b78d48c7b2b4497ab715a8c88ed16d8~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/WNJReYz>
 
@@ -307,7 +307,7 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 
 -   `space-evenly` 表现行为类似于 `center`。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1b18eb56efd24ba1ae6b79c23a7e67e5~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/1b18eb56efd24ba1ae6b79c23a7e67e5~tplv-k3u1fbpfcp-zoom-1.png)
 
 在构建 Web 布局时，可以**使用`align-content`实现多行垂直居中的布局** 。
 
@@ -364,13 +364,13 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a065f38fbe42451b8f0268f66a2b7bf5~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a065f38fbe42451b8f0268f66a2b7bf5~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/abGpzjG>
 
 大家需要知道的是，**`align-content`** **只有当** **`flex-wrap`** **属性的值为非** **`nowrap`** **（即** **`wrap`** **或** **`wrap-reverse`** **）时才能生效** 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2aa871391f71495586181f29c4c68d79~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2aa871391f71495586181f29c4c68d79~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/RwyKPLr>
 
@@ -405,11 +405,11 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dc8d902da91d4367bde4efea54a17e07~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/dc8d902da91d4367bde4efea54a17e07~tplv-k3u1fbpfcp-zoom-1.png)
 
 `align-items` 属性和 `justify-content` 一样，也会受 `flex-direction` 属性值的影响：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f001b9f8205e493f90bfc33fecd67df7~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f001b9f8205e493f90bfc33fecd67df7~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/jOxyWyb>
 
@@ -417,15 +417,15 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 
 在 Flex 容器上使用 `align-items` 时，就相同于在整个 Flex 容器的侧轴上对齐 Flex 项目。这和前面课程所介绍的内容并不相矛盾，在介绍 `align-content` 属性时，我们有介绍过，即，**Flex 容器中的每一行都有自己的主轴方向和侧轴方向** ，而 `align-items` 属性的值，是用来控制 Flex 项目沿着侧轴方向对齐。言外之意，Flex 容器有多行时，`align-items` 属性可以用于 Flex 项目沿着侧轴方向对齐：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f03d59946b2944e2adc8383c1473f22f~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f03d59946b2944e2adc8383c1473f22f~tplv-k3u1fbpfcp-zoom-1.png)
 
 默认情况下，Flex 项目在 Flex 容器中断行排列时，每一行的高度是均等的，比如上图中均分了 Flex 容器的高度。这个高度也是每个 Flex 行的初始高度。此时，使用 `align-items` 属性时，Flex 项目就会沿着所在行的 **侧轴** 方向排列。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4df47c93a98640789e606810abb378a3~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/4df47c93a98640789e606810abb378a3~tplv-k3u1fbpfcp-zoom-1.png)
 
 使用 `flex-direction` 改变主轴和侧轴方向时，它们的表现形式是相同的，只不过当 `flex-direction` 属性的值是 `column` （或 `column-reverse`）时，`align-items` 属性取值为 `baseline` 时产生的结果与 `flex-start` 或 `start` 相同。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2b0d835bbc73467f80a39de4452c7b1d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2b0d835bbc73467f80a39de4452c7b1d~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/eYrgxJy>
 
@@ -469,7 +469,7 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00d7e6d4ff324fcbaa023c44ee9d39fe~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/00d7e6d4ff324fcbaa023c44ee9d39fe~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/eYrgabP>
 
@@ -489,7 +489,7 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fba544344440443d92ec77844ce47f72~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/fba544344440443d92ec77844ce47f72~tplv-k3u1fbpfcp-zoom-1.png)
 
 > 注意，只有 `align-content` 和 `align-items` 两个属性取默认值 `stretch` 时，`align-self` 属性的 `auto` 和 `stretch` 效果才是等同的。
 
@@ -507,7 +507,7 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5c60309aad2a4ae58d3e1f5f1762ebc4~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5c60309aad2a4ae58d3e1f5f1762ebc4~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/xxjgoWZ>
 
@@ -526,13 +526,13 @@ Flexbox 布局中的 `align-content` 属性值和 `justify-content` 属性值相
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1bcaeb5950a6434b84bd7560d610afde~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/1bcaeb5950a6434b84bd7560d610afde~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/xxjgoWZ>
 
 我们在实际生产时，在 Flexbox 中，不管是使用 `align-content` 、 `align-items` 还是 `justify-content` 时，总是不太好实现我们所期望的布局效果，但在 Flex 项目中使用 `align-self` 会让你变得容易很多，比如下面这个示例中的按钮居右显示：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/07a8ac6c08b9414cb21fac43cbe208b2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/07a8ac6c08b9414cb21fac43cbe208b2~tplv-k3u1fbpfcp-zoom-1.png)
 
 ```
 <div class="card">
@@ -599,11 +599,11 @@ Flex 容器不存在 `justify-items` 和 `justify-self` ，主要是因为 Flex 
 
 虽然在 Flexbox 布局中，无法在 Flex 容器的主轴上，直接使用 `justify-self` 和 `justify-items` 将 Flex 项目从一个组中分离出来，但我们可以在 Flex 项目中使用 `margin: auto` 将 Flex 项目在 Flex 容器的主轴上进行分组。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b097664d9f44f878037c2ed37d81496~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0b097664d9f44f878037c2ed37d81496~tplv-k3u1fbpfcp-zoom-1.png)
 
 我们来看一个使用 `margin:auto` 对 Flex 项目分组的示例。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2e9126254302464baf5f16071375999d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/2e9126254302464baf5f16071375999d~tplv-k3u1fbpfcp-zoom-1.png)
 
 ```
 <header>
@@ -620,11 +620,11 @@ header {
 
 示例中的 `<Logo />` 、`<Nav />` 和 `<UserProfile />` 三个组件都是 Flex 项目：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/405c8fb9fa174b398f7631e92ff42355~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/405c8fb9fa174b398f7631e92ff42355~tplv-k3u1fbpfcp-zoom-1.png)
 
 就这个示例而言，在 Flex 容器上 `<header>` 使用 `justify-content: space-between` 无法达到预期的效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9fe413a90a1340939eb3e447d82a25a9~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9fe413a90a1340939eb3e447d82a25a9~tplv-k3u1fbpfcp-zoom-1.png)
 
 最为简单的方法，就是在 `<UserProfile />` 使用 `margin-left: auto` 或 `margin-inline-start: auto` ：
 
@@ -664,7 +664,7 @@ header {
 
 `align-items` 将所有 Flex 项目（即 `span` 元素）沿着侧轴水平居中对齐。当 Flex 容器 `.container` 有足够空间时一切都完美，但如果容器没有足够多的空间来容纳 Flex 项目的内容时，就会出现“数据丢失”的情况：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9a00c97cf0134c53b57d966bdb505251~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9a00c97cf0134c53b57d966bdb505251~tplv-k3u1fbpfcp-zoom-1.png)
 
 由于 Flex 项目始终在 Flex 容器水平居中，Flex 项目宽度大于 Flex 容器宽度时，Flex 项目就会在左右两边溢出。问题是 **左侧的溢出区域超出了 Flex 容器视口的起始边缘，你不能滚动到该区域** 。在这种情况下，就需要使用到 **[CSS Box Alignment Module Level 3](https://drafts.csswg.org/css-align-3/#overflow-values)** （仍处于草案状态）定义 **安全对齐** 。
 
@@ -688,13 +688,13 @@ header {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71b198fcaf9e4b97bddaf16ce2005251~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/71b198fcaf9e4b97bddaf16ce2005251~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果你确实想要对齐（即使它会导致溢出），那么你可以指定 `align-items` 属性的值为 `unsafe center` 。然后，你已请求浏览器执行你选择的对齐方式，无论内容随后发生什么。
 
 溢出对齐对于防止数据丢失是非常有益的，可惜的是，直到写本课程时，仅有 Firefox 浏览器支持该特性。不过，可以使用 `margin: auto` 来达到相似的效果。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c80b8f7c354a48a3ad6bd8d6921b7055~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c80b8f7c354a48a3ad6bd8d6921b7055~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/KKRWZMO>
 
@@ -720,7 +720,7 @@ header {
 
 但在 CSS 中，CSS 的书写模式 `writing-mode` 或阅读模式 `direction` （HTML 的 `dir`）也会影响 Web 布局，即 **Web 排版的方向** 。同样的，CSS 的 `writing-mode` 、`dirction` 和 HTML 的 `dir` 对 Flexbox 布局中对齐属性也会产生不同的结果。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bdeef468bbd44e61a16837d6db9d0f18~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/bdeef468bbd44e61a16837d6db9d0f18~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/BaxWYLN>
 
@@ -728,6 +728,6 @@ header {
 
 在社区中也有很多小游戏，帮助我们用趣味性来理解这些属性在 Flexbox 布局中的使用。这里也简单构建一个小 [Demo](https://codepen.io/airen/full/NWMpyYd)，希望能更好地帮助大家理解上面的相关属性：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8aff9df2259e419b893892bd24c9d164~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/8aff9df2259e419b893892bd24c9d164~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/NWMpyYd>

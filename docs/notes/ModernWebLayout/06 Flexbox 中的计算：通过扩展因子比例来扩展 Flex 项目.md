@@ -49,7 +49,7 @@ permalink: /ModernWebLayout/3wc11dbh/
 - Flex 项目 E 的宽度约是 `100.11px` ；
 - Flex 容器的剩余空间约是 `248.08px` 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e58a272eb3134c279e5952d6da066f53~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e58a272eb3134c279e5952d6da066f53~tplv-k3u1fbpfcp-zoom-1.png)
 
 在此基础上，所有 Flex 项目的 `flex-basis` 都是初始值，即 `auto` ，`width` （或 `inline-size`）也是初始值 `auto` 。
 
@@ -82,13 +82,13 @@ permalink: /ModernWebLayout/3wc11dbh/
 在此基础上，浏览器会按下面这个公式循环遍历每一个 Flex 项目以确定其灵活性（**flexibility** ）：
 
 
-![Frame 127.jpg](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/22f229c0937e4563b42458c5eba70ccf~tplv-k3u1fbpfcp-watermark.image?)
+![Frame 127.jpg](./img/22f229c0937e4563b42458c5eba70ccf~tplv-k3u1fbpfcp-watermark.png)
 
 > **注意，这里所说的灵活性（Flexibility）指运用于 Flex 项目的一个弹性值，有可能是加上这个弹性值，也有可能是减去这个弹性值。即可增加或减少的一个弹性量** 。
 
 这个“Flex 项目的灵活性（弹性量）” 并不是 Flex 项目的具体宽度，需要在该计算出来的值基础上，加上 Flex 项目的 `flex-basis` （或 `width` 或 `inline-size`）才是 Flex 项目的最终宽度值：
 
-![Frame 128.jpg](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b7e72038205b472b86cfff6866a59e4e~tplv-k3u1fbpfcp-watermark.image?)
+![Frame 128.jpg](./img/b7e72038205b472b86cfff6866a59e4e~tplv-k3u1fbpfcp-watermark.png)
 
 浏览器会根据该公式循环遍历计算 Flex 项目的灵活性（弹性量）。先根据公式来计算 **Flex 项目** ***A***  的灵活性。
 
@@ -134,7 +134,7 @@ Flex 项目 E 计算后的宽度 =  ((1000px - 237.56px - 190.61px - 190.61px - 
 
 如果你使用的是 Firefox 浏览器，使用开发者调试工具，可以很清楚看到每个 Flex 项目的计算前后的几个重要参数，比如内容宽度 `flex-basis` （未显式设置都是 `0`）、每个 Flex 项目的弹性量（**Flexibility**）和每个 Flex 项目计算后的宽度：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/86092ce71b004e4f8a39e3746f491ab2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/86092ce71b004e4f8a39e3746f491ab2~tplv-k3u1fbpfcp-zoom-1.png)
 
 你可能认为，你已经知道 Flex 项目如何根据 `flex-grow` 来扩展 Flex 项目的尺寸（`width` 或 `inline-size`）了。如果你这么认为，那就太小看 Flex 项目计算了。上面仅仅是其中一种情况，即 `flex-grow:1` 和 `flex-basis: 0%` 且未在 Flex 项目上显式设置任何与尺寸有关的属性（比如 `width` 或 `inline-size` ）。
 
@@ -210,13 +210,13 @@ Flex 项目 E 计算后的宽度（flex-basis） = ((1000px - 200px - 200px - 20
 
 这个示例中和前面只在 Flex 项目上显式设置 `flex:1` 有一点不同之处，那就是显式设置了 Flex 项目的宽度是 `160px` ，所以 Flex 项目 A 的 `flex-basis` 计算出来之后等于 `200px` ，它比 `160px` 大，这个时候浏览器将 `flex-basis` 计算后的值视为其宽度值。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b7917659136d4bb1b245d85e27468e0c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b7917659136d4bb1b245d85e27468e0c~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/WNJjZao
 
 如果你将 `width:160px` 换成 `width: 260px` （它已经大于 Flex 项目 A 的 `min-content` 值）。你会发现，Flex 项目 A 的 `flex-basis` 计算出来之后是 `200px` ，但浏览器最终计算出来的 Flex 项目 A 宽度，最终以 Flex 项目 A 的内容的最小尺寸（`min-content` ）为准，大约 `237.52px` 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/46a562989800473b8641d933af7b5953~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/46a562989800473b8641d933af7b5953~tplv-k3u1fbpfcp-zoom-1.png)
 
 这两个示例告诉我们，当 Flex 项目显式设置了 `flex:1` 和具体的 `width` 值时，如果浏览器计算出来的 `flex-basis` 大于 Flex 项目的最小内容尺寸（`min-content`） 时，将以 `flex-basis` 计算出来的值作为 Flex 项目的宽度；反之，如果计算出来的 `flex-basis` 小于 Flex 项目的最小内容尺寸（`min-content`）时，浏览器会把 Flex 项目的最小内容尺寸（`min-content`）作为 `flex-basis` 的最终值，也将其作为该 Flex 项目的宽度。
 
@@ -247,7 +247,7 @@ Flex 项目 E 计算后的宽度（flex-basis） = ((1000px - 200px - 200px - 20
 
 最终它的效果和在 Flex 项目上设置 `flex:1` 和 `width: 160px` 是等同的，只是计算出来的弹性量不同，但最终计算出来的 `flex-basis` 是一样的，它们都忽略了 Flex 项目的 `width` 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f14ab4d12eef4adf823ee614e2b51fd4~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f14ab4d12eef4adf823ee614e2b51fd4~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/XWqRVZd
 
@@ -313,7 +313,7 @@ Flex 项目 D 计算后的宽度（flex-basis） = (1000px - 287.18px - 119.88px
 Flex 项目 E 计算后的宽度（flex-basis） = (1000px - 287.18px - 119.88px - 292.92px - 150.31px - 100.11px) ÷ 1 × 1 + 100.11px = 149.73px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bb88624ff40545ba83034854ba4130d4~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/bb88624ff40545ba83034854ba4130d4~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/XWqREWP
 
@@ -346,13 +346,13 @@ Flex 项目 D 计算后的宽度（flex-basis） = (1000px - 200px - 200px - 200
 Flex 项目 E 计算后的宽度（flex-basis） = (1000px - 200px - 200px - 200px - 200px - 160px × 1) ÷ 1 × 1 + 160px = 200px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fdf52e512a05401d8c5894d2f7c8dfb6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/fdf52e512a05401d8c5894d2f7c8dfb6~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/poVPLQx
 
 其实 `flex-grow` 计算，还可以将上面的公式简化一下，但它有一个条件，即 **设置了** **`flex`** **属性的 Flex 项目同时显式设置了** **`width`** **或** **`inline-size`** **，以及** **`flex-basis`** **属性值为** **`auto`** **时，** 可以按下面这个简化公式计算每个 Flex 项目的尺寸：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68e674b5886c4f42a6402cf807b4b764~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/68e674b5886c4f42a6402cf807b4b764~tplv-k3u1fbpfcp-zoom-1.png)
 
 前面所提到的 `flex-grow` 计算，都是基于`flex` 简写属性展开的，它们的计算和单独只在 Flex 项目上显式设置一个 `flex-grow` 属性还是有所不同的。比如：
 
@@ -378,7 +378,7 @@ Flex 项目 E 计算后的宽度（flex-basis） = (1000px - 200px - 200px - 200
 
 **仅在 Flex 项目显式设置** **`flex-grow`** **一个属性时，它的计算方式类似于** **`flex: auto`** ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7c5c19b912244037902604b93b63847a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7c5c19b912244037902604b93b63847a~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/ZEoKoJY
 
@@ -571,13 +571,13 @@ Flex 项目 E 计算后的 flex-basis 值 = 160px + 80px = 240px
 
 两者最大的差异就是 **所有 Flex 项目的** **`flex-grow`** **总和如果小于** **`1`** **，Flex 容器剩余空间还会有余留； `flex-grow`** **大于或等于**`1`**时，Flex 容器的剩余空间不会有余留** ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/241d958716c2447bb445e63c590cbc22~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/241d958716c2447bb445e63c590cbc22~tplv-k3u1fbpfcp-zoom-1.png)
 
 可能有同学会问，`flex-grow` 取值为小数值时，它又是如何计算呢？
 
 它的计算分两种情况，当所有 Flex 项目 `flex-grow` 值的和小于 `1` 时，将按照下面的公式来计算：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b8fd732ba9564dc4b03dbbcfedb71fe0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b8fd732ba9564dc4b03dbbcfedb71fe0~tplv-k3u1fbpfcp-zoom-1.png)
 
 由于 Flex 容器的剩余空间分不完，所以不需要像前面的示例那样去循环遍历每一个 Flex 项目。简单地说，**当所有 Flex 项目的** **`flex-grow`** **属性值的总和小于等于** **`1`** **时， Flex 项目的灵活性（弹性值 Flexibility）会等于  Flex 容器的剩余空间乘以当前 Flex 项目自身的扩展因子** **`flex-grow`** **值**：
 
@@ -602,7 +602,7 @@ Flex 项目 E 的弹性值 =  248.12px × 0.1 = 24.81px
 Flex 项目 E 计算后的 flex-basis 值 = 100.11px + 24.81px = 124.92px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f5effcec26c445fb75f2f0cc9cad404~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/4f5effcec26c445fb75f2f0cc9cad404~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/eYrRdLN
 
@@ -653,7 +653,7 @@ Flex 项目 E 的弹性值 =  248.12px × 0.3 = 74.44px
 Flex 项目 E 计算后的 flex-basis 值 = 100.11px + 74.44px = 174.55px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9695a7a1068c49e0956646511a53bd97~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9695a7a1068c49e0956646511a53bd97~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/oNdwBWK
 
@@ -705,18 +705,18 @@ Flex 项目 E 的弹性值 =  (1000px - 254.06px - 103.34px - 292.93px - 166.85p
 Flex 项目 E 计算后的 flex-basis 值 = 100.11px + 82.71px = 182.82px
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/508097eafd90488f8e464bdb8bcc53be~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/508097eafd90488f8e464bdb8bcc53be~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/NWMgdza
 
 如此一来，Flexbox 布局中的 `flex-grow` 计算公式就分为两个部分：
 
 
-![Frame 133.jpg](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/82fe4be839634330a651922a2fc4e101~tplv-k3u1fbpfcp-watermark.image?)
+![Frame 133.jpg](./img/82fe4be839634330a651922a2fc4e101~tplv-k3u1fbpfcp-watermark.png)
 
 再次强调一下，**当所有 Flex 项目的** **`flex-grow`** **属性值总和小于** **`1`** **时，Flex 容器剩余空间是分不完的** :
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/57ef89547ad04bfd9896d97828ff0322~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/57ef89547ad04bfd9896d97828ff0322~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## 小结 
 

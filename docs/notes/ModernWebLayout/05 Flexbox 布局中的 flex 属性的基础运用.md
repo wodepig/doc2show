@@ -8,7 +8,7 @@ Flexbox 的设计目的是在包含元素（Flex 容器）中沿着行或列分�
 
 一个 Flex 容器会按照各个 Flex 项目的扩展比率分配 Flex 容器剩余空间，也会按照收缩比率来收缩 Flex 项目，以免 Flex 项目溢出 Flex 容器。简单地说，**Flex 项目的大小由 Flexbox 布局算法调整，也只有这种布局才称得上是灵活性的布局。**
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/57e282bdf2904fcd85f2711deef3c6b0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/57e282bdf2904fcd85f2711deef3c6b0~tplv-k3u1fbpfcp-zoom-1.png)
 
 这种灵活性的布局将会涉及 Flex 项目的计算，那么问题来了，Flexbox 布局中的 Flex 项目是如何计算的呢？它和扩展比率或收缩比率之间又存在些什么关系呢？我们将带着这些疑问开启本课程的学习。
 
@@ -82,7 +82,7 @@ Flexbox 布局中的 `flex-basis` 可用来指定 Flex 项目在 Flex 容器主�
 
 当然，在 Flexbox 纵向布局（即`flex-direction` 取值为 `column` 或 `column-reverse` 时），`flex-basis` 对应的值就和`height` 相同。而且当书写模式改变时，相应的取值方式也会有所改变。用张图来简单描述一下：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9a2a85c988f4433898d041a46d7fb1b9~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/9a2a85c988f4433898d041a46d7fb1b9~tplv-k3u1fbpfcp-zoom-1.png)
 
 > 有关于 Flex 容器的可用空间、剩余空间和不足空间相关的概念，可以查阅前面的课程《[03 | Flexbox 布局基础使用](https://juejin.cn/book/7161370789680250917/section/7161621092560273439) 》。
 
@@ -106,13 +106,13 @@ Flexbox 布局中的 `flex-basis` 可用来指定 Flex 项目在 Flex 容器主�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/89bf88a91f4344849ad9e2d208aa5474~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/89bf88a91f4344849ad9e2d208aa5474~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/JjvWgar>
 
 默认情况，浏览器对 Flex 项目计算结果如下：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf7e64be2f324b3babbafcb0bf989842~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/cf7e64be2f324b3babbafcb0bf989842~tplv-k3u1fbpfcp-zoom-1.png)
 
 我们在 Flex 容器上显式设置了 `inline-size` 值为 `1000px` ，在所有 Flex 项目上未显式设置任何与尺寸有关的属性（比如 `width` 、 `inline-size` 或 `flex-basis` 等），浏览器在计算如下：
 
@@ -255,7 +255,7 @@ Flexbox 布局中的 `flex-basis` 可用来指定 Flex 项目在 Flex 容器主�
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c58ceb6f704c5dbe0f3968d6089eac~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f4c58ceb6f704c5dbe0f3968d6089eac~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/eYrWOey>
 
@@ -274,7 +274,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/821b6375d5674fbbbd8fee49ece7afcf~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/821b6375d5674fbbbd8fee49ece7afcf~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/zYjwYxy>
 
@@ -282,7 +282,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 
 这里有一个误区，**大多数开发者都误认为，只要在 Flex 项目上显式设置了** **`flex:1`** **，所有 Flex 项目的宽度（或高度）就相等。** 事实并非如此，比如上面示例，由于第一个 Flex 项目的内容就要比其他 Flex 项目略宽一点，即使在所有 Flex 项目设置了 `flex:1` ，也没有实现所有 Flex 项目等宽的效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5b1e6e8450a7420cb73a3cc07b258867~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5b1e6e8450a7420cb73a3cc07b258867~tplv-k3u1fbpfcp-zoom-1.png)
 
 如果要真的实现所有 Flex 项目宽度相等，除了在 Flex 项目上设置为 `flex:1` 之外，还需要显式设置 `min-width` 值为 `0` (其中原委我们将在后面的课程中介绍)：
 
@@ -293,7 +293,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c951707e534e4e9a904e32464ee232dd~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c951707e534e4e9a904e32464ee232dd~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/WNJjNod>
 
@@ -310,7 +310,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/eb24bfa8f26241c6bc6553d56ce7300d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/eb24bfa8f26241c6bc6553d56ce7300d~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/zYjwOWa>
 
@@ -327,7 +327,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9880893afe640238cf98e4a2c2bfca2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c9880893afe640238cf98e4a2c2bfca2~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/oNdWvJR>
 
@@ -341,7 +341,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 
 -   `<flex-basis>` ：定义 Flex 项目的 `flex-basis` 属性的值。若值为`0`时，则必须加上单位（`<length>`或`<percentage>`），比如`0px`或`0%`，避免被视作伸缩性`flex-grow`或`flex-shrink`的值。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b60f962b2eb44feda9f9e688531cc5c0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b60f962b2eb44feda9f9e688531cc5c0~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/oNdWvVr>
 
@@ -361,7 +361,7 @@ Flexbox 布局中，很多开发者为了强制所有 Flex 项目的大小一致
 
 -   `flex: <positive-number>`（正数）和 `flex: 1 0px` 相同。Flex 项目可伸缩，并将 `flex-basis` 值设置为 `0` （需要带有效的 `<length>` 或 `<percentage>` 单位），导致 Flex 项目会根据设置的比例因子来计算 Flex 容器的剩余空间。Flex 项目按比例扩展或收缩。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6f6a10d6b68e40c48c0363e6474e63ca~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/6f6a10d6b68e40c48c0363e6474e63ca~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/vYjmENe>
 

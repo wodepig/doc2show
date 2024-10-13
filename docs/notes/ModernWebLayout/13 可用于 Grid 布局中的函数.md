@@ -47,7 +47,7 @@ permalink: /ModernWebLayout/u285euuq/
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce95f8f9bfc64e3f805ef32ab9fef539~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ce95f8f9bfc64e3f805ef32ab9fef539~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/xxjNjeL
 
@@ -64,7 +64,7 @@ permalink: /ModernWebLayout/u285euuq/
 
 代码中的 `repeat(3, 1fr 200px)` 意思是 `1fr 200px` 会重复 `3` 次，相当于创建了一个六列的网格：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/66eb94f3d15e423698a0e0fa8a550d0f~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/66eb94f3d15e423698a0e0fa8a550d0f~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/RwymJZO
 
@@ -81,7 +81,7 @@ permalink: /ModernWebLayout/u285euuq/
 
 要是在 `repeat()` 函数中重复网格线名称的话，结束的网格线名称最终会与下一条开始网格线名称共享同一个网格线名称：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/40c4dae0850747a3b25343fdb6bf0de6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/40c4dae0850747a3b25343fdb6bf0de6~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/WNJBKVg
 
@@ -132,7 +132,7 @@ permalink: /ModernWebLayout/u285euuq/
 
 庆幸的是，`repeat()` 函数的第一个参数除了可以接受一个整数值之外，还可以接受 **`auto-fit`** 和 **`auto-fill`** 两个关键词。它们会告诉浏览器处理网格轨道的大小和断行（或断列），以便当容器空间不足以容纳元素时，元素会自动换行（或列）而不会造成溢出。但 `auto-fill` 和 `auto-fit` 两者之间还是有一些细微差异的。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d21f9de878af480cb3895bc65fa6a7e0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d21f9de878af480cb3895bc65fa6a7e0~tplv-k3u1fbpfcp-zoom-1.png)
 
 - **`auto-fill`** ：在同一行中填充尽可能多的列。因此，只要能容纳新的列，就会自动创建隐式列，因为它试图在同一行中填充尽可能多的列。新添加的列（隐式列）可以是空的，但是它们仍然会在行中占据指定的空间。 
 - **`auto-fit`** ：将当前可用的列扩展到空间中，以便它们占用容器可用空间。当容器有可用空间时，浏览器会将可用空间均分给列，让列自动变宽填满整个容器；当容器可用空间为负值时，会另起一行排列。 
@@ -141,7 +141,7 @@ permalink: /ModernWebLayout/u285euuq/
 
 在实际使用过程中，网格容器中有多个和仅有一个网格项目时，使用 `auto-fill` 与 `auto-fit` 的差异：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8fd772d07e1742c699a3038b2a5a15f4~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/8fd772d07e1742c699a3038b2a5a15f4~tplv-k3u1fbpfcp-zoom-1.png)
 
 上面两张图展示了 `auto-fit` 和 `auto-fill` 在网格布局中的差异。那它们两者又是如何工作的呢？我们以一个实例来向大家介绍 `auto-fit` 和 `auto-fill` 是如何工作的。
 
@@ -178,15 +178,15 @@ permalink: /ModernWebLayout/u285euuq/
 
 浏览器计算出这个“**`?`** ” 大约会是 `7.66667` ，所以浏览创建了一个七列的网格。不同的是 `auto-fit` 会把空的网格轨道折叠在一起（空网格轨道是指没有放置网格项目的网格轨道）。折叠的轨道尺寸大小会被视为 `0px`。浏览器为了找到自动重复的轨道数，会将轨道尺寸限制为用户代理指定的值（比如 `1px`），来避免被零除。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/19a88ff0221a4759a89a9471fd9e606c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/19a88ff0221a4759a89a9471fd9e606c~tplv-k3u1fbpfcp-zoom-1.png)
 
 `auto-fill` 则不会将创建的空网格轨道折叠在一起：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/750ab74773d148709b2275d655f85c58~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/750ab74773d148709b2275d655f85c58~tplv-k3u1fbpfcp-zoom-1.png)
 
 `repeat()` 函数中使用 `auto-fit` 或 `auto-fill` 关键词替代重复的次数时，又被称为**自动换行** 。当网格容器无法容纳网格轨道时（有网格项目的），就会自动创建新的一行：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e7abdedb5027468d825615feb7d66b07~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e7abdedb5027468d825615feb7d66b07~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/PoevxOp
 
@@ -212,17 +212,17 @@ permalink: /ModernWebLayout/u285euuq/
 
 `auto-fit` 时，创建的重复轨道尺寸是 `0` ，网格轨道的尺寸会介于 `120px ~ 1fr` 之间，最小是 `120px` ，最大是 `1fr` ，而且 `1fr` 会根据网格容器可用空间计算出网格轨道尺寸。由于创建的重复轨道尺寸是 `0` ，所以网格容器可用空间更大（`1000px - 10px × 2 - 10px × 3 = 950px`），对应的 `1fr = 1 / 4 = 25% × 950px = 237.5px` ，所以你将看到的网格项目被拉伸了：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fcad7d6b673443798c6becc0dfb59948~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/fcad7d6b673443798c6becc0dfb59948~tplv-k3u1fbpfcp-zoom-1.png)
 
 `auto-fill` 创建的重复轨道尺寸也是 `minmax(120px, 1fr)` ，而且不会被折叠，所以网格容器的可用空间分的等份就更多（因为创建的三个空网格轨道，它位置占着），即 `7` 个 `fr` 。同时网格容器可用空间也更小 （`1000px - 10px × 2 - 10px × 6 = 920px`），对应的 `1fr = 1 / 7 = 14.28% × 920px = 131.43px` ，即网格轨道尺寸是介于 `120px ~ 1fr` （相当于 `120px ~ 131.43px`）之间：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c60767dffe4c42cf903f85b053c79e6f~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c60767dffe4c42cf903f85b053c79e6f~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/mdLZwey
 
 你要是将 `repeat()` 函数和 `minmax(min,max)`、`1fr` 和 `auto-fill`（或 `auto-fit`）结合起来，可以很容易帮我们实现像下图这样的响应式布局效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/75f1124edc114dac903e13aababe952e~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/75f1124edc114dac903e13aababe952e~tplv-k3u1fbpfcp-zoom-1.png)
 
 实现上图这样的效果，代码很简单：
 
@@ -236,7 +236,7 @@ permalink: /ModernWebLayout/u285euuq/
 
  
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa65abf944fe46178f5e64a4ec3a7563~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/fa65abf944fe46178f5e64a4ec3a7563~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/mdLZMBp
 
@@ -271,7 +271,7 @@ grid-template-columns: minmax(300px, 50%);
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e7f756cb2b124a6288fe56576a71375d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e7f756cb2b124a6288fe56576a71375d~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/JjvQrJp
 
@@ -281,7 +281,7 @@ grid-template-columns: minmax(300px, 50%);
 - 当网格容器宽度调到很小时（比如 `222.5px`），`minmax(100px, 220px)` 返回的值是 `100px`，即第一列的网格轨道宽度是 `100px`（`MIN`的值）。 
 - 另外，`minmax(100px, 220px)` 还会返回一个 `100px ~ 220px` 之间的值，比如当容网格容器宽度是 `300px` 时，`minmax(100px, 220px)` 返回的值就是 `177.34px`。 
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0990112159dc40c9bb61bf62fa15b869~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0990112159dc40c9bb61bf62fa15b869~tplv-k3u1fbpfcp-zoom-1.png)
 
 正如你所看到的，示例中网格的第二、第三列的收缩和扩展会根据网格容器可用空间变化（因为它们的轨道宽度设置的值是 `1fr`），但第一列网格轨道的宽度总是保持在 `100px` 至 `220px` 之间，最小不小于 `100px` ，最大不大于 `220px` 。
 
@@ -293,7 +293,7 @@ grid-template-columns: minmax(300px, 50%);
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec222bbeffdd4457a9fda7874c9f18b9~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ec222bbeffdd4457a9fda7874c9f18b9~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/QWrXOJm
 
@@ -316,7 +316,7 @@ grid-template-columns: minmax(300px, 50%);
 
 > **`minmax(MIN, MAX)` 函数，如果 `MAX` 小于 `MIN` 时， `MAX`** **将会被忽略，最终** **`minmax(MIN, MAX)`** **函数将会返回** **`MIN`** **的值** 。 
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/48808eb7bd614295bfee7c08e75a38c7~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/48808eb7bd614295bfee7c08e75a38c7~tplv-k3u1fbpfcp-zoom-1.png)
 
 `minmax(MIN, MAX)` 函数中的两个参数都可以取百分比（`%`）值，比如：
 
@@ -328,7 +328,7 @@ grid-template-columns: minmax(300px, 50%);
 
 但是这样使用，有可能计算出来的值会比网格轨道中网格项目内容（元素）的最小尺寸（`min-content`）还会小，甚至网格列宽会趋于 `0` ，将会造成网格项目溢出网格列轨道：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8e1355afd66447708e4a31ea70d30c80~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/8e1355afd66447708e4a31ea70d30c80~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/BaxXydr
 
@@ -363,21 +363,21 @@ minmax(min-content, 50%)   /* ~> MIN = min-content   MAX = 50% */
 
 当 `minmax(100px, 1fr)` 取 `MIN` 值时，则返回的是 `100px` ；当它取 `MAX` 值时，则返回的是 `1fr` ，此时 `grid-template-columns` 的值相当于 `1fr  1fr  1fr` 。每个 `fr` 则等于网格容器可用空间的三分之一（因为总共有`3` 个 `fr` ，即 `1fr + 1fr + 1fr`）。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b1abc1ad323243348635bf45d4bae92b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b1abc1ad323243348635bf45d4bae92b~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/VwxoYor
 
 当你改变网格容器尺寸时，你会发现，如果网格容器有足够空间，`minmax(100px, 1fr)` 则会取 `1fr` ，反之则会取 `100px`：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a770ad430c0c4d73b3019bf555f665b2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a770ad430c0c4d73b3019bf555f665b2~tplv-k3u1fbpfcp-zoom-1.png)
 
 不过需要注意的是，`minmax(MIN, MAX)` 函数取 `fr` 单位值时，不能同时给 `MIN` 和 `MAX` 都设置 `fr` 单位的值，因为两个参数值都取 `fr` 单位值，浏览器会视该属性值无效：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd1ca9bac4b642ef89425b5559052de1~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/dd1ca9bac4b642ef89425b5559052de1~tplv-k3u1fbpfcp-zoom-1.png)
 
 针对这一点，W3C 规范中有做过相应的描述：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ba52f4c5236c4ae78813c829be5b8d8f~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ba52f4c5236c4ae78813c829be5b8d8f~tplv-k3u1fbpfcp-zoom-1.png)
 
 也就是说，**在** **`minmax(MIN, MAX)`** **函数中使用** **`fr`** **单位值时，只能用于** **`MAX`** **值中** 。换句话说，`minmax(MIN, MAX)` 中 `MAX` 取 `fr` 单位值，可以和其他单位（除 `fr`之外）类型 `MIN` 值混合使用，比如示例中的 `minmax(100px, 1fr)`。即使是这样，也有可能 `1fr` 计算出来的值会小于`100px`，要是出现这种现象，`minmax(100px, 1fr)`并不会无效，它最终会返回 `MIN` 的值（即 `100px` ）。
 
@@ -392,7 +392,7 @@ minmax(min-content, 50%)   /* ~> MIN = min-content   MAX = 50% */
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b03dbeeb5d2342949d69da397f3a0dc0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b03dbeeb5d2342949d69da397f3a0dc0~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/xxjvwqQ
 
@@ -421,7 +421,7 @@ grid-template-columns: minmax(auto, auto) minmax(min-content, min-content) minma
 - 当 `auto` 作为 `MAX`值（`minmax(100px, auto)`），`auto`值相当于 `max-content`（`minmax(100px, max-content)`），即 `minmax(100px, auto)` 等同于 `minmax(100px, max-content)`。
 - 当 `auto` 作为 `MIN` 值（`minmax(auto, 1fr)`），它的值由对应网格轨道中内容的最小尺寸指定，`auto` 有时相当于 `min-content` （`minmax(min-content, 1fr)`），即 `minmax(auto, 1fr)` 等同于 `minmax(min-content, 1fr)`，但并非总是如此，因为有时候会受网格项目的 `min-width` （ `min-inline-size`）或 `min-height` （ `min-block-size`）值影响。如果显式指定网格项目的`min-width` 或 `min-inline-size` ，那么 `min-content` 等于 `min-width` 或 `min-inline-size`。 
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce624f9266e0407db568c15b5fb2974b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ce624f9266e0407db568c15b5fb2974b~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/VwxovVY
 
@@ -435,7 +435,7 @@ grid-template-columns: minmax(auto, auto) minmax(min-content, min-content) minma
 
 示例中的第一列尺寸始终等于所有列的内容最小尺寸：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7351bf5bf48140e69fb388c0f45f8e4b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7351bf5bf48140e69fb388c0f45f8e4b~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/oNdKjKX
 
@@ -444,7 +444,7 @@ grid-template-columns: minmax(auto, auto) minmax(min-content, min-content) minma
 - 当 `minmax(MIN, MAX)` 中的 `MAX` 值为 `min-content` 时，如果`min-content` 计算出来的值小于 `MIN` ，`minmax(MIN, MAX)` 函数返回的则是 `MIN` 值，反之则返回的是 `MIN` 至 `min-content` 之间的一个范围值。
 - 当 `minmax(MIN, MAX)` 中的 `MIN` 值为 `min-content` 时，如果 `min-content` 计算出来的值大于 `MAX` ，`minmax(MIN, MAX)`函数返回的是 `min-content`，反之则返回的是 `min-content` 至 `MAX` 之间的一个范围值。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d5c63b2b1e164594b5f1f9ee8ec38e0d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d5c63b2b1e164594b5f1f9ee8ec38e0d~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/Vwxoejj
 
@@ -456,7 +456,7 @@ grid-template-columns: minmax(auto, auto) minmax(min-content, min-content) minma
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c07765b02ba14240853634e81b011c47~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c07765b02ba14240853634e81b011c47~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/rNvXxvN
 
@@ -465,7 +465,7 @@ grid-template-columns: minmax(auto, auto) minmax(min-content, min-content) minma
 - 当 `minmax(MIN, MAX)` 函数中的 `MAX` 值为 `max-content` 时，如果 `max-content` 的计算值大于 `MIN` 值时，`minmax(MIN, MAX)` 函数返回的值是一个 `MIN` 至 `max-content` 计算值之间的范围值；反之会忽略 `max-content` ，函数返回的是 `MIN` 值。
 - 当 `minmax(MIN, MAX)` 函数中的 `MIN` 值为 `max-content` 时，如果 `max-content` 的计算值小于 `MAX` 值时，`minmax(MIN, MAX)` 函数返回的值是一个 `max-content` 至 `MAX` 之间的范围值；反之则会返回 `max-content`。 
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/21df176dfdb749e6a8c60748ccb83a82~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/21df176dfdb749e6a8c60748ccb83a82~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/poVMgxm
 
@@ -477,13 +477,13 @@ grid-template-columns: minmax(auto, auto) minmax(min-content, min-content) minma
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/251ffdf7aed14968a8f08ded4aff26b6~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/251ffdf7aed14968a8f08ded4aff26b6~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/zYjgrVq
 
 我们来看一个真实的 Web 布局案例。使用 `minmax(MIN, MAX)` 函数来构建一个博客文章展示的页面：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8e2e7378215a4af8913e428ec0bd365c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/8e2e7378215a4af8913e428ec0bd365c~tplv-k3u1fbpfcp-zoom-1.png)
 
 实现上图这种带有响应式布局效果，仅仅使用几行 CSS 代码即可：
 
@@ -505,7 +505,7 @@ main {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5725dcadda8e470188c67379296dcd5b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5725dcadda8e470188c67379296dcd5b~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/BaxXKNv
 
@@ -523,7 +523,7 @@ main {
 
 虽然效果上看上去不错，但它有一个缺陷存在，当浏览器视窗的宽度小于 `minmax(MIN, MAX)` 中的 `MIN` 值时，浏览器就会出现水平滚动条或溢出内容被裁剪：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c0aee213420f46e39356f991ea5327e0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c0aee213420f46e39356f991ea5327e0~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/mdLZMBp
 
@@ -541,7 +541,7 @@ main {
 
 就该例而言，网格容器的宽度会随着浏览器视窗宽度变小，也就是说，当浏览器视窗宽度小到一个临界值时，`min(100%, 250px)` 返回的值就会小于 `250px` ，此时， `min(100%, 250px)` 函数返回的值就是 `100%` ，这样一来，就可以避免浏览器出现水平滚动条（除非小到无法容纳内容）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c0fd4242e3d84cbca975e75066873c1f~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c0fd4242e3d84cbca975e75066873c1f~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/NWzKwwN
 
@@ -567,7 +567,7 @@ CSS 网格布局中，这些函数都可以用于设置网格轨道和网格沟�
 
 我们来看一个 CSS 比较函数用于网格轨道尺寸设置的示例。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ad2f311e5484263893cf3f5b595075d~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/5ad2f311e5484263893cf3f5b595075d~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/BaxXKNv
 
@@ -589,7 +589,7 @@ body {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/404c7f79b25549979f9a3c7662b22c60~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/404c7f79b25549979f9a3c7662b22c60~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/dyKbZLB
 
@@ -618,7 +618,7 @@ body {
 
 效果几乎是一样的，但浏览器视窗小于 `320px` 时，将会出现水平滚动条：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/54ae20bbd0d14fa48dfa6ae4ac1b1edb~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/54ae20bbd0d14fa48dfa6ae4ac1b1edb~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： https://codepen.io/airen/full/GRGKygZ
 
@@ -626,7 +626,7 @@ body {
 
 ## fit-content() 函数
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/60623a8491c446dca01fdc76ff09690c~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/60623a8491c446dca01fdc76ff09690c~tplv-k3u1fbpfcp-zoom-1.png)
 
 上图这样的两列布局是一种很常见的布局，即 **侧边栏固定尺寸，主内容栏能随浏览器视窗尺寸进动调整** 。你可以像下面这样使用 CSS Grid 来构建：
 
@@ -658,7 +658,7 @@ body {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/35b23501ff344a9ba03eabcab7a18d92~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/35b23501ff344a9ba03eabcab7a18d92~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：https://codepen.io/airen/full/PoaYEpp
 
@@ -675,7 +675,7 @@ body {
 }
 ```
 
-![fig-12-37.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5baca12885fc44d39fdbca4460d23dba~tplv-k3u1fbpfcp-watermark.image?)
+![fig-12-37.png](./img/5baca12885fc44d39fdbca4460d23dba~tplv-k3u1fbpfcp-watermark.png)
 
 > Demo 地址： https://codepen.io/airen/full/jOKNZXO 
 

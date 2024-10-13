@@ -14,7 +14,7 @@ permalink: /ModernWebLayout/jqydlxk0/
 
 Web 上的每一个元素都被视为一个盒子，它相当于一个容器，就好比我们生活中的器皿，通过格式化（CSS 的 `display` 属性的值）之后有着不同的形态：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e4ed7e93860a4f449f7415b0e29d3a84~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/e4ed7e93860a4f449f7415b0e29d3a84~tplv-k3u1fbpfcp-zoom-1.png)
 
 不同的器皿都有着自己的大小。在 CSS 中，这些容器的大小可以是由容器的内容来决定，也可以显式地通过属性来控制。大家最为熟知的应该是 **CSS 盒模型中的属性来决定一个容器（元素）的大小** 。
 
@@ -113,13 +113,13 @@ flex-basis: content | <width>
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98764f2b62374bb2b2d943661f0f33f0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/98764f2b62374bb2b2d943661f0f33f0~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/wvjqXrZ>
 
 正如上图所示，当给一个容器的 `width` 属性设置一个固定值时，有一个极大的缺陷，即 **内容断行** 或 **内容溢出容器** ，尤其是内容溢出，它很有可能就会打破布局的美观。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64f8fef213674ad59da5dfe7987ec65b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/64f8fef213674ad59da5dfe7987ec65b~tplv-k3u1fbpfcp-zoom-1.png)
 
 **很多时候，Web 开发者并不知道容器的内容是什么，所占的宽度是多少，就会造成上图的现象。哪怕是使用了** **`min-content`** **、`max-content`和** **`fit-content`** **也会面临类似现象** 。
 
@@ -136,7 +136,7 @@ flex-basis: content | <width>
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a38b58a0fbfd4372a77d465f55998f3b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a38b58a0fbfd4372a77d465f55998f3b~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/ZEoJjEK>
 
@@ -146,7 +146,7 @@ flex-basis: content | <width>
 
 当你从中文切换到阿位伯文（或英文切换到阿位伯文）时，文本内容的所占宽度并不一致。如果未显式给容器设置 `width` 或 `min-width` 属性的值，就会造成按钮大小不一致，这也有可能会影响 Web 布局或整体的视觉效果。如果显式加上 `width` 就有可能会在某个语种下造成内容溢出或断行，那么这个时候显式设置一个 `min-width` 就会有一个较好的视觉效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/88841eb47a5a404b9befda0fe407c3b1~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/88841eb47a5a404b9befda0fe407c3b1~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/dyezjZL>
 
@@ -154,17 +154,17 @@ flex-basis: content | <width>
 
 `min-width` 除了在一些多语言版本网站上可见之外，也适用于像“徽标”（Badge）这样的组件：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d057060c0ffe455395713dba16b1c8b2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/d057060c0ffe455395713dba16b1c8b2~tplv-k3u1fbpfcp-zoom-1.png)
 
 在构建这样的标签列表时，建议限制一个标签的最小宽度（即显式设置 `min-width` 属性的值），这样就可以保证标签列表项内容很短（少）时，它的外观不会受到影响：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10b4418ce0e24d119e1c69279f960583~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/10b4418ce0e24d119e1c69279f960583~tplv-k3u1fbpfcp-zoom-1.png)
 
 有了这种灵活性，无论标签内容有多短，标签在视觉上看起来都不错。另外，除了考虑内容过短之外，我们还需要考虑内容过长时对 UI 的视觉影响，这时候我们可以考虑使用 `max-width` 属性。
 
 在容器（或元素）上显式设置 `max-width` 属性值时，可以防止 `width` 属性值超过了 `max-width` 指定的值，造成内容溢出。`max-width` 的一个常见而简单的用例是将它与图像一起使用。考虑下面的例子：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1c4f78dd7f6748b994140ae370e262ac~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/1c4f78dd7f6748b994140ae370e262ac~tplv-k3u1fbpfcp-zoom-1.png)
 
 `<img>` 比它的父容器更大。通常给 `img` 设置 `max-width` 的值为 `100%` ，图像的宽度就不会超过容器的宽度。如果图像比父容器小，则 `max-width: 100%` 不会对图像产生实际影响，因为它比容器小。
 
@@ -233,7 +233,7 @@ button {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/98cc221e01094e7baf5e537f8c732a71~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/98cc221e01094e7baf5e537f8c732a71~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/qBYXJWq>
 
@@ -274,7 +274,7 @@ button {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aa7985a8498a43ea9867dea94e9df8f1~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/aa7985a8498a43ea9867dea94e9df8f1~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/WNJEaOq>
 
@@ -294,7 +294,7 @@ if (width =< max-width) {
 
 也有时候，在同一个元素上显式设置 `width` 、`min-width` 和 `max-width` ，或者只在元素上显式设置 `min-width` 和 `max-width` ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0f0180d6e5cb4c4986921654d179d3c7~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0f0180d6e5cb4c4986921654d179d3c7~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/GRdvYdw>
 
@@ -378,7 +378,7 @@ h1 {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca27e5c2cb09431394a5ee5b51f327ac~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ca27e5c2cb09431394a5ee5b51f327ac~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/RwyLGmg>
 
@@ -398,7 +398,7 @@ h1 {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/180bba994afa463eb3f22b2c64e6da92~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/180bba994afa463eb3f22b2c64e6da92~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/gOzGLYo>
 
@@ -424,7 +424,7 @@ h1 {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f1e20a58e024f39b3fc340c03b6d52a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7f1e20a58e024f39b3fc340c03b6d52a~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/jOxGVEd>
 
@@ -450,7 +450,7 @@ h1 {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0448e590a9c04218ac34e5b76af61750~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0448e590a9c04218ac34e5b76af61750~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/pen/zYZvGrY>
 
@@ -481,7 +481,7 @@ h1 {
 
 使用下图来描述它们之间的关系：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/14bf87e9e26e40cfb40e631d74509c95~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/14bf87e9e26e40cfb40e631d74509c95~tplv-k3u1fbpfcp-zoom-1.png)
 
 `min-content` 、`max-content` 和 `fit-content` 它们是属性值，可以被运用于 CSS 的尺寸属性上，比如 `width` 、 `height` 、`inline-size` 和 `block-size` 。同样的，它们也可以用在 `flex-basis` 属性上。
 
@@ -491,7 +491,7 @@ h1 {
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c8405d734b64c45b731265411ad7d62~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/6c8405d734b64c45b731265411ad7d62~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/VwxMPPq>
 
@@ -515,7 +515,7 @@ h1 {
 
 -   内在尺寸：`min-content` 、`max-content` 和 `fit-content` 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a7a52d47cfd141c7a7f35d32edcf90fb~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/a7a52d47cfd141c7a7f35d32edcf90fb~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/JjvrEVx>
 
@@ -605,7 +605,7 @@ h1 {
 
 Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4af9aa2f2a4a4493af94701ce65b8ed8~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/4af9aa2f2a4a4493af94701ce65b8ed8~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/BaxwRBx>
 
@@ -624,7 +624,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 不过，要是在 Flex 项目上重置了 `flex-shrink` 属性的值（显式设置为 `0` ），Flex 项目不可收缩，那么 `flex-basis` 和 `width` 取值为 `auto` 时，它的表现和 `flex-basis` 或 `width` 设置为 `max-content` 是相同的。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f7de40591114421095b37d0692bf4605~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f7de40591114421095b37d0692bf4605~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/NWMagjx>
 
@@ -645,7 +645,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 将所有宽度为 `150px` 的 Flex 项目放到一个宽度为 `1000px` 的 Flex 容器中，Flex 容器有一定的剩余空间出现（即 `250px`）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4d7aa80d50fb406ea07c8f38195c51d2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/4d7aa80d50fb406ea07c8f38195c51d2~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/VwxMWVO>
 
@@ -671,7 +671,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/350197601da5400cbe593f8aaab5595e~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/350197601da5400cbe593f8aaab5595e~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/MWGOGwE>
 
@@ -707,11 +707,11 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 上面代码中，Flex 项目初始化的假想主尺寸都会是 `100px` ，也就是说，浏览器在根据 Flex 容器剩余空间（或不足空间）、Flex 项目的 `flex-grow` 或 `flex-shrink` 计算 `flex-basis` 最终值时，它（`flex-basis`）的最初基础都将是 `100px` ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51db131223a543f1b2a364f305effd68~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/51db131223a543f1b2a364f305effd68~tplv-k3u1fbpfcp-zoom-1.png)
 
 这也就是，**Flex 项目的总宽度（`width`属性值总和）大于 Flex 容器空间（即 Flex 容器产生不足空间），但 Flex 项目的** **`flex-basis`** **显式设置了** **`0`** **或** **`0%`** **时，即使 Flex 项目的** **`flex-shrink`** **（收缩因子）是非** **`0`** **的值，比如** **`1`** **或大于** **`1`** **的其他值，Flex 项目也不会按收缩比例分配 Flex 容器的不足空间。最终** **Flex 项目的** **`flex-basis`** **值等于 Flex 项目的内容最小尺寸（`min-content`）** 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7a1cfd3f6cdc4585af84ffee0a95105a~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/7a1cfd3f6cdc4585af84ffee0a95105a~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/YzLELvX>
 
@@ -755,7 +755,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 最终所有 Flex 项目的初始化值（Base Size）是 `100px` ，最小值（Minimum Size）是 `180px` ，浏览器最终计算出来的 `flex-basis` 值也会是 `min-width` 值，即 `180px` ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dff67f72a8db4b56bd982397d90bcf07~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/dff67f72a8db4b56bd982397d90bcf07~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/jOxaxjK>
 
@@ -779,7 +779,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 最终所有 Flex 项目的初始化值（Base Size）是 `300px` ，最大值（Maximum Size）是 `100px` ，浏览器最终计算出来的 `flex-basis` 值也会是 `max-width` 值，即 `100px` ：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71dfe17b4f89406c8c30bb6300ac5a16~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/71dfe17b4f89406c8c30bb6300ac5a16~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址： <https://codepen.io/airen/full/XWqzBJj>
 
@@ -800,7 +800,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
  }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/002a1196d0c84922b37a90bf14c785b0~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/002a1196d0c84922b37a90bf14c785b0~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/WNJXKGe>
 
@@ -810,13 +810,13 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 我们可以用一个简单的流程图来描述：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3fd53dfe373544b1bcea983c9a64d3db~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/3fd53dfe373544b1bcea983c9a64d3db~tplv-k3u1fbpfcp-zoom-1.png)
 
 ## Flex 项目的最小值（min-size）
 
 在使用 Flexbox 布局的时候，很有可能其中某个 Flex 项目的文本内容很长，最终导致内容溢出：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c99159a177b24aa6a7354b9e2c639eca~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/c99159a177b24aa6a7354b9e2c639eca~tplv-k3u1fbpfcp-zoom-1.png)
 
 你可能想到了在文本节点容器（它也是一个 Flex 项目）上设置：
 
@@ -846,7 +846,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 诸如此类的操作，我们只是希望防止内容（或长单词破坏页面布局）。如下图所示：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3ba26834f7964691acb745ac8d2ace2b~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/3ba26834f7964691acb745ac8d2ace2b~tplv-k3u1fbpfcp-zoom-1.png)
 
 设计师期望卡片标题在同一行，不能因为内容过长而让设计效果失去一致性。为此，我们可以使用上面代码 ② 来截取文本，并且在文本末尾出现三个点的省略号：
 
@@ -858,11 +858,11 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0989b0b716ed416aa4fbadbf7d39af28~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0989b0b716ed416aa4fbadbf7d39af28~tplv-k3u1fbpfcp-zoom-1.png)
 
 或者输入了恶意的内容，比如带下划线的URL或没有空格的数字，字母等：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc105762121e4b3f8c6edd62bcaa6031~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/fc105762121e4b3f8c6edd62bcaa6031~tplv-k3u1fbpfcp-zoom-1.png)
 
 在这样的布局中，即使我们的标题元素是一个 Flex 项目，并且已显式设置了 `flex`：
 
@@ -874,7 +874,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 你会发现，卡片右侧的 Icon 还是被长内容挤出容器（溢出）：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0a9d0d79eb244a1da598772860fbf177~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/0a9d0d79eb244a1da598772860fbf177~tplv-k3u1fbpfcp-zoom-1.png)
 
 你可能会想到，使用上面代码 ① 让长词断行显示：
 
@@ -886,7 +886,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 你会发现，并未起效果：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f601099bb55949e08a4e8b10402a71b2~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/f601099bb55949e08a4e8b10402a71b2~tplv-k3u1fbpfcp-zoom-1.png)
 
 即使你加了 `hyphens` 为 `auto` 也未生效。
 
@@ -926,7 +926,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 
 你会发现，后面三张卡片的左右两侧的 Flex 项目尺寸被挤压，甚至还会造成视觉上的变形：
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce17b396b8834ee5ae7bac30a61b2efc~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ce17b396b8834ee5ae7bac30a61b2efc~tplv-k3u1fbpfcp-zoom-1.png)
 
 造成这个现象是由于标题（它也是一个 Flex 项目）内容过长（`max-content`），Flexbox 容器无剩余空间来放置它，这个时候将会对同一轴上的其他 Flex 项目进行挤压。大家知道，Flex项目的 `flex` 的默认值为：
 
@@ -946,7 +946,7 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 }
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b6c92d60bd0f4fe586469870cffa0333~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/b6c92d60bd0f4fe586469870cffa0333~tplv-k3u1fbpfcp-zoom-1.png)
 
 另一种解法是在显式设置了 `width` 或 `height` 的 Flex 项目上重置 `flex-shrink` 的值为 `0`，告诉浏览器，即使 Flexbox 容器没有足够的剩余空间，你也不能来挤压我的空间：
 
@@ -957,11 +957,11 @@ Flex 容器 `.container` 有足够多的空间来放置这些 Flex 项目：
 } 
 ```
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/26c6d7d9467049c090357ca114a9ad30~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/26c6d7d9467049c090357ca114a9ad30~tplv-k3u1fbpfcp-zoom-1.png)
 
 相对而言，或者一劳永逸的方案是 **在显式设置了`flex: 1`的 Flex 项目的同时，也显式设置`min-width`的值为`0`** 。
 
-![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad043bb7610e4bf481ec9a69eaa48167~tplv-k3u1fbpfcp-zoom-1.image)
+![img](./img/ad043bb7610e4bf481ec9a69eaa48167~tplv-k3u1fbpfcp-zoom-1.png)
 
 > Demo 地址：<https://codepen.io/airen/full/NWMwLmX>
 
