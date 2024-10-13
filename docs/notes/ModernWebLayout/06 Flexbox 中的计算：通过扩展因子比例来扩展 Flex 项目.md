@@ -1,6 +1,6 @@
 ---
 title: 06 Flexbox 中的计算：通过扩展因子比例来扩展 Flex 项目
-author:
+author: Your name
 createTime: 2024/07/29 21:23:47
 permalink: /ModernWebLayout/3wc11dbh/
 ---

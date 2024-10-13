@@ -1,6 +1,6 @@
 ---
 title: 12-项目开发常用配置演示及 SEO 优化
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/jn5c19jz/
 ---

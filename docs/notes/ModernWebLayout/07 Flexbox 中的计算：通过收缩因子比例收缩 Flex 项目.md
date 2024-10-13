@@ -1,6 +1,6 @@
 ---
 title: 07 Flexbox 中的计算：通过收缩因子比例收缩 Flex 项目
-author:
+author: Your name
 createTime: 2024/07/29 21:23:47
 permalink: /ModernWebLayout/rdu4sl86/
 ---

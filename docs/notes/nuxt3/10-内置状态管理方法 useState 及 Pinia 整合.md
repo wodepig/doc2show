@@ -1,6 +1,6 @@
 ---
 title: 10-内置状态管理方法 useState 及 Pinia 整合
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/iaklwgp0/
 ---

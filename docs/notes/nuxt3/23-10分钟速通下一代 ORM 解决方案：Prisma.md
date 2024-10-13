@@ -1,6 +1,6 @@
 ---
 title: 23-10分钟速通下一代 ORM 解决方案：Prisma
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/iu8ulv0n/
 ---

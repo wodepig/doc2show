@@ -16,15 +16,175 @@ import {
   unref,
   watch,
   watchEffect
-} from "./chunk-JJNTIHXZ.js";
-import {
-  setupDevtoolsPlugin
-} from "./chunk-D2YVLGJ5.js";
+} from "./chunk-CAD7CDMC.js";
 
-// node_modules/.pnpm/vue-router@4.4.0_vue@3.4.34_typescript@5.5.4_/node_modules/vue-router/dist/vue-router.mjs
+// node_modules/.pnpm/@vue+devtools-api@6.6.4/node_modules/@vue/devtools-api/lib/esm/env.js
+function getDevtoolsGlobalHook() {
+  return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function getTarget() {
+  return typeof navigator !== "undefined" && typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {};
+}
+var isProxyAvailable = typeof Proxy === "function";
+
+// node_modules/.pnpm/@vue+devtools-api@6.6.4/node_modules/@vue/devtools-api/lib/esm/const.js
+var HOOK_SETUP = "devtools-plugin:setup";
+var HOOK_PLUGIN_SETTINGS_SET = "plugin:settings:set";
+
+// node_modules/.pnpm/@vue+devtools-api@6.6.4/node_modules/@vue/devtools-api/lib/esm/time.js
+var supported;
+var perf;
+function isPerformanceSupported() {
+  var _a;
+  if (supported !== void 0) {
+    return supported;
+  }
+  if (typeof window !== "undefined" && window.performance) {
+    supported = true;
+    perf = window.performance;
+  } else if (typeof globalThis !== "undefined" && ((_a = globalThis.perf_hooks) === null || _a === void 0 ? void 0 : _a.performance)) {
+    supported = true;
+    perf = globalThis.perf_hooks.performance;
+  } else {
+    supported = false;
+  }
+  return supported;
+}
+function now() {
+  return isPerformanceSupported() ? perf.now() : Date.now();
+}
+
+// node_modules/.pnpm/@vue+devtools-api@6.6.4/node_modules/@vue/devtools-api/lib/esm/proxy.js
+var ApiProxy = class {
+  constructor(plugin, hook) {
+    this.target = null;
+    this.targetQueue = [];
+    this.onQueue = [];
+    this.plugin = plugin;
+    this.hook = hook;
+    const defaultSettings = {};
+    if (plugin.settings) {
+      for (const id in plugin.settings) {
+        const item = plugin.settings[id];
+        defaultSettings[id] = item.defaultValue;
+      }
+    }
+    const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin.id}`;
+    let currentSettings = Object.assign({}, defaultSettings);
+    try {
+      const raw = localStorage.getItem(localSettingsSaveId);
+      const data = JSON.parse(raw);
+      Object.assign(currentSettings, data);
+    } catch (e) {
+    }
+    this.fallbacks = {
+      getSettings() {
+        return currentSettings;
+      },
+      setSettings(value) {
+        try {
+          localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
+        } catch (e) {
+        }
+        currentSettings = value;
+      },
+      now() {
+        return now();
+      }
+    };
+    if (hook) {
+      hook.on(HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
+        if (pluginId === this.plugin.id) {
+          this.fallbacks.setSettings(value);
+        }
+      });
+    }
+    this.proxiedOn = new Proxy({}, {
+      get: (_target, prop) => {
+        if (this.target) {
+          return this.target.on[prop];
+        } else {
+          return (...args) => {
+            this.onQueue.push({
+              method: prop,
+              args
+            });
+          };
+        }
+      }
+    });
+    this.proxiedTarget = new Proxy({}, {
+      get: (_target, prop) => {
+        if (this.target) {
+          return this.target[prop];
+        } else if (prop === "on") {
+          return this.proxiedOn;
+        } else if (Object.keys(this.fallbacks).includes(prop)) {
+          return (...args) => {
+            this.targetQueue.push({
+              method: prop,
+              args,
+              resolve: () => {
+              }
+            });
+            return this.fallbacks[prop](...args);
+          };
+        } else {
+          return (...args) => {
+            return new Promise((resolve) => {
+              this.targetQueue.push({
+                method: prop,
+                args,
+                resolve
+              });
+            });
+          };
+        }
+      }
+    });
+  }
+  async setRealTarget(target) {
+    this.target = target;
+    for (const item of this.onQueue) {
+      this.target.on[item.method](...item.args);
+    }
+    for (const item of this.targetQueue) {
+      item.resolve(await this.target[item.method](...item.args));
+    }
+  }
+};
+
+// node_modules/.pnpm/@vue+devtools-api@6.6.4/node_modules/@vue/devtools-api/lib/esm/index.js
+function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
+  const descriptor = pluginDescriptor;
+  const target = getTarget();
+  const hook = getDevtoolsGlobalHook();
+  const enableProxy = isProxyAvailable && descriptor.enableEarlyProxy;
+  if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) {
+    hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
+  } else {
+    const proxy = enableProxy ? new ApiProxy(descriptor, hook) : null;
+    const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
+    list.push({
+      pluginDescriptor: descriptor,
+      setupFn,
+      proxy
+    });
+    if (proxy) {
+      setupFn(proxy.proxiedTarget);
+    }
+  }
+}
+
+// node_modules/.pnpm/vue-router@4.4.5_vue@3.5.12_typescript@5.5.4_/node_modules/vue-router/dist/vue-router.mjs
 var isBrowser = typeof document !== "undefined";
+function isRouteComponent(component) {
+  return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
+}
 function isESModule(obj) {
-  return obj.__esModule || obj[Symbol.toStringTag] === "Module";
+  return obj.__esModule || obj[Symbol.toStringTag] === "Module" || // support CF with dynamic imports that do not
+  // add the Module string tag
+  obj.default && isRouteComponent(obj.default);
 }
 var assign = Object.assign;
 function applyToParams(fn, params) {
@@ -423,7 +583,7 @@ function useHistoryStateNavigation(base) {
 
 history.replaceState(history.state, '', url)
 
-You can find more information at https://next.router.vuejs.org/guide/migration/#usage-of-history-state.`);
+You can find more information at https://router.vuejs.org/guide/migration/#Usage-of-history-state`);
     }
     changeLocation(currentState.current, currentState, true);
     const state = assign({}, buildState(currentLocation.value, to, null), { position: currentState.position + 1 }, data);
@@ -944,22 +1104,24 @@ function createRouterMatcher(routes, globalOptions) {
     }
     mainNormalizedRecord.aliasOf = originalRecord && originalRecord.record;
     const options = mergeOptions(globalOptions, record);
-    const normalizedRecords = [
-      mainNormalizedRecord
-    ];
+    const normalizedRecords = [mainNormalizedRecord];
     if ("alias" in record) {
       const aliases = typeof record.alias === "string" ? [record.alias] : record.alias;
       for (const alias of aliases) {
-        normalizedRecords.push(assign({}, mainNormalizedRecord, {
-          // this allows us to hold a copy of the `components` option
-          // so that async components cache is hold on the original record
-          components: originalRecord ? originalRecord.record.components : mainNormalizedRecord.components,
-          path: alias,
-          // we might be the child of an alias
-          aliasOf: originalRecord ? originalRecord.record : mainNormalizedRecord
-          // the aliases are always of the same kind as the original since they
-          // are defined on the same record
-        }));
+        normalizedRecords.push(
+          // we need to normalize again to ensure the `mods` property
+          // being non enumerable
+          normalizeRouteRecord(assign({}, mainNormalizedRecord, {
+            // this allows us to hold a copy of the `components` option
+            // so that async components cache is hold on the original record
+            components: originalRecord ? originalRecord.record.components : mainNormalizedRecord.components,
+            path: alias,
+            // we might be the child of an alias
+            aliasOf: originalRecord ? originalRecord.record : mainNormalizedRecord
+            // the aliases are always of the same kind as the original since they
+            // are defined on the same record
+          }))
+        );
       }
     }
     let matcher;
@@ -972,7 +1134,7 @@ function createRouterMatcher(routes, globalOptions) {
         normalizedRecord.path = parent.record.path + (path && connectingSlash + path);
       }
       if (normalizedRecord.path === "*") {
-        throw new Error('Catch all routes ("*") must now be defined using a param with a custom regexp.\nSee more at https://next.router.vuejs.org/guide/migration/#removed-star-or-catch-all-routes.');
+        throw new Error('Catch all routes ("*") must now be defined using a param with a custom regexp.\nSee more at https://router.vuejs.org/guide/migration/#Removed-star-or-catch-all-routes.');
       }
       matcher = createRouteRecordMatcher(normalizedRecord, parent, options);
       if (parent && path[0] === "/")
@@ -1122,12 +1284,12 @@ function paramsFromLocation(params, keys) {
   return newParams;
 }
 function normalizeRouteRecord(record) {
-  return {
+  const normalized = {
     path: record.path,
     redirect: record.redirect,
     name: record.name,
     meta: record.meta || {},
-    aliasOf: void 0,
+    aliasOf: record.aliasOf,
     beforeEnter: record.beforeEnter,
     props: normalizeRecordProps(record),
     children: record.children || [],
@@ -1135,8 +1297,14 @@ function normalizeRouteRecord(record) {
     leaveGuards: /* @__PURE__ */ new Set(),
     updateGuards: /* @__PURE__ */ new Set(),
     enterCallbacks: {},
+    // must be declared afterwards
+    // mods: {},
     components: "components" in record ? record.components || null : record.component && { default: record.component }
   };
+  Object.defineProperty(normalized, "mods", {
+    value: {}
+  });
+  return normalized;
 }
 function normalizeRecordProps(record) {
   const propsObject = {};
@@ -1444,8 +1612,9 @@ function extractComponentsGuards(matched, guardType, to, from, runWithContext = 
         }
         guards.push(() => componentPromise.then((resolved) => {
           if (!resolved)
-            return Promise.reject(new Error(`Couldn't resolve component "${name}" at "${record.path}"`));
+            throw new Error(`Couldn't resolve component "${name}" at "${record.path}"`);
           const resolvedComponent = isESModule(resolved) ? resolved.default : resolved;
+          record.mods[name] = resolved;
           record.components[name] = resolvedComponent;
           const options = resolvedComponent.__vccOpts || resolvedComponent;
           const guard = options[guardType];
@@ -1456,9 +1625,6 @@ function extractComponentsGuards(matched, guardType, to, from, runWithContext = 
   }
   return guards;
 }
-function isRouteComponent(component) {
-  return typeof component === "object" || "displayName" in component || "props" in component || "__vccOpts" in component;
-}
 function loadRouteLocation(route) {
   return route.matched.every((record) => record.redirect) ? Promise.reject(new Error("Cannot load a route that redirects.")) : Promise.all(route.matched.map((record) => record.components && Promise.all(Object.keys(record.components).reduce((promises, name) => {
     const rawComponent = record.components[name];
@@ -1467,6 +1633,7 @@ function loadRouteLocation(route) {
         if (!resolved)
           return Promise.reject(new Error(`Couldn't resolve component "${name}" at "${record.path}". Ensure you passed a function that returns a promise.`));
         const resolvedComponent = isESModule(resolved) ? resolved.default : resolved;
+        record.mods[name] = resolved;
         record.components[name] = resolvedComponent;
         return;
       }));
@@ -2150,7 +2317,7 @@ function createRouter(options) {
   const stringifyQuery$1 = options.stringifyQuery || stringifyQuery;
   const routerHistory = options.history;
   if (!routerHistory)
-    throw new Error('Provide the "history" option when calling "createRouter()": https://next.router.vuejs.org/api/#history.');
+    throw new Error('Provide the "history" option when calling "createRouter()": https://router.vuejs.org/api/interfaces/RouterOptions.html#history');
   const beforeGuards = useCallbacks();
   const beforeResolveGuards = useCallbacks();
   const afterGuards = useCallbacks();
@@ -2736,7 +2903,7 @@ export {
 
 vue-router/dist/vue-router.mjs:
   (*!
-    * vue-router v4.4.0
+    * vue-router v4.4.5
     * (c) 2024 Eduardo San Martin Morote
     * @license MIT
     *)

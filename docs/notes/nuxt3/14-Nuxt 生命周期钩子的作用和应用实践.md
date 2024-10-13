@@ -1,6 +1,6 @@
 ---
 title: 14-Nuxt 生命周期钩子的作用和应用实践
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/efdev1ur/
 ---

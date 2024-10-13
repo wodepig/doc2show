@@ -1,6 +1,6 @@
 ---
 title: 17-Nuxt 最强大的扩展方法：模块
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/zz2biowr/
 ---

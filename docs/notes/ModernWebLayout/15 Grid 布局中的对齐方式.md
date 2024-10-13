@@ -1,6 +1,6 @@
 ---
 title: 15 Grid 布局中的对齐方式
-author:
+author: Your name
 createTime: 2024/07/29 21:23:47
 permalink: /ModernWebLayout/sfujr1ag/
 ---

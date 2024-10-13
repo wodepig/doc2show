@@ -1,6 +1,6 @@
 ---
 title: 02-上层框架最佳选择：全面了解 Nuxt3 特性和架构
-author:
+author: Your name
 createTime: 2024/07/29 12:35:13
 permalink: /nuxt3/j5vmm5bw/
 ---

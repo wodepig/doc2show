@@ -1,6 +1,6 @@
 ---
 title: 13-Nuxt 项目多种打包方式与部署详解
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/kxng3c2z/
 ---

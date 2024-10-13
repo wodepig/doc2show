@@ -1,6 +1,6 @@
 ---
 title: 21 display：contents 改变 Flexbox 和 Grid 布局模式
-author:
+author: Your name
 createTime: 2024/07/29 21:23:47
 permalink: /ModernWebLayout/s4zv91vt/
 ---

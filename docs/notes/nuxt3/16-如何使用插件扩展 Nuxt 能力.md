@@ -1,6 +1,6 @@
 ---
 title: 16-如何使用插件扩展 Nuxt 能力
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/qo6kn8dx/
 ---

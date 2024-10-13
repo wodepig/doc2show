@@ -1,6 +1,6 @@
 ---
 title: 27 下一代响应式 Web 设计：组件式驱动式 Web 设计
-author:
+author: Your name
 createTime: 2024/07/29 21:23:47
 permalink: /ModernWebLayout/dmc07dt6/
 ---

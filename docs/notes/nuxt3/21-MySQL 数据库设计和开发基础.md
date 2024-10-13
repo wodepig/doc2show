@@ -1,6 +1,6 @@
 ---
 title: 21-MySQL 数据库设计和开发基础
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/3olhps22/
 ---

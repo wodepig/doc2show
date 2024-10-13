@@ -1,6 +1,6 @@
 ---
 title: 19-Nuxt 项目工程化搭建指南
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/6rrwhym0/
 ---

@@ -1,6 +1,6 @@
 ---
 title: 06-如何使用静态资源及整合 TailwindCSS？
-author:
+author: Your name
 createTime: 2024/07/29 16:11:51
 permalink: /nuxt3/cmlxapi9/
 ---
