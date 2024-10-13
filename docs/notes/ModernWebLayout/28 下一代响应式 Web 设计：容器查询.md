@@ -1654,7 +1654,7 @@ Web 页面导航栏是常见的一个组件，在宽屏和窄屏的时候，它�
 
 ![img](./img/377da24573e94e7fad69e14c4a3bda2e~tplv-k3u1fbpfcp-zoom-1.png)
 
-就拿我自己的博客（[www.w3cplus.com](www.w3cplus.com)）航栏为例吧。它也有类似的效果，只不过是使用 CSS 媒体查询实现的，现在我们使用 CSS 容器查询来实现：
+就拿我自己的博客（[www.w3cplus.com](https://www.w3cplus.com)）航栏为例吧。它也有类似的效果，只不过是使用 CSS 媒体查询实现的，现在我们使用 CSS 容器查询来实现：
 
 ![img](./img/1994924745e64cd18a4f2c29eaad28bd~tplv-k3u1fbpfcp-zoom-1.png)
 
