@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 // 从网络中下载图片到本地
+
 async function downloadImage(imageId) {
     // 使用示例
     const url = 'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/'+imageId+'.image';
